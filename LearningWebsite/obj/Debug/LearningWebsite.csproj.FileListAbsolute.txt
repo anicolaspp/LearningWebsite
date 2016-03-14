@@ -176,3 +176,4 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\System.IO.Fil
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\vbc.exe.config
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\vbc.rsp
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.csprojResolveAssemblyReference.cache
