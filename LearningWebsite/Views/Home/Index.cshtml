@@ -1,4 +1,6 @@
-﻿@{
+﻿
+
+@{
     ViewBag.Title = "Home Page";
 }
 <!DOCTYPE html>
@@ -73,30 +75,38 @@
                                     </h4>
                                 </div>
                                 <div class="modal-body">
-                                    <form class="form-horizontal" role="form">
+
+
+                                  
+
+                                    @using (Html.BeginForm("Singup", "User", FormMethod.Post, new { @class = "form-horizontal" }))
+                                    {
                                         <div class="form-group">
                                             <label for="nameInput" class="col-sm-2 control-label">
                                                 Name
                                             </label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="nameInput">
+                                                <input type="text" class="form-control" id="nameInput" name="Name">
                                             </div>
                                         </div>
                                         <div class="form-group">
                                             <label for="userInput" class="col-sm-2 control-label">
-                                                Username
+                                                UserName
                                             </label>
                                             <div class="col-sm-10">
-                                                <input type="text" class="form-control" id="userInput">
+                                                <input type="text" class="form-control" id="userInput" name="UserName">
                                             </div>
                                         </div>
                                         <div class="form-group">
+
+
                                             <label for="inputPassword" class="col-sm-2 control-label">
                                                 Password
+
                                             </label>
                                             <div class="col-sm-10">
                                                 <input type="password" class="form-control"
-                                                       id="inputPassword">
+                                                       id="inputPassword" name="Password">
                                             </div>
                                         </div>
                                         <div class="form-group">
@@ -110,7 +120,8 @@
                                                 </button>
                                             </div>
                                         </div>
-                                    </form>
+                                    }
+
                                 </div>
                             </div>
                         </div>
