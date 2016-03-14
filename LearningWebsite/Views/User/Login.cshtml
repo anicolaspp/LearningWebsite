@@ -1,0 +1,63 @@
+﻿
+@{
+    ViewBag.Title = "Login";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Login</h2>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Login!</title>
+
+    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-12" style="margin-top: 50px">
+                <form class="form-horizontal" role="form">
+                    <div class="form-group">
+
+                        <label for="inputUser" class="col-sm-2 control-label">
+                            Username
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="text" class="form-control" id="inputUser">
+                        </div>
+                    </div>
+                    <div class="form-group">
+
+                        <label for="inputPassword" class="col-sm-2 control-label">
+                            Password
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="password" class="form-control" id="inputPassword">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="col-sm-offset-2 col-sm-4">
+
+                            <button type="submit" class="btn btn-default active">
+                                Sign in
+                            </button>
+                            <button type="submit" class="btn btn-default active">
+                                Cancel
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script src="js/jquery.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/scripts.js"></script>
+</body>
+</html>
