@@ -1,0 +1,32 @@
+{
+  "siteName": {
+    "value": "LearningWebsite2"
+  },
+  "hostingPlanName": {
+    "value": "Default1"
+  },
+  "siteLocation": {
+    "value": "West US"
+  },
+  "sku": {
+    "value": "Free"
+  },
+  "workerSize": {
+    "value": "0"
+  },
+  "serverName": {
+    "value": "dbwebsite"
+  },
+  "serverLocation": {
+    "value": "West US"
+  },
+  "administratorLogin": {
+    "value": "dbwebsite"
+  },
+  "administratorLoginPassword": {
+    "value": "Nperez2k12"
+  },
+  "databaseName": {
+    "value": "LearningWebsite2_db"
+  }
+}
