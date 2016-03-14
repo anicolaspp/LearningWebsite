@@ -159,7 +159,6 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Microsoft.Owin.Secur
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Microsoft.Owin.Security.Google.xml
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Microsoft.Owin.Security.Twitter.xml
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Microsoft.Owin.Security.MicrosoftAccount.xml
-C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.csprojResolveAssemblyReference.cache
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.dll
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.pdb
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\csc.exe.config
