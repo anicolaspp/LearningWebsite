@@ -12,7 +12,7 @@ namespace LearningWebsite.Services.Filters
             {
                 filterContext.Result = new HttpUnauthorizedResult();
                 
-                filterContext.Cancel = true;
+                filterContext.Cancel = true; 
             }
         }
     }
