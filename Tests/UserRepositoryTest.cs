@@ -29,6 +29,7 @@ namespace Tests
 
             user.UserName.Should().Be("aName");
             user.Id.Should().Be(id);
+            user.IsValid.Should().BeTrue();
 
             repository.RemoveWith(id);
         }
@@ -44,6 +45,20 @@ namespace Tests
 
             user.UserName.Should().Be("aName");
             user.Id.Should().Be(id);
+
+            repository.RemoveWith(id);
+        }
+
+        [Fact]
+        public void repository_should_save_password()
+        {
+            IUserRepository repository = new UserRepository();
+
+            int id = repository.Add(new User { UserName = "aName", Password = "aPassword" });
+
+            var user = repository.GetUserBy(id);
+
+            user.Password.Should().Be("aPassword");
 
             repository.RemoveWith(id);
         }

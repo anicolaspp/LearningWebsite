@@ -22,6 +22,11 @@ namespace LearningWebsite.Services.Implementations
                 .IsRequired()
                 .HasColumnAnnotation(IndexAnnotation.AnnotationName,
                     new IndexAnnotation(new IndexAttribute("IX_USERNAME", 2) {IsUnique = true}));
+
+            modelBuilder
+                .Entity<User>()
+                .Property(user => user.Password)
+                .IsRequired();
         }
     }
 }

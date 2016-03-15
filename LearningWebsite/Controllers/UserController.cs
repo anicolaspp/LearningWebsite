@@ -8,6 +8,7 @@ using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services;
 using LearningWebsite.Services.Abstractions;
+using Microsoft.AspNet.Identity;
 
 namespace LearningWebsite.Controllers
 {
@@ -20,33 +21,15 @@ namespace LearningWebsite.Controllers
             _userService = userService;
         }
 
-        // GET: User
-        public ActionResult Login()
+        public ActionResult Index(UserViewModel userView)
         {
-            return View();
-        }
-
-        [HttpPost]
-        public ActionResult Login(UserViewModel userView)
-        {
-            var user = _userService.GetUserBy(userView.UserName);
-
-            return RedirectToAction("Index", "Home");
-        }
-
-        [HttpPost]
-        public ActionResult Singup(UserViewModel userView)
-        {
-            var user = _userService.GetUserBy(userView.UserName);
-
-            if (!user.IsValid)
+            if (Session["user"] != null)
             {
-                User newUser = new User {UserName = userView.UserName};
-
-                _userService.Add(newUser);
+                return View(userView);
             }
-
-            return RedirectToAction("Index", "Home");
+            return RedirectToAction("Login");
         }
+
+       
     }
 }

@@ -6,13 +6,16 @@ namespace LearningWebsite.Services.Implementations
 {
     public class UserRepository : IUserRepository
     {
-        private WebSiteDbContext dbContext = new WebSiteDbContext();
-
         public User GetUserBy(string userName)
         {
             using (var dbContext = new WebSiteDbContext())
             {
-                var user = dbContext.Users.FirstOrDefault(u => u.UserName == userName); 
+                var user = dbContext.Users.FirstOrDefault(u => u.UserName == userName);
+
+                if (user != null)
+                {
+                    user.IsValid = true;
+                }
 
                 return user;
             }
@@ -44,6 +47,11 @@ namespace LearningWebsite.Services.Implementations
             using (var dbContext = new WebSiteDbContext())
             {
                 var user = dbContext.Users.Find(id);
+
+                if (user != null)
+                {
+                    user.IsValid = true;
+                }
 
                 return user;
             }

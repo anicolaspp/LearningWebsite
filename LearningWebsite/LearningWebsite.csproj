@@ -212,6 +212,7 @@
     <Compile Include="App_Start\NinjectWebCommon.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Migrations\201603150318431_adding-users.cs" />
     <Compile Include="Migrations\201603150318431_adding-users.Designer.cs">
@@ -220,6 +221,14 @@
     <Compile Include="Migrations\201603151354331_unique_username.cs" />
     <Compile Include="Migrations\201603151354331_unique_username.Designer.cs">
       <DependentUpon>201603151354331_unique_username.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603151709142_adding_user_password.cs" />
+    <Compile Include="Migrations\201603151709142_adding_user_password.Designer.cs">
+      <DependentUpon>201603151709142_adding_user_password.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603151717230_adding_user_password_required.cs" />
+    <Compile Include="Migrations\201603151717230_adding_user_password_required.Designer.cs">
+      <DependentUpon>201603151717230_adding_user_password_required.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\Implementations\UserRepository.cs" />
@@ -290,7 +299,8 @@
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
-    <None Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Index.cshtml" />
+    <None Include="Views\Account\Login.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -305,6 +315,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603151354331_unique_username.resx">
       <DependentUpon>201603151354331_unique_username.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603151709142_adding_user_password.resx">
+      <DependentUpon>201603151709142_adding_user_password.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603151717230_adding_user_password_required.resx">
+      <DependentUpon>201603151717230_adding_user_password_required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

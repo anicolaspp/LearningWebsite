@@ -187,3 +187,5 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\WebActivatorEx.dll
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.xml
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.Web.Common.xml
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.Web.Mvc.xml
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.adding_user_password.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.adding_user_password_required.resources
