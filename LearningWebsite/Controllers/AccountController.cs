@@ -43,6 +43,14 @@ namespace LearningWebsite.Controllers
         }
 
         [HttpPost]
+        public ActionResult Logout()
+        {
+            Session["user"] = null;
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        [HttpPost]
         public ActionResult Singup(UserViewModel userView)
         {
             var user = _userService.GetUserBy(userView.UserName);

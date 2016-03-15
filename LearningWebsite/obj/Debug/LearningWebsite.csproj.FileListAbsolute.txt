@@ -189,3 +189,6 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.Web.Common.x
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.Web.Mvc.xml
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.adding_user_password.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.adding_user_password_required.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.ignore_isValid_user.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.user_pass_not_required_temp.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.user_pass_required.resources

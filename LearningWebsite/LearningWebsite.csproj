@@ -230,6 +230,18 @@
     <Compile Include="Migrations\201603151717230_adding_user_password_required.Designer.cs">
       <DependentUpon>201603151717230_adding_user_password_required.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603151939511_ignore_isValid_user.cs" />
+    <Compile Include="Migrations\201603151939511_ignore_isValid_user.Designer.cs">
+      <DependentUpon>201603151939511_ignore_isValid_user.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603151944194_user_pass_not_required_temp.cs" />
+    <Compile Include="Migrations\201603151944194_user_pass_not_required_temp.Designer.cs">
+      <DependentUpon>201603151944194_user_pass_not_required_temp.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603151949255_user_pass_required.cs" />
+    <Compile Include="Migrations\201603151949255_user_pass_required.Designer.cs">
+      <DependentUpon>201603151949255_user_pass_required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\Filters\LoginRequiredFilter.cs" />
     <Compile Include="Services\Implementations\UserRepository.cs" />
@@ -322,6 +334,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603151717230_adding_user_password_required.resx">
       <DependentUpon>201603151717230_adding_user_password_required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603151939511_ignore_isValid_user.resx">
+      <DependentUpon>201603151939511_ignore_isValid_user.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603151944194_user_pass_not_required_temp.resx">
+      <DependentUpon>201603151944194_user_pass_not_required_temp.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603151949255_user_pass_required.resx">
+      <DependentUpon>201603151949255_user_pass_required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
