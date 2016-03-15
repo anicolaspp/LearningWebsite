@@ -8,6 +8,7 @@ using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services;
 using LearningWebsite.Services.Abstractions;
+using LearningWebsite.Services.Filters;
 using Microsoft.AspNet.Identity;
 
 namespace LearningWebsite.Controllers
@@ -21,15 +22,11 @@ namespace LearningWebsite.Controllers
             _userService = userService;
         }
 
+        [LoginRequired]
         public ActionResult Index(UserViewModel userView)
         {
-            if (Session["user"] != null)
-            {
+            
                 return View(userView);
-            }
-            return RedirectToAction("Login");
         }
-
-       
     }
 }
