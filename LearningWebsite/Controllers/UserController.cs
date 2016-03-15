@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LearningWebsite.Models;
+using LearningWebsite.Models.DbModels;
+using LearningWebsite.Models.ViewModels;
+using LearningWebsite.Services;
+using LearningWebsite.Services.Abstractions;
 
 namespace LearningWebsite.Controllers
 {
@@ -33,47 +37,16 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult Singup(UserViewModel userView)
         {
+            var user = _userService.GetUserBy(userView.UserName);
+
+            if (!user.IsValid)
+            {
+                User newUser = new User {UserName = userView.UserName};
+
+                _userService.Add(newUser);
+            }
+
             return RedirectToAction("Index", "Home");
         }
-    }
-
-    public interface IUserService
-    {
-        User GetUserBy(string userName);
-    }
-
-    public class UserService : IUserService
-    {
-        private readonly IUserRepository _userRepository;
-
-        public UserService(IUserRepository userRepository)
-        {
-            _userRepository = userRepository;
-        }
-
-        public User GetUserBy(string userName)
-        {
-            var user = _userRepository.GetUserBy(userName);
-
-            if (user == null)
-            {
-                return new User();
-            }
-            else
-            {
-                return user;
-            }
-        }
-    }
-
-    public interface IUserRepository
-    {
-        User GetUserBy(string userName);
-    }
-
-    public class User
-    {
-        public bool IsValid { get; set; }
-        public string UserName { get; set; }
     }
 }

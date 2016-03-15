@@ -177,3 +177,13 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\System.IO.Fil
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\vbc.exe.config
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\vbc.rsp
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.csprojResolveAssemblyReference.cache
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.addingusers.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.csproj.GenerateResource.Cache
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.unique_username.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.dll
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.Web.Common.dll
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.Web.Mvc.dll
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\WebActivatorEx.dll
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.xml
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.Web.Common.xml
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\Ninject.Web.Mvc.xml
