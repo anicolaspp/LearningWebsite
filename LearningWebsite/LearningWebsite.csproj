@@ -244,6 +244,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\Filters\LoginRequiredFilter.cs" />
+    <Compile Include="Models\DbModels\Configurations\UseConfiguration.cs" />
     <Compile Include="Services\Implementations\UserRepository.cs" />
     <Compile Include="Services\Implementations\UserService.cs" />
     <Compile Include="Models\DbModels\User.cs" />
