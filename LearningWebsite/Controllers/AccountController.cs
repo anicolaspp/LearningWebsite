@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.Security;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services.Abstractions;
@@ -33,6 +34,8 @@ namespace LearningWebsite.Controllers
             {
                 if (user.Password == userView.Password)
                 {
+                    FormsAuthentication.SetAuthCookie(user.UserName, false);
+
                     Session["user"] = user.UserName;
 
                     return RedirectToAction("Index", "User", user);

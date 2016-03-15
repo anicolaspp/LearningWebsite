@@ -242,6 +242,14 @@
     <Compile Include="Migrations\201603151949255_user_pass_required.Designer.cs">
       <DependentUpon>201603151949255_user_pass_required.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603152136292_add_person_name.cs" />
+    <Compile Include="Migrations\201603152136292_add_person_name.Designer.cs">
+      <DependentUpon>201603152136292_add_person_name.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603152144200_add_course_material.cs" />
+    <Compile Include="Migrations\201603152144200_add_course_material.Designer.cs">
+      <DependentUpon>201603152144200_add_course_material.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Services\Filters\LoginRequiredFilter.cs" />
     <Compile Include="Models\DbModels\Configurations\UseConfiguration.cs" />
@@ -344,6 +352,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603151949255_user_pass_required.resx">
       <DependentUpon>201603151949255_user_pass_required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603152136292_add_person_name.resx">
+      <DependentUpon>201603152136292_add_person_name.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603152144200_add_course_material.resx">
+      <DependentUpon>201603152144200_add_course_material.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

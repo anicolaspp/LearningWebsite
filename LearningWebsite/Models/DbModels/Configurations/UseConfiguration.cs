@@ -19,4 +19,13 @@ namespace LearningWebsite.Models.DbModels.Configurations
             Ignore(user => user.IsValid);
         }
     }
+
+    class CourseMaterialConfiguration : EntityTypeConfiguration<CourseMaterial>
+    {
+        public CourseMaterialConfiguration()
+        {
+            Property(material => material.Content)
+                .IsRequired();
+        }
+    }
 }
