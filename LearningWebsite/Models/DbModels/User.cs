@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Web.UI;
 
 namespace LearningWebsite.Models.DbModels
 {
@@ -9,19 +10,18 @@ namespace LearningWebsite.Models.DbModels
         public bool IsValid { get; set; }
         public string UserName { get; set; }
         public string Password { get; set; }
-
         public string PersonName { get; set; }
+
+        public virtual Role Role { get; set; }
 
         public virtual IList<CourseMaterial> CourseMaterials { get; set; }
     }
 
-    public class CourseMaterial
+
+    public enum Role
     {
-        public int Id { get; set; }
-
-        public string Content { get; set; }
-        public virtual User PostedBy { get; set; }
-
-        public int Rating { get; set; }
+        Guest = 0,
+        Member = 1,
+        Admin = 2   
     }
 }

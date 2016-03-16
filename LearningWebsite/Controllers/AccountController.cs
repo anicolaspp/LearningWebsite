@@ -19,12 +19,6 @@ namespace LearningWebsite.Controllers
             _userService = userService;
         }
 
-        //// GET: User
-        //public ActionResult Login()
-        //{
-        //    return View();
-        //}
-
         [HttpPost]
         public ActionResult Login(UserViewModel userView)
         {
