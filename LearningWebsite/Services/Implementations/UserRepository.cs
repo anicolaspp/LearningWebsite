@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Services.Abstractions;
@@ -54,6 +55,24 @@ namespace LearningWebsite.Services.Implementations
                 }
 
                 return user;
+            }
+        }
+    }
+
+    public interface ICourseMaterialRepository
+    {
+        IEnumerable<CourseMaterial> GetCourseThatMatchName(string name);
+    }
+
+    public class CourseMaterialRepository : ICourseMaterialRepository
+    {
+        public IEnumerable<CourseMaterial> GetCourseThatMatchName(string name)
+        {
+            using (var context = new WebSiteDbContext())
+            {
+                var courseMaterialThatMatches = context.CourseMaterials.Where(material => material.Content == name);
+
+                return courseMaterialThatMatches;
             }
         }
     }
