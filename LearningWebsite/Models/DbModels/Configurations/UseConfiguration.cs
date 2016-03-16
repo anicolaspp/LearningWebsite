@@ -26,6 +26,9 @@ namespace LearningWebsite.Models.DbModels.Configurations
         {
             Property(material => material.Content)
                 .IsRequired();
+
+            Property(material => material.Title)
+                .IsRequired();
         }
     }
 }
