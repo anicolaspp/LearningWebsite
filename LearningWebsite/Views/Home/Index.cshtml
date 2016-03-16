@@ -31,8 +31,8 @@
                          id="bs-example-navbar-collapse-1">
 
                         <ul class="nav navbar-nav navbar-right">
-                            <li>
-                                <a href="#modal-container-signin">
+                            <li class="dropdown">
+                                <a href="#modal-container-signin" data-toggle="modal">
                                     <i class="glyphicon glyphicon-log-in"></i> Login
                                 </a>
                             </li>
@@ -75,9 +75,6 @@
                                     </h4>
                                 </div>
                                 <div class="modal-body">
-
-
-                                  
 
                                     @using (Html.BeginForm("Singup", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
                                     {
@@ -130,7 +127,7 @@
 					
 					
 					<div class="modal fade" id="modal-container-signin" role="dialog"
-						 aria-labelledby="myModalLabel" aria-hidden="true">
+						 aria-labelledby="myModalLabel2" aria-hidden="true">
 						<div class="modal-dialog">
 							<div class="modal-content">
 								<div class="modal-header">
@@ -138,9 +135,9 @@
 											aria-hidden="true">
 										×
 									</button>
-									<h4 class="modal-title" id="myModalLabel"
+									<h4 class="modal-title" id="myModalLabel2"
 										style="text-align: left;">
-										Sign Up
+										Login
 									</h4>
 								</div>
 								<div class="modal-body">

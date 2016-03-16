@@ -19,11 +19,11 @@ namespace LearningWebsite.Controllers
             _userService = userService;
         }
 
-        // GET: User
-        public ActionResult Login()
-        {
-            return View();
-        }
+        //// GET: User
+        //public ActionResult Login()
+        //{
+        //    return View();
+        //}
 
         [HttpPost]
         public ActionResult Login(UserViewModel userView)
@@ -38,11 +38,11 @@ namespace LearningWebsite.Controllers
 
                     Session["user"] = user.UserName;
 
-                    return RedirectToAction("Index", "User", user);
+                    return RedirectToAction("Index", "User", new UserViewModel {UserName = user.UserName});
                 }
             }
 
-            return View();
+            return RedirectToAction("Index", "Home");
         }
 
         [HttpPost]
