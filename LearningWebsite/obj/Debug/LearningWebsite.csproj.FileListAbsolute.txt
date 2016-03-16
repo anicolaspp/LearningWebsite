@@ -196,3 +196,4 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsit
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.add_course_material.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.adding_user_role.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.adding_coursematerial_title.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.adding_coursematerial_title_required.resources

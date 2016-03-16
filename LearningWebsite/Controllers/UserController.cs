@@ -23,6 +23,7 @@ namespace LearningWebsite.Controllers
         }
 
         [LoginRequired]
+        [MembershipRequired(Role.Member, Order = 2)]
         public ActionResult Index(UserViewModel userView)
         {
             

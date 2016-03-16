@@ -30,7 +30,7 @@ namespace LearningWebsite.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(user.UserName, false);
 
-                    Session["user"] = user.UserName;
+                    Session["user"] = user;
 
                     return RedirectToAction("Index", "User", new UserViewModel {UserName = user.UserName});
                 }

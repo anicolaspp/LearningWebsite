@@ -259,6 +259,10 @@
     <Compile Include="Migrations\201603161432354_adding_coursematerial_title.Designer.cs">
       <DependentUpon>201603161432354_adding_coursematerial_title.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603161439265_adding_coursematerial_title_required.cs" />
+    <Compile Include="Migrations\201603161439265_adding_coursematerial_title_required.Designer.cs">
+      <DependentUpon>201603161439265_adding_coursematerial_title_required.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DbModels\CourseMaterial.cs" />
     <Compile Include="Services\Filters\LoginRequiredFilter.cs" />
@@ -375,6 +379,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603161432354_adding_coursematerial_title.resx">
       <DependentUpon>201603161432354_adding_coursematerial_title.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603161439265_adding_coursematerial_title_required.resx">
+      <DependentUpon>201603161439265_adding_coursematerial_title_required.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
