@@ -3,7 +3,7 @@ using LearningWebsite.Models.DbModels;
 
 namespace LearningWebsite.Services.Implementations
 {
-    public class CourseMaterialService
+    public class CourseMaterialService : ICourseMaterialService
     {
         private readonly ICourseMaterialRepository _courseMaterialRepository;
 
@@ -30,5 +30,10 @@ namespace LearningWebsite.Services.Implementations
 
             return cm;
         }
+    }
+
+    public interface ICourseMaterialService
+    {
+        CourseMaterial GetBy(int id);
     }
 }

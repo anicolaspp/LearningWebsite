@@ -9,16 +9,16 @@ namespace LearningWebsite.Controllers
 {
     public class SearchController : Controller
     {
-        private readonly ICourseMaterialRepository _repository;
+        private readonly ICourseMaterialService _repository;
 
-        public SearchController(ICourseMaterialRepository repository)
+        public SearchController(ICourseMaterialService repository)
         {
             _repository = repository;
         }
 
         public ActionResult Search(string searchTerm)
         {
-            var courses = _repository.GetCourseThatMatchName(searchTerm);
+           // var courseMaterials = _repository.GetBy( 
 
             return View(courses);
         }
