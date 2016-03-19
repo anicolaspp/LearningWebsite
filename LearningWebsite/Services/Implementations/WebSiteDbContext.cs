@@ -1,5 +1,5 @@
 using System.Data.Entity;
-using System.Linq;
+using System.Data.Entity.ModelConfiguration;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.DbModels.Configurations;
 
@@ -17,7 +17,13 @@ namespace LearningWebsite.Services.Implementations
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
-            modelBuilder.Configurations.Add(new UseConfiguration());
+            modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new CourseMaterialConfiguration());
+
+            modelBuilder.Entity<CourseMaterialUserRanting>()
+                .HasKey(cm => new {cm.UserId, cm.CourseMaterialId});
+
+            
         }
     }
 }

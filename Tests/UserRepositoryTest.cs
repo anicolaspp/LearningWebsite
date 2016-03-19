@@ -23,13 +23,13 @@ namespace Tests
         {
             IUserRepository repository = new UserRepository();
 
-            int id = repository.Add(new User {UserName = "aName"});
+            int id = repository.Add(new User {UserName = "aName", Password = "a"});
 
             var user = repository.GetUserBy("aName");
 
             user.UserName.Should().Be("aName");
             user.Id.Should().Be(id);
-            user.IsValid.Should().BeTrue();
+            user.Role.Should().Be(Role.Member);
 
             repository.RemoveWith(id);
         }
@@ -39,7 +39,7 @@ namespace Tests
         {
             IUserRepository repository = new UserRepository();
 
-            int id = repository.Add(new User { UserName = "aName" });
+            int id = repository.Add(new User { UserName = "aName", Password = "a"});
 
             var user = repository.GetUserBy(id);
 

@@ -263,10 +263,24 @@
     <Compile Include="Migrations\201603161439265_adding_coursematerial_title_required.Designer.cs">
       <DependentUpon>201603161439265_adding_coursematerial_title_required.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603191804047_add_course_material_ratings.cs" />
+    <Compile Include="Migrations\201603191804047_add_course_material_ratings.Designer.cs">
+      <DependentUpon>201603191804047_add_course_material_ratings.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603191811330_add_course_material_ratings2.cs" />
+    <Compile Include="Migrations\201603191811330_add_course_material_ratings2.Designer.cs">
+      <DependentUpon>201603191811330_add_course_material_ratings2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201603191900370_use_cm_rating.cs" />
+    <Compile Include="Migrations\201603191900370_use_cm_rating.Designer.cs">
+      <DependentUpon>201603191900370_use_cm_rating.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\DbModels\Configurations\CourseMaterialConfiguration.cs" />
     <Compile Include="Models\DbModels\CourseMaterial.cs" />
     <Compile Include="Services\Filters\LoginRequiredFilter.cs" />
-    <Compile Include="Models\DbModels\Configurations\UseConfiguration.cs" />
+    <Compile Include="Models\DbModels\Configurations\UserConfiguration.cs" />
+    <Compile Include="Services\Implementations\CourseMaterialService.cs" />
     <Compile Include="Services\Implementations\UserRepository.cs" />
     <Compile Include="Services\Implementations\UserService.cs" />
     <Compile Include="Models\DbModels\User.cs" />
@@ -382,6 +396,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603161439265_adding_coursematerial_title_required.resx">
       <DependentUpon>201603161439265_adding_coursematerial_title_required.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603191804047_add_course_material_ratings.resx">
+      <DependentUpon>201603191804047_add_course_material_ratings.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603191811330_add_course_material_ratings2.resx">
+      <DependentUpon>201603191811330_add_course_material_ratings2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603191900370_use_cm_rating.resx">
+      <DependentUpon>201603191900370_use_cm_rating.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography.X509Certificates;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Services.Abstractions;
 
@@ -26,6 +27,8 @@ namespace LearningWebsite.Services.Implementations
         {
             using (var dbContext = new WebSiteDbContext())
             {
+                user.Role = Role.Member;
+
                 dbContext.Users.Add(user);
                 dbContext.SaveChanges();
 
@@ -61,11 +64,23 @@ namespace LearningWebsite.Services.Implementations
 
     public interface ICourseMaterialRepository
     {
+        ICollection<CourseMaterialUserRanting> GetRatingsFor(int id);
+        CourseMaterial GetBy(int id);
         IEnumerable<CourseMaterial> GetCourseThatMatchName(string name);
     }
 
     public class CourseMaterialRepository : ICourseMaterialRepository
     {
+        public ICollection<CourseMaterialUserRanting> GetRatingsFor(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public CourseMaterial GetBy(int id)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public IEnumerable<CourseMaterial> GetCourseThatMatchName(string name)
         {
             using (var context = new WebSiteDbContext())

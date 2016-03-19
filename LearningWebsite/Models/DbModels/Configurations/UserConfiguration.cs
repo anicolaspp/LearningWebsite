@@ -4,9 +4,9 @@ using System.Data.Entity.ModelConfiguration;
 
 namespace LearningWebsite.Models.DbModels.Configurations
 {
-    class UseConfiguration : EntityTypeConfiguration<User>
+    class UserConfiguration : EntityTypeConfiguration<User>
     {
-        public UseConfiguration()
+        public UserConfiguration()
         {
             Property(user => user.UserName)
                 .IsRequired()
@@ -17,18 +17,6 @@ namespace LearningWebsite.Models.DbModels.Configurations
                 .IsRequired();
 
             Ignore(user => user.IsValid);
-        }
-    }
-
-    class CourseMaterialConfiguration : EntityTypeConfiguration<CourseMaterial>
-    {
-        public CourseMaterialConfiguration()
-        {
-            Property(material => material.Content)
-                .IsRequired();
-
-            Property(material => material.Title)
-                .IsRequired();
         }
     }
 }
