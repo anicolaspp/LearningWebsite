@@ -23,7 +23,9 @@ namespace LearningWebsite.Services.Implementations
             modelBuilder.Entity<CourseMaterialUserRanting>()
                 .HasKey(cm => new {cm.UserId, cm.CourseMaterialId});
 
-            
+            modelBuilder.Entity<Tag>()
+                .HasMany(tag => tag.CourseMaterials)
+                .WithMany(material => material.Tags);
         }
     }
 }

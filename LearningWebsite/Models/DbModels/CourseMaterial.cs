@@ -13,18 +13,7 @@ namespace LearningWebsite.Models.DbModels
 
         public virtual User PostedBy { get; set; }
         public int Rating { get; set; }
-    }
 
-    public class CourseMaterialUserRanting
-    {
-        public int UserId { get; set; }
-
-        public int CourseMaterialId { get; set; }
-
-        public virtual User RatedBy { get; set; }
-
-        public virtual CourseMaterial CourseMaterial { get; set; }
-
-        public int Rating { get; set; }
+        public virtual IList<Tag> Tags { get; set; }
     }
 }
