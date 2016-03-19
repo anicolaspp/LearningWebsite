@@ -22,7 +22,6 @@ namespace LearningWebsite.Controllers
             _userService = userService;
         }
 
-        [LoginRequired]
         [MembershipRequired(Role.Member, Order = 2)]
         public ActionResult Index(UserViewModel userView)
         {
