@@ -26,7 +26,7 @@ namespace LearningWebsite.Controllers
         public ActionResult Index(UserViewModel userView)
         {
             
-                return View(userView);
+          return View(userView);
         }
     }
 }

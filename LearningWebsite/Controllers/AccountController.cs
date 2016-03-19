@@ -32,7 +32,11 @@ namespace LearningWebsite.Controllers
 
                     Session["user"] = user;
 
-                    return RedirectToAction("Index", "User", new UserViewModel {UserName = user.UserName});
+                    return RedirectToAction("Index", "Home", new UserViewModel
+                    {
+                        Role = user.Role,
+                        UserName = user.UserName
+                    });
                 }
             }
 

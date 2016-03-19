@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LearningWebsite.Models.DbModels;
+using LearningWebsite.Models.ViewModels;
 
 namespace LearningWebsite.Controllers
 {
@@ -10,7 +12,21 @@ namespace LearningWebsite.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return Index(new UserViewModel
+            {
+                Role = Role.Guest
+            });
+        }
+
+        [HttpPost]
+        public ActionResult Index(UserViewModel user)
+        {
+            var result = new HomePageViewModel
+            {
+                UserViewModel = user
+            };
+
+            return View(result);
         }
 
         //public ActionResult About()

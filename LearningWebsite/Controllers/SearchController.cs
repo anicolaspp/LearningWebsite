@@ -20,7 +20,7 @@ namespace LearningWebsite.Controllers
         {
            // var courseMaterials = _repository.GetBy( 
 
-            return View(courses);
+            return View();
         }
     }
 }
