@@ -15,6 +15,10 @@ namespace LearningWebsite.Services.Implementations
 
         public DbSet<CourseMaterial> CourseMaterials { get; set; }
 
+        public DbSet<Tag> Tags { get; set; }
+
+        public DbSet<CourseMaterialUserRanting> CourseMaterialUserRantings { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserConfiguration());
@@ -24,8 +28,13 @@ namespace LearningWebsite.Services.Implementations
                 .HasKey(cm => new {cm.UserId, cm.CourseMaterialId});
 
             modelBuilder.Entity<Tag>()
-                .HasMany(tag => tag.CourseMaterials)
-                .WithMany(material => material.Tags);
+                .HasMany(t => t.CourseMaterials)
+                .WithMany();
+
+
+
+            //.HasMany<>(tag => tag.CourseMaterials)
+            //.WithMany(material => material.Tags);
         }
     }
 }

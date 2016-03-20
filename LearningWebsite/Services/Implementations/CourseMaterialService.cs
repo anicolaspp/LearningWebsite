@@ -1,5 +1,6 @@
 using System.Linq;
 using LearningWebsite.Models.DbModels;
+using LearningWebsite.Services.Abstractions;
 
 namespace LearningWebsite.Services.Implementations
 {
@@ -25,15 +26,10 @@ namespace LearningWebsite.Services.Implementations
 
             if (ratings.Count > 0)
             {
-                cm.Rating = (int)ratings.Average(x => x.Rating);
+                cm.Rating = (int) ratings.Average();
             }
 
             return cm;
         }
-    }
-
-    public interface ICourseMaterialService
-    {
-        CourseMaterial GetBy(int id);
     }
 }

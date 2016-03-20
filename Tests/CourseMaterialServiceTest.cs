@@ -1,5 +1,6 @@
 using FluentAssertions;
 using LearningWebsite.Models.DbModels;
+using LearningWebsite.Services.Abstractions;
 using LearningWebsite.Services.Implementations;
 using Xunit;
 using NSubstitute;
@@ -36,17 +37,7 @@ namespace Tests
             repo
                 .GetRatingsFor(5)
                 .Returns(new []
-                {
-                    new CourseMaterialUserRanting
-                    {
-                        CourseMaterialId = 5,
-                        Rating = 1
-                    },
-                    new CourseMaterialUserRanting
-                    {
-                        CourseMaterialId = 5,
-                        Rating = 5
-                    }
+                {1,5
                 }
                 );
 

@@ -176,7 +176,6 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\System.IO.Fil
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\System.IO.FileSystem.Primitives.dll
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\vbc.exe.config
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\bin\roslyn\vbc.rsp
-C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.csprojResolveAssemblyReference.cache
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.addingusers.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.csproj.GenerateResource.Cache
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.unique_username.resources
@@ -201,3 +200,5 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsit
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.add_course_material_ratings2.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.use_cm_rating.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.add_tags_to_cms.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.posted_by_id.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.csprojResolveAssemblyReference.cache

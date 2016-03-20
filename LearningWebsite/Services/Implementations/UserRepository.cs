@@ -1,4 +1,3 @@
-using System.Collections.Generic;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using LearningWebsite.Models.DbModels;
@@ -58,36 +57,6 @@ namespace LearningWebsite.Services.Implementations
                 }
 
                 return user;
-            }
-        }
-    }
-
-    public interface ICourseMaterialRepository
-    {
-        ICollection<CourseMaterialUserRanting> GetRatingsFor(int id);
-        CourseMaterial GetBy(int id);
-        IEnumerable<CourseMaterial> GetCourseThatMatchName(string name);
-    }
-
-    public class CourseMaterialRepository : ICourseMaterialRepository
-    {
-        public ICollection<CourseMaterialUserRanting> GetRatingsFor(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public CourseMaterial GetBy(int id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public IEnumerable<CourseMaterial> GetCourseThatMatchName(string name)
-        {
-            using (var context = new WebSiteDbContext())
-            {
-                var courseMaterialThatMatches = context.CourseMaterials.Where(material => material.Content == name);
-
-                return courseMaterialThatMatches;
             }
         }
     }

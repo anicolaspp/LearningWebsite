@@ -11,9 +11,10 @@ namespace LearningWebsite.Models.DbModels
 
         public string Content { get; set; }
 
+        public int PostedById { get; set; }
         public virtual User PostedBy { get; set; }
         public int Rating { get; set; }
 
-        public virtual IList<Tag> Tags { get; set; }
+     //   public virtual IEnumerable<Tag> Tags { get; set; }
     }
 }

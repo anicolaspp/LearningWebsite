@@ -279,13 +279,23 @@
     <Compile Include="Migrations\201603192045022_add_tags_to_cms.Designer.cs">
       <DependentUpon>201603192045022_add_tags_to_cms.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603192255573_posted_by_id.cs" />
+    <Compile Include="Migrations\201603192255573_posted_by_id.Designer.cs">
+      <DependentUpon>201603192255573_posted_by_id.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\DbModels\Configurations\CourseMaterialConfiguration.cs" />
     <Compile Include="Models\DbModels\CourseMaterial.cs" />
     <Compile Include="Models\DbModels\CourseMaterialUserRanting.cs" />
+    <Compile Include="Models\DbModels\Tag.cs" />
     <Compile Include="Services\Filters\LoginRequiredFilter.cs" />
     <Compile Include="Models\DbModels\Configurations\UserConfiguration.cs" />
+    <Compile Include="Services\Implementations\CourseMaterialRepository.cs" />
     <Compile Include="Services\Implementations\CourseMaterialService.cs" />
+    <Compile Include="Services\Abstractions\ICourseMaterialRepository.cs" />
+    <Compile Include="Services\Abstractions\ICourseMaterialService.cs" />
+    <Compile Include="Services\Abstractions\ITagRepository.cs" />
+    <Compile Include="Services\Implementations\TagRepository.cs" />
     <Compile Include="Services\Implementations\UserRepository.cs" />
     <Compile Include="Services\Implementations\UserService.cs" />
     <Compile Include="Models\DbModels\User.cs" />
@@ -419,6 +429,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603192045022_add_tags_to_cms.resx">
       <DependentUpon>201603192045022_add_tags_to_cms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603192255573_posted_by_id.resx">
+      <DependentUpon>201603192255573_posted_by_id.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

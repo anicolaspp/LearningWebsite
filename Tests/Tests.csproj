@@ -78,6 +78,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="CourseMaterialServiceTest.cs" />
+    <Compile Include="TagRepositoryTest.cs" />
     <Compile Include="UserRepositoryTest.cs" />
     <Compile Include="UserServiceTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
