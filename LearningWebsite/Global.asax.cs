@@ -6,6 +6,7 @@ using System.Web;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using LearningWebsite.Controllers;
 using LearningWebsite.Services.Abstractions;
 using LearningWebsite.Services.Implementations;
 using Ninject;
@@ -38,6 +39,7 @@ namespace LearningWebsite
             _kernel.Bind<ICourseMaterialRepository>().To<CourseMaterialRepository>();
             _kernel.Bind<ITagRepository>().To<TagRepository>();
             _kernel.Bind<ICourseMaterialService>().To<CourseMaterialService>();
+            _kernel.Bind<ICourseService>().To<CourseService>();
         }
 
         public object GetService(Type serviceType)

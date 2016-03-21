@@ -11,24 +11,26 @@ namespace LearningWebsite.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ICourseMaterialService _repository;
-        private readonly ITagRepository _tagRepository;
+        private readonly ICourseMaterialService _cmService;
+        private readonly ICourseService _courseService;
 
-        public HomeController(ICourseMaterialService repository, ITagRepository tagRepository)
+        public HomeController(ICourseMaterialService cmService)
         {
-            _repository = repository;
-            _tagRepository = tagRepository;
+            _cmService = cmService;
         }
 
         public ActionResult Index()
         {
-            Session["user"] = new User {Role = Role.Guest};
+            if (Session["user"] == null)
+            {
+                Session["user"] = new User {Role = Role.Guest};
+            }
 
             return View(new HomePageViewModel
             {
                 UserViewModel = new UserViewModel
                 {
-                    Role = Role.Guest
+                    Role = ((User) Session["user"]).Role
                 }
             });
         }
@@ -50,13 +52,8 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult Search(string searchTerm)
         {
-            var tags = _tagRepository.GetMatchesTo(searchTerm);
-
-            var courseMaterials = tags
-                .SelectMany(tag => tag.CourseMaterials)
-                .Distinct()
-                .Select(cm => _repository.GetBy(cm.Id))
-                .ToList();
+            var cmResult = _cmService.GetMatchesFor(searchTerm);
+            var crResult = _courseService.GetMatcherFor(searchTerm);
 
             var user = Session["user"] as User;
 
@@ -67,7 +64,9 @@ namespace LearningWebsite.Controllers
                     Role = user.Role,
                     UserName = user.UserName
                 },
-                SearchResultCourseMaterials = courseMaterials
+
+                SearchResultCourseMaterials = cmResult,
+                SearchResultCourses = crResult
             });
         }
 
@@ -84,5 +83,22 @@ namespace LearningWebsite.Controllers
 
         //    return View();
         //}
+    }
+
+    public interface ICourseService
+    {
+        IEnumerable<Course> GetMatcherFor(string searchTerm);
+    }
+
+    public class CourseService : ICourseService
+    {
+        public IEnumerable<Course> GetMatcherFor(string searchTerm)
+        {
+            return new[] {new Course()};
+        }
+    }
+
+    public class Course
+    {
     }
 }

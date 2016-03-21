@@ -214,7 +214,6 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\SearchController.cs" />
     <Compile Include="Migrations\201603150318431_adding-users.cs" />
     <Compile Include="Migrations\201603150318431_adding-users.Designer.cs">
       <DependentUpon>201603150318431_adding-users.cs</DependentUpon>
