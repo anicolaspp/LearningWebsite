@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -83,22 +82,5 @@ namespace LearningWebsite.Controllers
 
         //    return View();
         //}
-    }
-
-    public interface ICourseService
-    {
-        IEnumerable<Course> GetMatcherFor(string searchTerm);
-    }
-
-    public class CourseService : ICourseService
-    {
-        public IEnumerable<Course> GetMatcherFor(string searchTerm)
-        {
-            return new[] {new Course()};
-        }
-    }
-
-    public class Course
-    {
     }
 }

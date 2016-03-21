@@ -21,7 +21,7 @@ namespace Tests
                 Id = 5
             });
 
-            var service = new CourseMaterialService(repo);
+            var service = new CourseMaterialService(repo, null);
 
             var cm = service.GetBy(5);
 
@@ -49,7 +49,7 @@ namespace Tests
                 Id = 5
             });
 
-            var service = new CourseMaterialService(repo);
+            var service = new CourseMaterialService(repo, null);
 
             var cm = service.GetBy(5);
 
@@ -60,7 +60,7 @@ namespace Tests
         public void service_should_return_null_when_cm_not_found()
         {
             var repo = Substitute.For<ICourseMaterialRepository>();
-            var service = new CourseMaterialService(repo);
+            var service = new CourseMaterialService(repo, null);
 
             var cm = service.GetBy(5);
 

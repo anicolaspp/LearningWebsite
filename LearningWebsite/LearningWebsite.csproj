@@ -213,6 +213,13 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseMaterialController.cs" />
+    <Compile Include="Models\ViewModels\TagRequestModel.cs" />
+    <Compile Include="Models\ViewModels\HomePageViewModel.cs" />
+    <Compile Include="Services\Abstractions\ICourseService.cs" />
+    <Compile Include="Services\Implementations\CourseService.cs" />
+    <Compile Include="Models\DbModels\Course.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Migrations\201603150318431_adding-users.cs" />
     <Compile Include="Migrations\201603150318431_adding-users.Designer.cs">
@@ -374,6 +381,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CourseMaterial\" />
+    <Folder Include="Views\Course\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>
