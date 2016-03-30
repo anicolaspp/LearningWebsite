@@ -204,3 +204,4 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsit
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.csprojResolveAssemblyReference.cache
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.add_course.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.add_dicusion_board.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.add_dicusion_board1.resources
