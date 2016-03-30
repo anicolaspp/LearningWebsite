@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using LearningWebsite.Controllers;
 using LearningWebsite.Models.DbModels;
 
 namespace LearningWebsite.Services.Abstractions
@@ -8,5 +9,7 @@ namespace LearningWebsite.Services.Abstractions
         IEnumerable<Course> GetMatcherFor(string searchTerm);
 
         Course GetBy(int id);
+        IEnumerable<Course> GetAll();
+        int Add(CourseModel model);
     }
 }

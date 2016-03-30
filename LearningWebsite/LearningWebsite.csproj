@@ -214,6 +214,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CourseController.cs" />
+    <Compile Include="Controllers\CourseDetailsController.cs" />
     <Compile Include="Controllers\CourseMaterialController.cs" />
     <Compile Include="Migrations\201603301527574_add_course.cs" />
     <Compile Include="Migrations\201603301527574_add_course.Designer.cs">
@@ -396,6 +397,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\CourseDetails\" />
     <Folder Include="Views\CourseMaterial\" />
     <Folder Include="Views\Course\" />
     <Folder Include="Views\Search\" />

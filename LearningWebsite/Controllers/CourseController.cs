@@ -1,34 +1,55 @@
 ﻿using System.Web.Mvc;
+using LearningWebsite.Models.DbModels;
 using LearningWebsite.Services.Abstractions;
+using LearningWebsite.Services.Filters;
 
 namespace LearningWebsite.Controllers
 {
     public class CourseController : Controller
     {
-        private readonly ICourseService _courseRepository;
+        private readonly ICourseService _courseService;
 
-        public CourseController(ICourseService courseRepository)
+        public CourseController(ICourseService courseService)
         {
-            _courseRepository = courseRepository;
+            _courseService = courseService;
         }
 
         // GET: Course
         public ActionResult Index()
         {
-            return View();
+            var courses = _courseService.GetAll();
+
+            return View(courses);
         }
 
-        public ActionResult Get(int id)
+  
+        [MembershipRequired(Role.Admin)]
+        [HttpPost]
+        public ActionResult Add(CourseModel model)
         {
-            var course = _courseRepository.GetBy(id);
+            int id = _courseService.Add(model);
 
-            if (course != null)
+            if (id >= 0)
             {
-                return View(course);
+                return View(id);
             }
 
-            //Not Found
+            // error creating user
             return View();
         }
+
+        [MembershipRequired(Role.Admin)]
+        [HttpPost]
+        public ActionResult Remove(int id)
+        {
+            return View();
+        }
+
+       
+    }
+
+    public class CourseModel
+    {
+        public string Name { get; set; }
     }
 }

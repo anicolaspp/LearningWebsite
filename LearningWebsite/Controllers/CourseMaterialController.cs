@@ -11,12 +11,6 @@ namespace LearningWebsite.Controllers
 {
     public class CourseMaterialController : Controller
     {
-        // GET: CourseMaterial list
-        public ActionResult Index()
-        {
-            return View();
-        }
-
         [MembershipRequired(Role.Member)]
         [HttpPost]
         public ActionResult Rate(int courseMaterialId, int rating)
