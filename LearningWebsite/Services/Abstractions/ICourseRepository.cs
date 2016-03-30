@@ -3,10 +3,9 @@ using LearningWebsite.Models.DbModels;
 
 namespace LearningWebsite.Services.Abstractions
 {
-    public interface ICourseService
+    public interface ICourseRepository
     {
-        IEnumerable<Course> GetMatcherFor(string searchTerm);
-
         Course GetBy(int id);
+        IEnumerable<Course> GetAll();
     }
 }

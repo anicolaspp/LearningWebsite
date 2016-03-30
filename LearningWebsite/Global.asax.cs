@@ -40,6 +40,7 @@ namespace LearningWebsite
             _kernel.Bind<ITagRepository>().To<TagRepository>();
             _kernel.Bind<ICourseMaterialService>().To<CourseMaterialService>();
             _kernel.Bind<ICourseService>().To<CourseService>();
+            _kernel.Bind<ICourseRepository>().To<CourseRepository>();
         }
 
         public object GetService(Type serviceType)

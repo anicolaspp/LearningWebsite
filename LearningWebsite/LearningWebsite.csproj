@@ -219,6 +219,10 @@
     <Compile Include="Migrations\201603301527574_add_course.Designer.cs">
       <DependentUpon>201603301527574_add_course.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201603301604135_add_dicusion_board.cs" />
+    <Compile Include="Migrations\201603301604135_add_dicusion_board.Designer.cs">
+      <DependentUpon>201603301604135_add_dicusion_board.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\ViewModels\TagRequestModel.cs" />
     <Compile Include="Models\ViewModels\HomePageViewModel.cs" />
     <Compile Include="Services\Abstractions\ICourseService.cs" />
@@ -305,6 +309,7 @@
     <Compile Include="Services\Abstractions\ICourseMaterialRepository.cs" />
     <Compile Include="Services\Abstractions\ICourseMaterialService.cs" />
     <Compile Include="Services\Abstractions\ITagRepository.cs" />
+    <Compile Include="Services\Abstractions\ICourseRepository.cs" />
     <Compile Include="Services\Implementations\TagRepository.cs" />
     <Compile Include="Services\Implementations\UserRepository.cs" />
     <Compile Include="Services\Implementations\UserService.cs" />
@@ -447,6 +452,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603301527574_add_course.resx">
       <DependentUpon>201603301527574_add_course.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201603301604135_add_dicusion_board.resx">
+      <DependentUpon>201603301604135_add_dicusion_board.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
