@@ -19,6 +19,8 @@ namespace LearningWebsite.Services.Implementations
 
         public DbSet<CourseMaterialUserRanting> CourseMaterialUserRantings { get; set; }
 
+        public DbSet<Course> Courses { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserConfiguration());

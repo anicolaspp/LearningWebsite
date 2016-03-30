@@ -13,9 +13,10 @@ namespace LearningWebsite.Controllers
         private readonly ICourseMaterialService _cmService;
         private readonly ICourseService _courseService;
 
-        public HomeController(ICourseMaterialService cmService)
+        public HomeController(ICourseMaterialService cmService, ICourseService courseService)
         {
             _cmService = cmService;
+            _courseService = courseService;
         }
 
         public ActionResult Index()

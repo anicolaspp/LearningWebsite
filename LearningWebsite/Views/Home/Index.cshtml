@@ -66,59 +66,99 @@
         <div class="row">
             <div class="col-md-12">
                 <div style="text-align: center;">
-                    <div id="searchArea" style="margin-top: 50px">
+    <div id="searchArea" style="margin-top: 50px">
 
-                        @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form navbar-center", @role = "search" }))
-                        {
-                            <div class="form-group">
-                                <input type="text" class="form-control" style="width: 500px;" name="searchTerm">
-                            </div>
+        @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form navbar-center", @role = "search" }))
+        {
+            <div class="form-group">
+                <input type="text" class="form-control" style="width: 500px;" name="searchTerm">
+            </div>
 
 
 
                             <button type="submit" class="btn active btn-default">
                                 <i class="glyphicon glyphicon-search"></i> Search
                             </button>
-                        }
-                    
-                    </div>
-					
-					@if (Model.SearchResultCourseMaterials!=null)
-					{
-					    <div id="CoursesMaterialRegion" style="margin-top: 10px">
-					        <table id="tableCoursesMaterial" class="table table-striped table-hover table-condensed">
-					            <thead>
-					            <tr>
+        }
 
-					                <th>
-					                    Name
-					                </th>
-					                <th>
-					                    Rate
-					                </th>
+    </div>
 
-					            </tr>
-					            </thead>
-					            <tbody>
+    @if (Model.SearchResultCourseMaterials != null)
+    {
+        <div id="CoursesMaterialRegion" style="margin-top: 10px">
+            <table id="tableCoursesMaterial" class="table table-striped table-hover table-condensed">
+                <thead>
+                    <tr>
+                        <th colspan="2" class="text-center">Materials</th>
+                    </tr>
+                    <tr>
 
-					            @foreach (var courseM in Model.SearchResultCourseMaterials)
-					            {
-					                <tr onclick="location.href = 'http://www.marca.com'" style="cursor: pointer">
+                        <th>
+                            Name
+                        </th>
+                        <th>
+                            Rate
+                        </th>
 
-					                    <td>@courseM.Content</td>
-					                    <td>@courseM.Rating.ToString()
-					                        <img src="~/Views/Images/starts_rating/Stars1.gif"/>
-					                    </td>
+                    </tr>
+                </thead>
+                <tbody>
 
-					                </tr>
-					            }
-					            </tbody>
-					        </table>
-					    </div>
+                    @foreach (var courseM in Model.SearchResultCourseMaterials)
+                    {
+                        <tr onclick="location.href = 'http://www.marca.com'" style="cursor: pointer">
 
-					}
-					
-					<!--Popups signup and signin -->
+                            <td>@courseM.Content</td>
+                            <td>
+                                @courseM.Rating.ToString()
+                            <img src="~/Views/Images/starts_rating/Stars1.gif" />
+                        </td>
+
+                    </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+
+    }
+    @if (Model.SearchResultCourses != null)
+    {
+        <div id="CoursesRegion" style="margin-top: 10px">
+            
+            <table id="tableMaterial" class="table table-striped table-hover table-condensed">
+                <thead>
+                <tr >
+                    <th colspan="2" class="text-center">Courses</th>
+                </tr>
+                <tr>
+
+                    <th>
+                        Name
+                    </th>
+                    <th>
+                        Rate
+                    </th>
+
+                </tr>
+                </thead>
+
+                <tbody>
+                    @foreach (var course in Model.SearchResultCourses)
+                {
+                    <tr>
+                        <td>
+                            <img src="~/Views/Images/starts_rating/Stars1.gif" />
+                        </td>
+                        <td>
+                            <img src="~/Views/Images/starts_rating/Stars1.gif" />
+                        </td>
+                    </tr>
+                }
+                <tbody/>
+            </table>
+        </div>
+                    }
+                    <!--Popups signup and signin -->
                     <div class="modal fade" id="modal-container-signup" role="dialog"
                          aria-labelledby="myModalLabel" aria-hidden="true">
                         <div class="modal-dialog">
@@ -182,60 +222,60 @@
                             </div>
                         </div>
                     </div>
-					
-					<div class="modal fade" id="modal-container-signin" role="dialog"
-						 aria-labelledby="myModalLabel2" aria-hidden="true">
-						<div class="modal-dialog">
-							<div class="modal-content">
-								<div class="modal-header">
-									<button type="button" class="close" data-dismiss="modal"
-											aria-hidden="true">
-										×
-									</button>
-									<h4 class="modal-title" id="myModalLabel2"
-										style="text-align: left;">
-										Login
-									</h4>
-								</div>
-								<div class="modal-body">
 
-									@using (Html.BeginForm("Login", "Account", FormMethod.Post, new {@class = "form-horizontal"}))
-									{
-										<div class="form-group">
+                    <div class="modal fade" id="modal-container-signin" role="dialog"
+                         aria-labelledby="myModalLabel2" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <button type="button" class="close" data-dismiss="modal"
+                                            aria-hidden="true">
+                                        ×
+                                    </button>
+                                    <h4 class="modal-title" id="myModalLabel2"
+                                        style="text-align: left;">
+                                        Login
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
 
-											<label for="inputUser" class="col-sm-2 control-label">
-												Username
-											</label>
-											<div class="col-sm-4">
-												<input type="text" class="form-control" id="inputUser" name="UserName">
-											</div>
-										</div>
-										<div class="form-group">
+                                    @using (Html.BeginForm("Login", "Account", FormMethod.Post, new { @class = "form-horizontal" }))
+                                    {
+                                        <div class="form-group">
 
-											<label for="inputPassword" class="col-sm-2 control-label">
-												Password
-											</label>
-											<div class="col-sm-4">
-												<input type="password" class="form-control" id="inputPassword" name="Password">
-											</div>
-										</div>
+                                            <label for="inputUser" class="col-sm-2 control-label">
+                                                Username
+                                            </label>
+                                            <div class="col-sm-4">
+                                                <input type="text" class="form-control" id="inputUser" name="UserName">
+                                            </div>
+                                        </div>
+                                        <div class="form-group">
 
-										<div class="form-group">
-											<div class="col-sm-offset-2 col-sm-4">
-												<button type="submit" class="btn btn-default active">
-													Sign in
-												</button>
-												<button type="submit" class="btn btn-default active" data-dismiss="modal">
+                                            <label for="inputPassword" class="col-sm-2 control-label">
+                                                Password
+                                            </label>
+                                            <div class="col-sm-4">
+                                                <input type="password" class="form-control" id="inputPassword" name="Password">
+                                            </div>
+                                        </div>
+
+                                        <div class="form-group">
+                                            <div class="col-sm-offset-2 col-sm-4">
+                                                <button type="submit" class="btn btn-default active">
+                                                    Sign in
+                                                </button>
+                                                <button type="submit" class="btn btn-default active" data-dismiss="modal">
                                                     Cancel
                                                 </button>
-											</div>
-										</div>
-									}
-								
-								</div>
-							</div>
-						</div>
-					</div>
+                                            </div>
+                                        </div>
+                                    }
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                     <div class="modal fade" id="modal-container-logout" role="dialog"
                          aria-labelledby="myModalLabel3" aria-hidden="true">
@@ -274,7 +314,7 @@
 
 
 
-                </div>
+        </div>
             </div>
         </div>
     </div>
