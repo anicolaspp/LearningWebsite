@@ -12,7 +12,8 @@ namespace LearningWebsite.Controllers
             _courseService = courseService;
         }
 
-        public ActionResult Get(int id)
+        [HttpGet]
+        public ActionResult Index(int id)
         {
             var course = _courseService.GetBy(id);
 
