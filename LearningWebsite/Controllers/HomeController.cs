@@ -8,7 +8,7 @@ using LearningWebsite.Services.Abstractions;
 
 namespace LearningWebsite.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : ControllerBase
     {
         private readonly ICourseMaterialService _cmService;
         private readonly ICourseService _courseService;
@@ -49,22 +49,21 @@ namespace LearningWebsite.Controllers
             return View(dataModel);
         }
 
+        [HttpGet]
+        public ActionResult Search()
+        {
+            return Search("");
+        }
+
         [HttpPost]
         public ActionResult Search(string searchTerm)
         {
             var cmResult = _cmService.GetMatchesFor(searchTerm);
             var crResult = _courseService.GetMatcherFor(searchTerm);
 
-            var user = Session["user"] as User;
-
             return View("Index", new HomePageViewModel
             {
-                UserViewModel = new UserViewModel
-                {
-                    Role = user.Role,
-                    UserName = user.UserName
-                },
-
+                UserViewModel = GetLoggerUser(),
                 SearchResultCourseMaterials = cmResult,
                 SearchResultCourses = crResult
             });
