@@ -33,6 +33,12 @@
 
                         <ul class="nav navbar-nav navbar-right">
 
+                              <li class="dropdown">
+                                    <a href="@Url.Action("Index", "Course")">
+                                        <i class="glyphicon glyphicon-th-list"></i> Courses
+                                    </a>
+                                </li>
+
                             @if (Model.UserViewModel.Role != Role.Guest)
                             {
                                 <li class="dropdown">
