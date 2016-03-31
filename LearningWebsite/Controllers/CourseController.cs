@@ -1,11 +1,28 @@
-﻿using System.Web.Mvc;
+﻿using System.Collections.Generic;
+using System.Web.Mvc;
 using LearningWebsite.Models.DbModels;
+using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services.Abstractions;
 using LearningWebsite.Services.Filters;
 
 namespace LearningWebsite.Controllers
 {
-    public class CourseController : Controller
+    public class ControllerBase : Controller
+    {
+        public UserViewModel GetLoggerUser()
+        {
+            var loggedUser = Session["user"] as User;
+
+            return new UserViewModel
+            {
+                Role = loggedUser.Role,
+                UserName = loggedUser.UserName
+            };
+        }
+    }
+
+
+    public class CourseController : ControllerBase
     {
         private readonly ICourseService _courseService;
 
@@ -19,7 +36,11 @@ namespace LearningWebsite.Controllers
         {
             var courses = _courseService.GetAll();
 
-            return View(courses);
+            return View(new CoursesResultViewModel
+            {
+                UserViewModel = GetLoggerUser(),
+                Courses = courses
+            });
         }
 
   
@@ -46,6 +67,11 @@ namespace LearningWebsite.Controllers
         }
 
        
+    }
+
+    public class CoursesResultViewModel : ResultBased
+    {
+        public IEnumerable<Course> Courses { get; set; }
     }
 
     public class CourseModel

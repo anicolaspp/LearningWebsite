@@ -1,319 +1,371 @@
-﻿@model LearningWebsite.Models.DbModels.Course
+﻿@model LearningWebsite.Controllers.CourseResultViewModel
 
 @{
     ViewBag.Title = "Course Index";
-    Layout = "_Layout";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
 
-<title>Course Details!</title>
-
-
-<link href="css/bootstrap.min.css" rel="stylesheet">
-<link href="css/style.css" rel="stylesheet">
+    <title>Course Details!</title>
 
 </head>
 <body>
 
-	<div class="container-fluid">
-		<div class="row">
-			<div class="col-md-9">
-			
-					<form class="form-horizontal" role="form">
-						<div class="form-group">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-sm-12"  style="padding-left: 0">
+                <form class="form-horizontal" role="form" >
+                    <div class="form-group">
 
-							<label for="inputName" class="col-sm-2 control-label">
-								Name </label>
-							<div class="col-sm-4">
-								<input type="text" readonly="true" class="form-control"
-									id="inputName" value="Course 1">
-							</div>
-						</div>
-					</form>
-			
-				<table class="table table-hover">
-					<thead>
-						<tr>
-							<th>Name</th>
-							<th>Average Rate</th>
-							<th>Rate</th>
-							<th><a id="modal-AddCourseMaterial"
-								href="#AddCourseMaterialPopup" role="button" class="btn "
-								data-toggle="modal" aria-hidden="true"> <i
-									class="glyphicon glyphicon-plus"></i>
-							</a>
-
-
-
-								<div class="modal fade" id="AddCourseMaterialPopup"
-									role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h4 class="modal-title" id="myModalLabel">Add Course
-													Material</h4>
-											</div>
-											<div class="modal-body">
-												<form class="form-horizontal" role="form">
-													<div class="form-group">
-
-														<label for="inputName" class="col-sm-2 control-label">
-															Name </label>
-														<div class="col-sm-6">
-															<input type="text" class="form-control" id="inputName"
-																value="Course Material1">
-														</div>
-													</div>
-
-													<div class="form-group">
-
-														<label for="inputTag" class="col-sm-2 control-label">
-															Tag </label>
-														<div class="col-sm-6">
-															<input id="inputTag" type="text" class="form-control" />
-														</div>
-													</div>
-												</form>
-											</div>
-											<div class="modal-footer">
-
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">Cancel</button>
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">Save</button>
-											</div>
-										</div>
-
-									</div>
-
-								</div></th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>Course Material 1</td>
-							<td><img src="Images/starts_rating/Stars1.gif" /></td>
-							<td>
-								<!-- 								<button type="button" class="btn active btn-primary disabled"> -->
-								<!-- 									Rate --> <!-- 								</button> --> <a
-								id="modal-Rate" href="#RatingPopup" role="button"
-								class="btn active btn-primary" data-toggle="modal"
-								aria-hidden="true">Rate</a>
-
-								<div class="modal fade" id="RatingPopup" role="dialog"
-									aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h4 class="modal-title" id="myModalLabel">Rating
-													Course!</h4>
-											</div>
-											<div class="modal-body">
-												<form class="form-horizontal" role="form">
-													<div class="form-group">
-
-														<label for="inputName" class="col-sm-2 control-label">
-															Name </label>
-														<div class="col-sm-6">
-															<input type="text" readonly="true" class="form-control"
-																id="inputName" value="Course Material1">
-														</div>
-													</div>
-
-													<div class="form-group">
-
-														<label for="inputRate" class="col-sm-2 control-label">
-															Rate </label>
-														<div class="col-sm-6">
-															<input id="inputRate" type="number" min="1" max="5"
-																value="1" class="form-control" />
-														</div>
-													</div>
-												</form>
-											</div>
-											<div class="modal-footer">
-
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">Cancel</button>
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">Save</button>
-											</div>
-										</div>
-
-									</div>
-
-								</div>
-							</td>
-							<td><a id="modal-ConfRemCourse"
-								href="#ConfirmationRemoveCourse" role="button" class="btn"
-								data-toggle="modal"><i class="glyphicon glyphicon-trash"></i></a>
-
-								<div class="modal fade" id="ConfirmationRemoveCourse"
-									role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-									<div class="modal-dialog">
-										<div class="modal-content">
-											<div class="modal-header">
-												<h4 class="modal-title" id="myModalLabel">Remove
-													Confirmation!</h4>
-											</div>
-											<div class="modal-body">Are you sure you want to remove
-												it?</div>
-											<div class="modal-footer">
-
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">No</button>
-												<button type="button" class="btn btn-default"
-													data-dismiss="modal">Yes</button>
-											</div>
-										</div>
-									</div>
-
-								</div>
-
-								</div>
-
-								</div></td>
-
-						</tr>
-
-					</tbody>
-				</table>
-			</div>
-			<div class="col-md-3">
-
-				<div class="panel panel-primary">
-					<div class="panel-heading">
-						<h3 class="panel-title">
-							<span class="badge pull-right">2</span> Discusion Board <a
-								id="modal-AddPost" href="#AddPostPopup" role="button"
-								class="btn" data-toggle="modal"> <i
-								class="glyphicon glyphicon-plus"></i>
-							</a>
+                        <label for="inputName" class="col-sm-1 control-label" style="text-align: left; padding-left: 30px">
+                            <span >Name</span>
+                        </label>
+                        <div class="col-sm-4">
+                            <input type="text" readonly="true" class="form-control"
+                                   id="inputName" value="Course 1" style="text-align: left; ">
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-9">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title" style="text-align: center">
+                            Course Materials
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Average Rate</th>
+                                    <th>Rate</th>
+                                    <th>
+                                        <a id="modal-AddCourseMaterial"
+                                           href="#AddCourseMaterialPopup" role="button" class="btn "
+                                           data-toggle="modal" aria-hidden="true">
+                                            <i class="glyphicon glyphicon-plus"></i>
+                                        </a>
 
 
 
+                                        <div class="modal fade" id="AddCourseMaterialPopup"
+                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel">
+                                                            Add Course
+                                                            Material
+                                                        </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal" role="form">
+                                                            <div class="form-group">
 
-						</h3>
-					</div>
-					<div class="panel-body">
-						<div class="alert alert-dismissable alert-info">
-							<a id="modal-947255" href="#ConfirmationRemove" role="button"
-								class="btn close" data-toggle="modal" aria-hidden="true">x</a>
-							<h6>
-								<strong> 03/30/2016 16:50</strong>
-							</h6>
-							<h4>User1</h4>
-							<strong>Warning!</strong> Best check yo self, you're not looking
-							too good. <a href="#" class="alert-link">alert link</a>
+                                                                <label for="inputName" class="col-sm-2 control-label">
+                                                                    Name
+                                                                </label>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" class="form-control" id="inputName"
+                                                                           value="Course Material1">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+
+                                                                <label for="inputTag" class="col-sm-2 control-label">
+                                                                    Tag
+                                                                </label>
+                                                                <div class="col-sm-6">
+                                                                    <input id="inputTag" type="text" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">
+                                                            Cancel
+                                                        </button>
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">
+                                                            Save
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>Course Material 1</td>
+                                    <td><img src="Images/starts_rating/Stars1.gif" /></td>
+                                    <td>
+                                        <!-- 								<button type="button" class="btn active btn-primary disabled"> -->
+                                        <!-- 									Rate --> <!-- 								</button> --> <a id="modal-Rate" href="#RatingPopup" role="button"
+                                                                                                                       class="btn active btn-primary" data-toggle="modal"
+                                                                                                                       aria-hidden="true">Rate</a>
+
+                                        <div class="modal fade" id="RatingPopup" role="dialog"
+                                             aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel">
+                                                            Rating
+                                                            Course!
+                                                        </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <form class="form-horizontal" role="form">
+                                                            <div class="form-group">
+
+                                                                <label for="inputName" class="col-sm-2 control-label">
+                                                                    Name
+                                                                </label>
+                                                                <div class="col-sm-6">
+                                                                    <input type="text" readonly="true" class="form-control"
+                                                                           id="inputName" value="Course Material1">
+                                                                </div>
+                                                            </div>
+
+                                                            <div class="form-group">
+
+                                                                <label for="inputRate" class="col-sm-2 control-label">
+                                                                    Rate
+                                                                </label>
+                                                                <div class="col-sm-6">
+                                                                    <input id="inputRate" type="number" min="1" max="5"
+                                                                           value="1" class="form-control" />
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">
+                                                            Cancel
+                                                        </button>
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">
+                                                            Save
+                                                        </button>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+
+                                        </div>
+                                    </td>
+                                    <td>
+                                        <a id="modal-ConfRemCourse"
+                                           href="#ConfirmationRemoveCourse" role="button" class="btn"
+                                           data-toggle="modal"><i class="glyphicon glyphicon-trash"></i></a>
+
+                                        <div class="modal fade" id="ConfirmationRemoveCourse"
+                                             role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h4 class="modal-title" id="myModalLabel">
+                                                            Remove
+                                                            Confirmation!
+                                                        </h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        Are you sure you want to remove
+                                                        it?
+                                                    </div>
+                                                    <div class="modal-footer">
+
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">
+                                                            No
+                                                        </button>
+                                                        <button type="button" class="btn btn-default"
+                                                                data-dismiss="modal">
+                                                            Yes
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                        </div>
 
 
 
-							<div class="modal fade" id="ConfirmationRemove" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h4 class="modal-title" id="myModalLabel">Remove
-												Confirmation!</h4>
-										</div>
-										<div class="modal-body">Are you sure you want to remove
-											it?</div>
-										<div class="modal-footer">
+                                    </td>
 
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">No</button>
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">Yes</button>
-										</div>
-									</div>
+                                </tr>
 
-								</div>
+                            </tbody>
+                        </table>
+                    </div>
+                    
+                </div>
 
-							</div>
-						</div>
 
-						<div class="alert alert-success alert-dismissable">
-							<a id="modal-947255" href="#ConfirmationRemove" role="button"
-								class="btn close" data-toggle="modal" aria-hidden="true">x</a>
-							<h6>
-								<strong>03/30/2016 16:50</strong>
-							</h6>
-							<h4>User2</h4>
-							<strong>Warning!</strong> Best check yo self, you're not looking
-							too good. <a href="#" class="alert-link">alert link</a>
+                
+            </div>
+            <div class="col-md-3">
+
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">
+                            <span class="badge pull-right">2</span> Discusion Board <a id="modal-AddPost" href="#AddPostPopup" role="button"
+                                                                                       class="btn" data-toggle="modal">
+                                <i class="glyphicon glyphicon-plus"></i>
+                            </a>
 
 
 
-							<div class="modal fade" id="ConfirmationRemove" role="dialog"
-								aria-labelledby="myModalLabel" aria-hidden="true">
-								<div class="modal-dialog">
-									<div class="modal-content">
-										<div class="modal-header">
-											<h4 class="modal-title" id="myModalLabel">Remove
-												Confirmation!</h4>
-										</div>
-										<div class="modal-body">Are you sure you want to remove
-											it?</div>
-										<div class="modal-footer">
 
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">No</button>
-											<button type="button" class="btn btn-default"
-												data-dismiss="modal">Yes</button>
-										</div>
-									</div>
-
-								</div>
-
-							</div>
-						</div>
-					</div>
-
-				</div>
-
-			</div>
-		</div>
+                        </h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="alert alert-dismissable alert-info">
+                            <a id="modal-947255" href="#ConfirmationRemove" role="button"
+                               class="btn close" data-toggle="modal" aria-hidden="true">x</a>
+                            <h6>
+                                <strong> 03/30/2016 16:50</strong>
+                            </h6>
+                            <h4>User1</h4>
+                            <strong>Warning!</strong> Best check yo self, you're not looking
+                            too good. <a href="#" class="alert-link">alert link</a>
 
 
-		<div class="modal fade" id="AddPostPopup" role="dialog"
-			aria-labelledby="myModalLabel" aria-hidden="true">
-			<div class="modal-dialog">
-				<div class="modal-content">
-					<div class="modal-header">
-						<h4 class="modal-title" id="myModalLabel">Add Post</h4>
-					</div>
-					<div class="modal-body">
-						<form class="form-horizontal" role="form">
-							<div class="form-group">
 
-								<label for="inputName" class="col-sm-2 control-label">
-									Content </label>
-								<div class="col-sm-6">
-									<textarea rows="5" cols="70"></textarea>
-								</div>
-							</div>
-						</form>
-					</div>
-					<div class="modal-footer">
+                            <div class="modal fade" id="ConfirmationRemove" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                Remove
+                                                Confirmation!
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to remove
+                                            it?
+                                        </div>
+                                        <div class="modal-footer">
 
-						<button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-						<button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
-					</div>
-				</div>
+                                            <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">
+                                                No
+                                            </button>
+                                            <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">
+                                                Yes
+                                            </button>
+                                        </div>
+                                    </div>
 
-			</div>
+                                </div>
 
-		</div>
-	</div>
+                            </div>
+                        </div>
 
-	<script src="js/jquery.min.js"></script>
-	<script src="js/bootstrap.min.js"></script>
-	<script src="js/scripts.js"></script>
+                        <div class="alert alert-success alert-dismissable">
+                            <a id="modal-947255" href="#ConfirmationRemove" role="button"
+                               class="btn close" data-toggle="modal" aria-hidden="true">x</a>
+                            <h6>
+                                <strong>03/30/2016 16:50</strong>
+                            </h6>
+                            <h4>User2</h4>
+                            <strong>Warning!</strong> Best check yo self, you're not looking
+                            too good. <a href="#" class="alert-link">alert link</a>
+
+
+
+                            <div class="modal fade" id="ConfirmationRemove" role="dialog"
+                                 aria-labelledby="myModalLabel" aria-hidden="true">
+                                <div class="modal-dialog">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h4 class="modal-title" id="myModalLabel">
+                                                Remove
+                                                Confirmation!
+                                            </h4>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to remove
+                                            it?
+                                        </div>
+                                        <div class="modal-footer">
+
+                                            <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">
+                                                No
+                                            </button>
+                                            <button type="button" class="btn btn-default"
+                                                    data-dismiss="modal">
+                                                Yes
+                                            </button>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="modal fade" id="AddPostPopup" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title" id="myModalLabel">Add Post</h4>
+                    </div>
+                    <div class="modal-body">
+                        <form class="form-horizontal" role="form">
+                            <div class="form-group">
+
+                                <label for="inputName" class="col-sm-2 control-label">
+                                    Content
+                                </label>
+                                <div class="col-sm-6">
+                                    <textarea rows="5" cols="70"></textarea>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Save</button>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+
 </body>
 </html>

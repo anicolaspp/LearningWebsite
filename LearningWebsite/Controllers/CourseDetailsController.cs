@@ -1,9 +1,10 @@
 ﻿ using System.Web.Mvc;
-using LearningWebsite.Services.Abstractions;
+ using LearningWebsite.Models.ViewModels;
+ using LearningWebsite.Services.Abstractions;
 
 namespace LearningWebsite.Controllers
 {
-    public class CourseDetailsController : Controller
+    public class CourseDetailsController : ControllerBase
     {
         private readonly ICourseService _courseService;
 
@@ -19,11 +20,18 @@ namespace LearningWebsite.Controllers
 
             if (course != null)
             {
-                return View(course);
+                return View(new CourseResultViewModel
+                {
+                    UserViewModel = GetLoggerUser()
+                });
             }
 
             //Not Found
             return View();
         }
+    }
+
+    public class CourseResultViewModel : ResultBased
+    {
     }
 }

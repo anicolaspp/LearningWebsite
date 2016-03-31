@@ -395,11 +395,11 @@
     <Content Include="Views\User\Index.cshtml" />
     <None Include="Views\Account\Login.cshtml" />
     <None Include="Views\CourseDetails\Index.cshtml" />
+    <Content Include="Views\Course\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\CourseMaterial\" />
-    <Folder Include="Views\Course\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>

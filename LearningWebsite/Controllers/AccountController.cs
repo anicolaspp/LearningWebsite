@@ -29,18 +29,11 @@ namespace LearningWebsite.Controllers
                 if (user.Password == userView.Password)
                 {
                     FormsAuthentication.SetAuthCookie(user.UserName, false);
-
                     Session["user"] = user;
-
-                    return RedirectToAction("Index", "Home", new UserViewModel
-                    {
-                        Role = user.Role,
-                        UserName = user.UserName
-                    });
                 }
             }
 
-            return RedirectToAction("Index", "Home");
+            return Redirect(Request.UrlReferrer.ToString());
         }
 
         [HttpPost]
