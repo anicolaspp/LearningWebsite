@@ -13,117 +13,121 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Learning Web Site!</title>
-    <link href="css/bootstrap.min.css" rel="stylesheet">
-    <link href="css/style.css" rel="stylesheet">
+    
 </head>
 <body>
 
-        <div class="row">
-            <div class="col-md-12">
-                <div style="text-align: center;">
-    <div id="searchArea" style="margin-top: 50px">
+    <div class="row">
+        <div class="col-md-12">
+            <div >
+                <div id="searchArea" style="text-align: center; margin-top: 50px">
 
-        @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form navbar-center", @role = "search" }))
-        {
-            <div class="form-group">
-                <input type="text" class="form-control" style="width: 500px;" name="searchTerm">
-            </div>
-
-
-
-                            <button type="submit" class="btn active btn-default">
-                                <i class="glyphicon glyphicon-search"></i> Search
-                            </button>
-        }
-
-    </div>
-
-    @if (Model.SearchResultCourseMaterials != null)
-    {
-        <div id="CoursesMaterialRegion" style="margin-top: 10px">
-            <table id="tableCoursesMaterial" class="table table-striped table-hover table-condensed">
-                <thead>
-                    <tr>
-                        <th colspan="2" class="text-center">Materials</th>
-                    </tr>
-                    <tr>
-
-                        <th>
-                            Name
-                        </th>
-                        <th>
-                            Rate
-                        </th>
-
-                    </tr>
-                </thead>
-                <tbody>
-
-                    @foreach (var courseM in Model.SearchResultCourseMaterials)
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form navbar-center", @role = "search" }))
                     {
-                        <tr onclick="location.href = 'http://www.marca.com'" style="cursor: pointer">
+                    <div class="form-group">
+                        <input type="text" class="form-control" style="width: 500px;" name="searchTerm">
+                    </div>
 
-                            <td>@courseM.Content</td>
-                            <td>
-                                @courseM.Rating.ToString()
-                            <img src="~/Views/Images/starts_rating/Stars1.gif" />
-                        </td>
 
-                    </tr>
+
+                    <button type="submit" class="btn active btn-primary">
+                        <i class="glyphicon glyphicon-search"></i> Search
+                    </button>
                     }
-                </tbody>
-            </table>
-        </div>
 
-    }
-    @if (Model.SearchResultCourses != null)
-    {
-        <div id="CoursesRegion" style="margin-top: 10px">
-            
-            <table id="tableMaterial" class="table table-striped table-hover table-condensed">
-                <thead>
-                <tr >
-                    <th colspan="2" class="text-center">Courses</th>
-                </tr>
-                <tr>
+                </div>
 
-                    <th>
-                        Name
-                    </th>
-                    <th>
-                        Rate
-                    </th>
-
-                </tr>
-                </thead>
-
-                <tbody>
-                    @foreach (var course in Model.SearchResultCourses)
+                @if (Model.SearchResultCourseMaterials != null)
                 {
-                    <tr>
-                        <td>
-                            <img src="~/Views/Images/starts_rating/Stars1.gif" />
-                        </td>
-                        <td>
-                            <img src="~/Views/Images/starts_rating/Stars1.gif" />
-                        </td>
-                    </tr>
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Matched Course Materials
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="CoursesMaterialRegion" style="margin-top: 10px">
+                                <table id="tableCoursesMaterial" class="table table-striped table-hover table-condensed">
+                                    <thead>
+
+                                        <tr>
+
+                                            <th>
+                                                Name
+                                            </th>
+                                            <th>
+                                                Rate
+                                            </th>
+
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+
+                                        @foreach (var courseM in Model.SearchResultCourseMaterials)
+                            {
+                            <tr onclick="location.href = 'http://www.marca.com'" style="cursor: pointer">
+
+                                <td>@courseM.Title</td>
+                                <td>
+                                    @courseM.Rating.ToString()
+                                    <img src="@Url.Content("~/Views/Images/starts_rating/Stars1.gif")" alt="IMAGES"  />
+                                </td>
+
+                            </tr>
+                            }
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+
                 }
-                <tbody/>
-            </table>
-        </div>
+                @if (Model.SearchResultCourses != null)
+                {
+                    <div class="panel panel-primary">
+                        <div class="panel-heading">
+                            <h3 class="panel-title">
+                                Matched Courses
+                            </h3>
+                        </div>
+                        <div class="panel-body">
+                            <div id="CoursesRegion" style="margin-top: 10px">
 
-    }
-                 
+                                <table id="tableMaterial" class="table table-striped table-hover table-condensed">
+                                    <thead>
 
+                                        <tr>
 
+                                            <th>
+                                                Name
+                                            </th>
+                                           
 
+                                        </tr>
+                                    </thead>
 
-        </div>
+                                    <tbody>
+                                        @foreach (var course in Model.SearchResultCourses)
+                {
+                            <tr>
+                                <td>
+                                    @course.Name
+                                </td>
+                                
+                            </tr>
+                            }
+                                    <tbody />
+                                </table>
+                            </div>
+                        </div>
+
+                    </div>
+
+                }
+
             </div>
         </div>
-    <script src="js/jquery.min.js"></script>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/scripts.js"></script>
+    </div>
+    
 </body>
 </html>

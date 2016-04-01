@@ -13,6 +13,8 @@ namespace LearningWebsite.Controllers
         {
             var loggedUser = Session["user"] as User;
 
+            loggedUser = loggedUser ?? new User {Role = Role.Guest};
+
             return new UserViewModel
             {
                 Role = loggedUser.Role,

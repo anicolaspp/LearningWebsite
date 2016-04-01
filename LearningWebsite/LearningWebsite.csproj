@@ -369,6 +369,7 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
+    <Content Include="Views\Images\favorites.png" />
     <Content Include="Views\Images\starts_rating\Stars.gif" />
     <Content Include="Views\Images\starts_rating\Stars1.gif" />
     <Content Include="Views\Images\starts_rating\Stars2.gif" />
@@ -396,10 +397,10 @@
     <None Include="Views\Account\Login.cshtml" />
     <None Include="Views\CourseDetails\Index.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
+    <Content Include="Views\CourseMaterial\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\CourseMaterial\" />
     <Folder Include="Views\Search\" />
   </ItemGroup>
   <ItemGroup>

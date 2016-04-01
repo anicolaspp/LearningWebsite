@@ -9,7 +9,7 @@ using LearningWebsite.Services.Filters;
 
 namespace LearningWebsite.Controllers
 {
-    public class CourseMaterialController : Controller
+    public class CourseMaterialController : ControllerBase
     {
         [MembershipRequired(Role.Member)]
         [HttpPost]
@@ -41,8 +41,13 @@ namespace LearningWebsite.Controllers
 
         public ActionResult Details(int courseMaterialId)
         {
-            return View();
+            return View(new CourseMaterialDetail { UserViewModel = GetLoggerUser()});
         }
+    }
+
+    public class CourseMaterialDetail : ResultBased
+    {
+        
     }
 
     public class CourseMaterialModel
