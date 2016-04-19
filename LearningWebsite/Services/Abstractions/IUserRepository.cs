@@ -1,4 +1,5 @@
-﻿using LearningWebsite.Models.DbModels;
+﻿using System.Collections.Generic;
+using LearningWebsite.Models.DbModels;
 
 namespace LearningWebsite.Services.Abstractions
 {
@@ -8,5 +9,7 @@ namespace LearningWebsite.Services.Abstractions
         int Add(User user);
         void RemoveWith(int id);
         User GetUserBy(int id);
+        IEnumerable<User> GetAll();
+        bool Update(User user);
     }
 }

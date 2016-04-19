@@ -22,7 +22,7 @@ namespace LearningWebsite.Controllers
             _userService = userService;
         }
 
-        [MembershipRequired(Role.Member, Order = 2)]
+       // [MembershipRequired(Role.Admin)]
         public ActionResult Index(UserViewModel userView)
         {
             

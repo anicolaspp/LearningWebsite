@@ -39,7 +39,7 @@ namespace LearningWebsite.Controllers
         }
 
   
-       // [MembershipRequired(Role.Admin)]
+        [MembershipRequired(Role.Admin)]
         [HttpPost]
         public ActionResult Add(CourseModel model)
         {
@@ -54,7 +54,7 @@ namespace LearningWebsite.Controllers
             return View();
         }
 
-     //   [MembershipRequired(Role.Admin)]
+        [MembershipRequired(Role.Admin)]
         [HttpGet]
         public ActionResult Remove(int id)
         {
@@ -68,6 +68,7 @@ namespace LearningWebsite.Controllers
             return View();
         }
 
+        [MembershipRequired(Role.Member)]
         [HttpGet]
         public ActionResult AddToFavorites(int id)
         {

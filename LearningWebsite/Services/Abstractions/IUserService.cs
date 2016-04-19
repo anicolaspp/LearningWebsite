@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using LearningWebsite.Models.DbModels;
 
 namespace LearningWebsite.Services.Abstractions
@@ -6,5 +7,9 @@ namespace LearningWebsite.Services.Abstractions
     {
         User GetUserBy(string userName);
         User Add(User user);
+        IEnumerable<User> GetAll();
+        User GetUserBy(int id);
+        bool ToMember(User user);
+        bool ToAdmin(User user);
     }
 }

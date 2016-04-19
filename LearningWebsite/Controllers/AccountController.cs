@@ -23,37 +23,31 @@ namespace LearningWebsite.Controllers
        // [MembershipRequired(Role.Admin)]
         public ActionResult Index()
         {
-
             var result = new UserListResult
             {
                 UserViewModel = GetLoggedUser(),
 
-                Users = new List<User>
-                {
-                    new User
-                    {
-                        Id = 0,
-                        UserName = "pepe@gmail.com",
-                        Role = Role.Admin,
-                        PersonName = "pepe"
-                    },
-                    new User
-                    {
-                        Id = 1,
-                        UserName = "lolo@yahoo.com",
-                        Role = Role.Member,
-                        PersonName = "lolo"
-                    }
-                }
+                Users = _userService.GetAll()
             };
 
             return View(result);
         }
 
-        [HttpPost]
+        [HttpGet]
         public ActionResult Promote(int id)
         {
-            return View();
+            var selectedUser = _userService.GetUserBy(id);
+
+            if (selectedUser.Role == Role.Admin)
+            {
+                _userService.ToMember(selectedUser);
+            }
+            else
+            {
+                _userService.ToAdmin(selectedUser);
+            }
+
+            return RedirectToAction("Index");
         }
 
         [HttpPost]

@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
 using LearningWebsite.Models.DbModels;
@@ -41,6 +42,28 @@ namespace LearningWebsite.Services.Implementations
             var newUser =_userRepository.GetUserBy(id);
 
             return newUser;
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            return _userRepository.GetAll();
+        }
+
+        public User GetUserBy(int id)
+        {
+            return _userRepository.GetUserBy(id);
+        }
+
+        public bool ToMember(User user)
+        {
+            user.Role = Role.Member;
+            return _userRepository.Update(user);
+        }
+
+        public bool ToAdmin(User user)
+        {
+            user.Role = Role.Admin;
+            return _userRepository.Update(user);
         }
     }
 }

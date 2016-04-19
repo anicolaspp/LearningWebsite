@@ -1,3 +1,5 @@
+using System.Collections.Generic;
+using System.Data.Entity.Migrations;
 using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using LearningWebsite.Models.DbModels;
@@ -7,6 +9,8 @@ namespace LearningWebsite.Services.Implementations
 {
     public class UserRepository : IUserRepository
     {
+        private WebSiteDbContext context = new WebSiteDbContext();
+
         public User GetUserBy(string userName)
         {
             using (var dbContext = new WebSiteDbContext())
@@ -58,6 +62,17 @@ namespace LearningWebsite.Services.Implementations
 
                 return user;
             }
+        }
+
+        public IEnumerable<User> GetAll()
+        {
+            return context.Users.ToList();
+        }
+
+        public bool Update(User user)
+        {
+            context.Users.AddOrUpdate(user);
+            return context.SaveChanges() > 0;
         }
     }
 }
