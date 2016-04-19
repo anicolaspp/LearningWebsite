@@ -103,7 +103,12 @@ namespace LearningWebsite.Controllers
         [HttpGet]
         public ActionResult Remove(int id)
         {
+            var selectedUser = _userService.GetUserBy(id);
 
+            if (selectedUser != null)
+            {
+                _userService.Remove(selectedUser);
+            }
 
             return RedirectToAction("Index");
         }

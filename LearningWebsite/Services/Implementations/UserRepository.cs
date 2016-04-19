@@ -10,7 +10,13 @@ namespace LearningWebsite.Services.Implementations
 {
     public class UserRepository : IUserRepository
     {
+        private readonly ICourseRepository _courseRepository;
         private WebSiteDbContext context = new WebSiteDbContext();
+
+        public UserRepository(ICourseRepository courseRepository)
+        {
+            _courseRepository = courseRepository;
+        }
 
         public User GetUserBy(string userName)
         {
@@ -44,11 +50,19 @@ namespace LearningWebsite.Services.Implementations
         {
             var user = context.Users.Find(id);
             context.Users.Remove(user);
-            context.Posts.RemoveRange(context.Posts.Where(post => post.PostedBy == user));
+            context.Posts.RemoveRange(context.Posts.Where(post => post.PostedBy.Id == user.Id));
+
+            var cms = context.CourseMaterials.Where(cm => cm.PostedBy.Id == user.Id);
+            context.CourseMaterials.RemoveRange(cms);
             context.CourseMaterialUserRantings.RemoveRange(
-                context.CourseMaterialUserRantings.Where(x => x.RatedBy == user));
+                context.CourseMaterialUserRantings.Where(x => x.RatedBy.Id == user.Id));
 
             // need to remove the courses the user created
+            context
+                .Courses
+                .Where(course => course.PostedBy.Id == user.Id)
+                .Select(course => course.Id)
+                .ForEach(i => _courseRepository.RemoveById(i));
 
 
             context.SaveChanges();

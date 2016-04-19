@@ -129,7 +129,7 @@
                             </div>
                             <div class="modal-body">
                                 Are you sure you want to remove
-                                it?
+                                it? All data for the user will be lost!
                             </div>
                             <div class="modal-footer">
 
@@ -137,7 +137,7 @@
                                         data-dismiss="modal">
                                     No
                                 </button>
-                                <a href="@Url.Action("Remove", "Account", new {id = user.Id})" role="button" class="btn btn-default" data-dismiss="modal">
+                                <a href="@Url.Action("Remove", "Account", new {id = user.Id})" role="button" class="btn btn-default">
                                     Yes
                                 </a>
                             </div>

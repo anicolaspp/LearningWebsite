@@ -209,3 +209,4 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsit
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.favorite_courses.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.courseid.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.board.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.course_posted_by.resources

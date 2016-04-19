@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Data.Entity.Infrastructure;
+using System.Data.SqlTypes;
 using System.Linq;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Services.Abstractions;
@@ -64,6 +65,13 @@ namespace LearningWebsite.Services.Implementations
         {
             user.Role = Role.Admin;
             return _userRepository.Update(user);
+        }
+
+        public bool Remove(User user)
+        {
+             _userRepository.RemoveWith(user.Id);
+
+            return true;
         }
     }
 }

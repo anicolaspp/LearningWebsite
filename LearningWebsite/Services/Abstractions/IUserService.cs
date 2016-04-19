@@ -11,5 +11,6 @@ namespace LearningWebsite.Services.Abstractions
         User GetUserBy(int id);
         bool ToMember(User user);
         bool ToAdmin(User user);
+        bool Remove(User user);
     }
 }

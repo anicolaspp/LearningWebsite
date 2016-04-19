@@ -13,5 +13,7 @@ namespace LearningWebsite.Models.DbModels
         public int DiscusionBoardId { get; set; }
 
         public virtual DiscusionBoard DiscusionBoard { get; set; }
+
+        public virtual User PostedBy { get; set; }
     }
 }

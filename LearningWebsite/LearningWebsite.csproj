@@ -246,6 +246,10 @@
     <Compile Include="Migrations\201604191737553_board.Designer.cs">
       <DependentUpon>201604191737553_board.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604192014250_course_posted_by.cs" />
+    <Compile Include="Migrations\201604192014250_course_posted_by.Designer.cs">
+      <DependentUpon>201604192014250_course_posted_by.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\DbModels\DiscusionBoard.cs" />
     <Compile Include="Models\DbModels\Post.cs" />
     <Compile Include="Models\ViewModels\TagRequestModel.cs" />
@@ -499,6 +503,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201604191737553_board.resx">
       <DependentUpon>201604191737553_board.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604192014250_course_posted_by.resx">
+      <DependentUpon>201604192014250_course_posted_by.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
