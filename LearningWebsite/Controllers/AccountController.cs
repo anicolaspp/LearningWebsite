@@ -7,16 +7,53 @@ using System.Web.Security;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services.Abstractions;
+using LearningWebsite.Services.Filters;
 
 namespace LearningWebsite.Controllers
 {
-    public class AccountController : Controller
+    public class AccountController : ControllerBase
     {
         private readonly IUserService _userService;
 
         public AccountController(IUserService userService)
         {
             _userService = userService;
+        }
+
+       // [MembershipRequired(Role.Admin)]
+        public ActionResult Index()
+        {
+
+            var result = new UserListResult
+            {
+                UserViewModel = GetLoggedUser(),
+
+                Users = new List<User>
+                {
+                    new User
+                    {
+                        Id = 0,
+                        UserName = "pepe@gmail.com",
+                        Role = Role.Admin,
+                        PersonName = "pepe"
+                    },
+                    new User
+                    {
+                        Id = 1,
+                        UserName = "lolo@yahoo.com",
+                        Role = Role.Member,
+                        PersonName = "lolo"
+                    }
+                }
+            };
+
+            return View(result);
+        }
+
+        [HttpPost]
+        public ActionResult Promote(int id)
+        {
+            return View();
         }
 
         [HttpPost]
@@ -51,12 +88,27 @@ namespace LearningWebsite.Controllers
 
             if (!user.IsValid)
             {
-                User newUser = new User { UserName = userView.UserName, Password = userView.Password };
+                User newUser = new User
+                {
+                    UserName = userView.UserName,
+                    Password = userView.Password,
+                    PersonName = userView.PersonName
+                };
 
-                _userService.Add(newUser);
+                var nUser = _userService.Add(newUser);
+
+                if (nUser != null)
+                {
+                    Session["user"] = nUser;
+                }
             }
 
             return RedirectToAction("Index", "Home");
         }
+    }
+
+    public class UserListResult : ResultBased
+    {
+        public IEnumerable<User> Users { get; set; }
     }
 }

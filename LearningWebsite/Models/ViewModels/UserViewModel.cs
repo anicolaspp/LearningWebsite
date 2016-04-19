@@ -14,5 +14,8 @@ namespace LearningWebsite.Models.ViewModels
         public string Password { get; set; }
 
         public Role Role { get; set; }
+
+        [Required]
+        public string PersonName { get; set; }
     }
 }

@@ -228,6 +228,10 @@
     <Compile Include="Migrations\201603301613227_add_dicusion_board1.Designer.cs">
       <DependentUpon>201603301613227_add_dicusion_board1.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201604190049578_discussion_board_timestamp.cs" />
+    <Compile Include="Migrations\201604190049578_discussion_board_timestamp.Designer.cs">
+      <DependentUpon>201604190049578_discussion_board_timestamp.cs</DependentUpon>
+    </Compile>
     <Compile Include="Models\DbModels\DiscusionBoard.cs" />
     <Compile Include="Models\DbModels\Post.cs" />
     <Compile Include="Models\ViewModels\TagRequestModel.cs" />
@@ -369,13 +373,13 @@
     <Content Include="Scripts\respond.matchmedia.addListener.min.js" />
     <Content Include="Scripts\respond.min.js" />
     <Content Include="Scripts\_references.js" />
-    <Content Include="Views\Images\favorites.png" />
-    <Content Include="Views\Images\starts_rating\Stars.gif" />
-    <Content Include="Views\Images\starts_rating\Stars1.gif" />
-    <Content Include="Views\Images\starts_rating\Stars2.gif" />
-    <Content Include="Views\Images\starts_rating\Stars3.gif" />
-    <Content Include="Views\Images\starts_rating\Stars4.gif" />
-    <Content Include="Views\Images\starts_rating\Stars5.gif" />
+    <Content Include="Content\Images\favorites.png" />
+    <Content Include="Content\Images\starts_rating\Stars.gif" />
+    <Content Include="Content\Images\starts_rating\Stars1.gif" />
+    <Content Include="Content\Images\starts_rating\Stars2.gif" />
+    <Content Include="Content\Images\starts_rating\Stars3.gif" />
+    <Content Include="Content\Images\starts_rating\Stars4.gif" />
+    <Content Include="Content\Images\starts_rating\Stars5.gif" />
     <Content Include="Web.config" />
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
@@ -394,6 +398,7 @@
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
     <Content Include="Scripts\jquery-2.2.1.min.map" />
     <Content Include="Views\User\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
     <None Include="Views\Account\Login.cshtml" />
     <None Include="Views\CourseDetails\Index.cshtml" />
     <Content Include="Views\Course\Index.cshtml" />
@@ -467,6 +472,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201603301613227_add_dicusion_board1.resx">
       <DependentUpon>201603301613227_add_dicusion_board1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201604190049578_discussion_board_timestamp.resx">
+      <DependentUpon>201604190049578_discussion_board_timestamp.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

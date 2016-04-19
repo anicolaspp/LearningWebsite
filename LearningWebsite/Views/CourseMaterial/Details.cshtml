@@ -1,31 +1,50 @@
-﻿
+﻿@model LearningWebsite.Controllers.CourseMaterialDetail
 @{
     Layout = "~/Views/Shared/_Layout.cshtml";
 
 }
 
+<form class="form-horizontal" role="form">
+    <div class="form-group">
 
-        <form class="form-horizontal" role="form">
-            <div class="form-group">
+        <label for="inputTitle" class="col-sm-2 control-label">
+            Title
+        </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputTitle" readonly="readonly" value="@Model.CourseMaterial.Title">
+        </div>
+    </div>
+    <div class="form-group">
 
-                <label for="inputTitle" class="col-sm-2 control-label">
-                    Title
-                </label>
-                <div class="col-sm-9">
-                    <input class="form-control" id="inputTitle" type="text" readonly="readonly"/>
-                </div>
-            </div>
-            <div class="form-group">
+        <label for="inputTitle" class="col-sm-2 control-label">
+            Posted By
+        </label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="inputTitle" readonly="readonly" value="@Model.CourseMaterial.PostedBy">
+        </div>
+    </div>
+    <div class="form-group">
 
-                <label for="inputContent" class="col-sm-2 control-label">
-                    Content
-                </label>
-                <div class="col-sm-9">
-                    <textarea class="form-control" id="inputContent" rows="40" readonly="readonly"></textarea>
-                </div>
-            </div>
+        <label for="inputContent" class="col-sm-2 control-label">
+            Content
+        </label>
+        <div class="col-sm-10">
+            <textarea class="form-control" id="inputContent" rows="5" readonly="readonly">
+                @Model.CourseMaterial.Content
+            </textarea>
+        </div>
+    </div>
+    <div class="form-group">
 
+        <label for="inputTitle" class="col-sm-2 control-label">
+            Raiting
+        </label>
+        <div class="col-sm-10">
+            @{
+                string name = Model.CourseMaterial.Rating + ".gif";
+            }
+            <img src="@Url.Content($"~/Content/Images/starts_rating/Stars{name}")" />
+        </div>
+    </div>
 
-        </form>
-
-   
+</form>

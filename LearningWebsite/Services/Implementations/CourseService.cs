@@ -17,7 +17,7 @@ namespace LearningWebsite.Services.Implementations
 
         public IEnumerable<Course> GetMatcherFor(string searchTerm)
         {
-            return GetAll().Where(c => c.Name.Contains(searchTerm));
+            return GetAll().Where(c => c.Name.ToLower().Contains(searchTerm));
         }
 
         public Course GetBy(int id)
@@ -49,11 +49,12 @@ namespace LearningWebsite.Services.Implementations
 
         public IEnumerable<Course> GetAll()
         {
-            return new []
+            using (var context = new WebSiteDbContext())
             {
-                new Course {Id = 1, Name = "one"},
-                new Course {Id = 2, Name = "two"}
-            };
+                var courses = context.Courses.ToList();
+
+                return courses;
+            }
         }
 
         public int Add(Course course)

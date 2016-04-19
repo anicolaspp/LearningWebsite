@@ -8,6 +8,8 @@ namespace LearningWebsite.Services.Implementations
 {
     public class CourseMaterialRepository : ICourseMaterialRepository
     {
+        private WebSiteDbContext context = new WebSiteDbContext();
+
         public ICollection<int> GetRatingsFor(int id)
         {
             using (var context = new WebSiteDbContext())
@@ -21,10 +23,9 @@ namespace LearningWebsite.Services.Implementations
 
         public CourseMaterial GetBy(int id)
         {
-            using (var context = new WebSiteDbContext())
-            {
-                return context.CourseMaterials.Find(id);
-            }
+            var cm = context.CourseMaterials.Find(id);
+
+            return cm;
         }
 
         public IEnumerable<CourseMaterial> GetCourseThatMatchName(string name)

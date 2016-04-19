@@ -28,10 +28,7 @@ namespace LearningWebsite.Controllers
 
             return View(new HomePageViewModel
             {
-                UserViewModel = new UserViewModel
-                {
-                    Role = ((User) Session["user"]).Role
-                }
+                UserViewModel = GetLoggedUser()
             });
         }
 
@@ -63,7 +60,7 @@ namespace LearningWebsite.Controllers
 
             return View("Index", new HomePageViewModel
             {
-                UserViewModel = GetLoggerUser(),
+                UserViewModel = GetLoggedUser(),
                 SearchResultCourseMaterials = cmResult,
                 SearchResultCourses = crResult
             });

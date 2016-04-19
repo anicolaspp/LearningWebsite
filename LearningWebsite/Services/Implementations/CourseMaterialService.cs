@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using LearningWebsite.Models.DbModels;
@@ -16,6 +17,20 @@ namespace LearningWebsite.Services.Implementations
             _tagRepository = tagRepository;
         }
 
+        private int GetRating(int id)
+        {
+            var ratings = _courseMaterialRepository.GetRatingsFor(id);
+
+            if (ratings.Any())
+            {
+                return Math.Min(1, (int) ratings.Average());
+            }
+            else
+            {
+                return 1;
+            }
+        }
+
         public CourseMaterial GetBy(int id)
         {
             var cm = _courseMaterialRepository.GetBy(id);
@@ -25,12 +40,7 @@ namespace LearningWebsite.Services.Implementations
                 return null;
             }
 
-            var ratings = _courseMaterialRepository.GetRatingsFor(cm.Id);
-
-            if (ratings.Count > 0)
-            {
-                cm.Rating = (int) ratings.Average();
-            }
+            cm.Rating = GetRating(cm.Id);
 
             return cm;
         }
@@ -39,10 +49,14 @@ namespace LearningWebsite.Services.Implementations
         {
             var tags = _tagRepository.GetMatchesTo(searchTerm);
 
-            return tags
+            var courseMaterials = tags
                 .SelectMany(tag => tag.CourseMaterials)
                 .Distinct()
                 .ToList();
+
+            courseMaterials.ForEach(cm => cm.Rating = GetRating(cm.Id));
+
+            return courseMaterials;
         }
     }
 }

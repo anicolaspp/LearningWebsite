@@ -9,7 +9,7 @@ namespace LearningWebsite.Controllers
 {
     public class ControllerBase : Controller
     {
-        public UserViewModel GetLoggerUser()
+        public UserViewModel GetLoggedUser()
         {
             var loggedUser = Session["user"] as User;
 
@@ -18,7 +18,7 @@ namespace LearningWebsite.Controllers
             return new UserViewModel
             {
                 Role = loggedUser.Role,
-                UserName = loggedUser.UserName
+                UserName = loggedUser.PersonName
             };
         }
     }
@@ -40,7 +40,7 @@ namespace LearningWebsite.Controllers
 
             return View(new CoursesResultViewModel
             {
-                UserViewModel = GetLoggerUser(),
+                UserViewModel = GetLoggedUser(),
                 Courses = courses
             });
         }

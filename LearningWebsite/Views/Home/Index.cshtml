@@ -22,17 +22,17 @@
             <div >
                 <div id="searchArea" style="text-align: center; margin-top: 50px">
 
-                    @using (Html.BeginForm("Search", "Home", FormMethod.Post, new { @class = "navbar-form navbar-center", @role = "search" }))
+                    @using (Html.BeginForm("Search", "Home", FormMethod.Post, new {@class = "navbar-form navbar-center", @role = "search"}))
                     {
-                    <div class="form-group">
-                        <input type="text" class="form-control" style="width: 500px;" name="searchTerm">
-                    </div>
+                        <div class="form-group">
+                            <input type="text" class="form-control" style="width: 500px;" name="searchTerm">
+                        </div>
 
 
 
-                    <button type="submit" class="btn active btn-primary">
-                        <i class="glyphicon glyphicon-search"></i> Search
-                    </button>
+                        <button type="submit" class="btn active btn-primary">
+                            <i class="glyphicon glyphicon-search"></i> Search
+                        </button>
                     }
 
                 </div>
@@ -50,31 +50,32 @@
                                 <table id="tableCoursesMaterial" class="table table-striped table-hover table-condensed">
                                     <thead>
 
-                                        <tr>
+                                    <tr>
 
-                                            <th>
-                                                Name
-                                            </th>
-                                            <th>
-                                                Rate
-                                            </th>
+                                        <th>
+                                            Name
+                                        </th>
+                                        <th>
+                                            Rate
+                                        </th>
 
-                                        </tr>
+                                    </tr>
                                     </thead>
                                     <tbody>
 
-                                        @foreach (var courseM in Model.SearchResultCourseMaterials)
-                            {
-                            <tr onclick="location.href = 'http://www.marca.com'" style="cursor: pointer">
+                                    @foreach (var courseM in Model.SearchResultCourseMaterials)
+                                    {
+                                        <tr onclick="location.href = '@(Url.Action("Details", "CourseMaterial", new {id = courseM.Id}))'" style="cursor: pointer">
 
-                                <td>@courseM.Title</td>
-                                <td>
-                                    @courseM.Rating.ToString()
-                                    <img src="@Url.Content("~/Views/Images/starts_rating/Stars1.gif")" alt="IMAGES"  />
-                                </td>
-
-                            </tr>
-                            }
+                                            <td>@courseM.Title</td>
+                                            <td>
+                                                @{
+                                                    string name = courseM.Rating + ".gif";
+                                                }
+                                                <img src="@Url.Content($"~/Content/Images/starts_rating/Stars{name}")"/>
+                                            </td>
+                                        </tr>
+                                    }
                                     </tbody>
                                 </table>
                             </div>
@@ -96,27 +97,27 @@
                                 <table id="tableMaterial" class="table table-striped table-hover table-condensed">
                                     <thead>
 
-                                        <tr>
+                                    <tr>
 
-                                            <th>
-                                                Name
-                                            </th>
-                                           
+                                        <th>
+                                            Name
+                                        </th>
 
-                                        </tr>
+
+                                    </tr>
                                     </thead>
 
                                     <tbody>
-                                        @foreach (var course in Model.SearchResultCourses)
-                {
-                            <tr>
-                                <td>
-                                    @course.Name
-                                </td>
-                                
-                            </tr>
-                            }
-                                    <tbody />
+                                    @foreach (var course in Model.SearchResultCourses)
+                                    {
+                                        <tr onclick="location.href = '@(Url.Action("Index", "CourseDetails", new {id = course.Id}))'" style="cursor: pointer">
+                                            <td>
+                                                @course.Name
+                                            </td>
+
+                                        </tr>
+                                    }
+                                    <tbody/>
                                 </table>
                             </div>
                         </div>
