@@ -25,6 +25,8 @@ namespace LearningWebsite.Services.Implementations
 
         public DbSet<DiscusionBoard> Boards { get; set; }
 
+        public DbSet<Post> Posts { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserConfiguration());

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Security.Cryptography.X509Certificates;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Services.Abstractions;
+using Microsoft.Ajax.Utilities;
 
 namespace LearningWebsite.Services.Implementations
 {
@@ -41,12 +42,16 @@ namespace LearningWebsite.Services.Implementations
 
         public void RemoveWith(int id)
         {
-            using (var dbContext = new WebSiteDbContext())
-            {
-                dbContext.Users.Remove(dbContext.Users.Find(id));
+            var user = context.Users.Find(id);
+            context.Users.Remove(user);
+            context.Posts.RemoveRange(context.Posts.Where(post => post.PostedBy == user));
+            context.CourseMaterialUserRantings.RemoveRange(
+                context.CourseMaterialUserRantings.Where(x => x.RatedBy == user));
 
-                dbContext.SaveChanges();
-            }
+            // need to remove the courses the user created
+
+
+            context.SaveChanges();
         }
 
         public User GetUserBy(int id)

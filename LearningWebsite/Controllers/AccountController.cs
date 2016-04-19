@@ -99,6 +99,14 @@ namespace LearningWebsite.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        [HttpGet]
+        public ActionResult Remove(int id)
+        {
+
+
+            return RedirectToAction("Index");
+        }
     }
 
     public class UserListResult : ResultBased
