@@ -8,5 +8,6 @@ namespace LearningWebsite.Services.Abstractions
         Course GetBy(int id);
         IEnumerable<Course> GetAll();
         int Add(Course course);
+        Course RemoveById(int id);
     }
 }

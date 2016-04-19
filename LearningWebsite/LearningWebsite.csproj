@@ -216,6 +216,7 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CourseDetailsController.cs" />
     <Compile Include="Controllers\CourseMaterialController.cs" />
+    <Compile Include="Controllers\CourseModel.cs" />
     <Compile Include="Migrations\201603301527574_add_course.cs" />
     <Compile Include="Migrations\201603301527574_add_course.Designer.cs">
       <DependentUpon>201603301527574_add_course.cs</DependentUpon>

@@ -22,7 +22,11 @@ namespace LearningWebsite.Controllers
             {
                 return View(new CourseResultViewModel
                 {
-                    UserViewModel = GetLoggedUser()
+                    UserViewModel = GetLoggedUser(),
+                    Course = new CourseModel
+                    {
+                        Name = course.Name,
+                    }
                 });
             }
 
@@ -33,5 +37,7 @@ namespace LearningWebsite.Controllers
 
     public class CourseResultViewModel : ResultBased
     {
+        public CourseModel Course { get; set; }
     }
+    
 }

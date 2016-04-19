@@ -38,13 +38,22 @@ namespace LearningWebsite.Services.Implementations
                 Name = model.Name
             });
         }
+
+        public Course RemoveById(int id)
+        {
+            return _courseRepository.RemoveById(id);
+        }
     }
 
     public class CourseRepository : ICourseRepository
     {
         public Course GetBy(int id)
         {
-            return new Course {Id = id, Name = "A Random Nico Name"};
+            using (var context = new WebSiteDbContext())
+            {
+                return context.Courses.Find(id);
+            }
+            //return new Course {Id = id, Name = "A Random Nico Name"};
         }
 
         public IEnumerable<Course> GetAll()
@@ -59,7 +68,18 @@ namespace LearningWebsite.Services.Implementations
 
         public int Add(Course course)
         {
-            return 1;
+            using (var context = new WebSiteDbContext())
+            {
+                return context.Courses.Add(course).Id;
+            }
+        }
+
+        public Course RemoveById(int id)
+        {
+            using (var context = new WebSiteDbContext())
+            {
+                return context.Courses.Remove(GetBy(id)); ;
+            }
         }
     }
 }

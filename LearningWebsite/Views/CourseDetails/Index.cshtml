@@ -22,10 +22,6 @@
 <div class="container-fluid">
 <div class="row">
     <div class="col-sm-12" style="padding-left: 0">
-
-       
-
-
         <form class="form-horizontal" role="form">
             <div class="form-group">
 
@@ -34,7 +30,7 @@
                 </label>
                 <div class="col-sm-4">
                     <input type="text" readonly="true" class="form-control"
-                           id="inputName" value="Course 1" style="text-align: left;">
+                           id="inputName" value="@Model.Course.Name" style="text-align: left;">
                 </div>
                 <a id="addFavorites" style="font-size: 18px"
                    href="@Url.Action("AddToFavorites", "Course", new {id = 2})" role="button" class="btn"

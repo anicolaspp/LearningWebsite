@@ -65,7 +65,13 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult Remove(int id)
         {
-            return View();
+            _courseService.RemoveById(id);
+            var courses = _courseService.GetAll();
+            return View(new CoursesResultViewModel
+            {
+                UserViewModel = GetLoggedUser(),
+                Courses = courses
+            });
         }
 
        
@@ -74,10 +80,5 @@ namespace LearningWebsite.Controllers
     public class CoursesResultViewModel : ResultBased
     {
         public IEnumerable<Course> Courses { get; set; }
-    }
-
-    public class CourseModel
-    {
-        public string Name { get; set; }
     }
 }
