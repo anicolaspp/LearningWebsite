@@ -1,5 +1,4 @@
 ﻿using System.Collections.Generic;
-using System.Data.Entity.Core;
 using System.Linq;
 using LearningWebsite.Controllers;
 using LearningWebsite.Models.DbModels;
@@ -10,10 +9,12 @@ namespace LearningWebsite.Services.Implementations
     public class CourseService : ICourseService
     {
         private readonly ICourseRepository _courseRepository;
+        private readonly IUserRepository _userRepository;
 
-        public CourseService(ICourseRepository courseRepository)
+        public CourseService(ICourseRepository courseRepository, IUserRepository userRepository)
         {
             _courseRepository = courseRepository;
+            _userRepository = userRepository;
         }
 
         public IEnumerable<Course> GetMatcherFor(string searchTerm)
@@ -38,7 +39,6 @@ namespace LearningWebsite.Services.Implementations
                 return -1;
             }
 
-
             return _courseRepository.Add(new Course
             {
                 DiscusionBoard = new DiscusionBoard(),
@@ -52,58 +52,29 @@ namespace LearningWebsite.Services.Implementations
 
             return entity != null;
         }
-    }
 
-    public class CourseRepository : ICourseRepository
-    {
-        public Course GetBy(int id)
+        public bool IsFavoriteForUser(int id, Course course)
         {
-            using (var context = new WebSiteDbContext())
+            var user = _userRepository.GetUserBy(id);
+
+            if (user == null)
             {
-                return context.Courses.Find(id);
+                return false;
             }
-            //return new Course {Id = id, Name = "A Random Nico Name"};
+
+            bool result = _courseRepository.IsFavoriteForUser(user.Id, course.Id);
+
+            return result;
         }
 
-        public IEnumerable<Course> GetAll()
+        public bool RemoveFromFavorites(Course course, int userId)
         {
-            using (var context = new WebSiteDbContext())
-            {
-                var courses = context.Courses.ToList();
-
-                return courses;
-            }
+            return _courseRepository.RemoveFromFavorites(course.Id, userId);
         }
 
-        public int Add(Course course)
+        public bool AddToFavorites(Course course, int userId)
         {
-            using (var context = new WebSiteDbContext())
-            {
-                var entity = context.Courses.Add(course);
-
-                context.SaveChanges();
-
-                return entity.Id;
-            }
-        }
-
-        public Course RemoveById(int id)
-        {
-            try
-            {
-                using (var context = new WebSiteDbContext())
-                {
-                    var entity = context.Courses.Remove(context.Courses.Find(id));
-
-                    context.SaveChanges();
-
-                    return entity;
-                }
-            }
-            catch (EntityException)
-            {
-                return null;
-            }
+            return _courseRepository.AddToFavorites(course.Id, userId);
         }
     }
 }

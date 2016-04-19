@@ -17,5 +17,7 @@ namespace LearningWebsite.Models.ViewModels
 
         [Required]
         public string PersonName { get; set; }
+
+        public int Id { get; set; }
     }
 }

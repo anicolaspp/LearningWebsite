@@ -9,5 +9,8 @@ namespace LearningWebsite.Services.Abstractions
         IEnumerable<Course> GetAll();
         int Add(Course course);
         Course RemoveById(int id);
+        bool IsFavoriteForUser(int userId, int courseId);
+        bool AddToFavorites(int id, int userId);
+        bool RemoveFromFavorites(int id, int userId);
     }
 }

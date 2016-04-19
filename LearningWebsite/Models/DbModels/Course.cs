@@ -10,6 +10,8 @@ namespace LearningWebsite.Models.DbModels
 
         public virtual IList<CourseMaterial> CourseMaterials { get; set; }
 
+        public int DiscusionBoardId { get; set; }
+
         public virtual DiscusionBoard DiscusionBoard { get; set; }
     }
 }

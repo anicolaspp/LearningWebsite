@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using System.Web.Mvc;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
@@ -7,23 +8,6 @@ using LearningWebsite.Services.Filters;
 
 namespace LearningWebsite.Controllers
 {
-    public class ControllerBase : Controller
-    {
-        public UserViewModel GetLoggedUser()
-        {
-            var loggedUser = Session["user"] as User;
-
-            loggedUser = loggedUser ?? new User {Role = Role.Guest};
-
-            return new UserViewModel
-            {
-                Role = loggedUser.Role,
-                UserName = loggedUser.PersonName
-            };
-        }
-    }
-
-
     public class CourseController : ControllerBase
     {
         private readonly ICourseService _courseService;
@@ -38,10 +22,19 @@ namespace LearningWebsite.Controllers
         {
             var courses = _courseService.GetAll();
 
+            var models = courses.Select(c => new CourseModel
+            {
+                Id = c.Id,
+                Name = c.Name,
+                DiscusionBoard = c.DiscusionBoard,
+                CourseMaterials = c.CourseMaterials,
+                IsFavorite = _courseService.IsFavoriteForUser(GetLoggedUser().Id, c)
+            }).ToList();
+
             return View(new CoursesResultViewModel
             {
                 UserViewModel = GetLoggedUser(),
-                Courses = courses
+                Courses = models
             });
         }
 
@@ -74,10 +67,29 @@ namespace LearningWebsite.Controllers
 
             return View();
         }
+
+        [HttpGet]
+        public ActionResult AddToFavorites(int id)
+        {
+            var course = _courseService.GetBy(id);
+
+            bool isFavorite = _courseService.IsFavoriteForUser(GetLoggedUser().Id, course);
+
+            if (isFavorite)
+            {
+                _courseService.RemoveFromFavorites(course, GetLoggedUser().Id);
+            }
+            else
+            {
+                _courseService.AddToFavorites(course, GetLoggedUser().Id);
+            }
+
+            return RedirectToAction("Index");
+        }
     }
 
     public class CoursesResultViewModel : ResultBased
     {
-        public IEnumerable<Course> Courses { get; set; }
+        public IEnumerable<CourseModel> Courses { get; set; }
     }
 }

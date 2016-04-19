@@ -21,6 +21,10 @@ namespace LearningWebsite.Services.Implementations
 
         public DbSet<Course> Courses { get; set; }
 
+        public DbSet<CourseUserFavorites> Favoriteses { get; set; }
+
+        public DbSet<DiscusionBoard> Boards { get; set; }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserConfiguration());
@@ -33,6 +37,8 @@ namespace LearningWebsite.Services.Implementations
                 .HasMany(t => t.CourseMaterials)
                 .WithMany();
 
+            modelBuilder.Entity<CourseUserFavorites>()
+                .HasKey(f => new {f.CourseId, f.UserId});
 
 
             //.HasMany<>(tag => tag.CourseMaterials)

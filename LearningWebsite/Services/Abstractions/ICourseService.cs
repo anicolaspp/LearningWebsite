@@ -13,5 +13,8 @@ namespace LearningWebsite.Services.Abstractions
         int Add(CourseModel model);
 
         bool RemoveById(int id);
+        bool IsFavoriteForUser(int userName, Course course);
+        bool RemoveFromFavorites(Course course, int userId);
+        bool AddToFavorites(Course course, int userId);
     }
 }

@@ -206,3 +206,6 @@ C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsit
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.add_dicusion_board.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.add_dicusion_board1.resources
 C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.discussion_board_timestamp.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.favorite_courses.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.courseid.resources
+C:\Users\nperez\Desktop\LearningWebsite\LearningWebsite\obj\Debug\LearningWebsite.Migrations.board.resources
