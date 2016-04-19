@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Data.Entity.Core;
 using System.Linq;
 using LearningWebsite.Controllers;
 using LearningWebsite.Models.DbModels;
@@ -32,6 +33,12 @@ namespace LearningWebsite.Services.Implementations
 
         public int Add(CourseModel model)
         {
+            if (GetAll().Any(c => c.Name.ToLower() == model.Name.ToLower()))
+            {
+                return -1;
+            }
+
+
             return _courseRepository.Add(new Course
             {
                 DiscusionBoard = new DiscusionBoard(),
@@ -39,9 +46,11 @@ namespace LearningWebsite.Services.Implementations
             });
         }
 
-        public Course RemoveById(int id)
+        public bool RemoveById(int id)
         {
-            return _courseRepository.RemoveById(id);
+            var entity = _courseRepository.RemoveById(id);
+
+            return entity != null;
         }
     }
 
@@ -70,15 +79,30 @@ namespace LearningWebsite.Services.Implementations
         {
             using (var context = new WebSiteDbContext())
             {
-                return context.Courses.Add(course).Id;
+                var entity = context.Courses.Add(course);
+
+                context.SaveChanges();
+
+                return entity.Id;
             }
         }
 
         public Course RemoveById(int id)
         {
-            using (var context = new WebSiteDbContext())
+            try
             {
-                return context.Courses.Remove(GetBy(id)); ;
+                using (var context = new WebSiteDbContext())
+                {
+                    var entity = context.Courses.Remove(context.Courses.Find(id));
+
+                    context.SaveChanges();
+
+                    return entity;
+                }
+            }
+            catch (EntityException)
+            {
+                return null;
             }
         }
     }

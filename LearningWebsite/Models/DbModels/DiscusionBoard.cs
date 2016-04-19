@@ -7,7 +7,7 @@ namespace LearningWebsite.Models.DbModels
     {
         public int Id { get; set; }
 
-        public DateTime TimeStamp { get; set; }
+        public DateTime TimeStamp { get; set; } = DateTime.Now;
 
         // public virtual Course Course { get; set; }
 

@@ -46,7 +46,7 @@ namespace LearningWebsite.Controllers
         }
 
   
-        [MembershipRequired(Role.Admin)]
+       // [MembershipRequired(Role.Admin)]
         [HttpPost]
         public ActionResult Add(CourseModel model)
         {
@@ -54,27 +54,26 @@ namespace LearningWebsite.Controllers
 
             if (id >= 0)
             {
-                return View(id);
+                return RedirectToAction("Index");
             }
 
             // error creating user
             return View();
         }
 
-        [MembershipRequired(Role.Admin)]
-        [HttpPost]
+     //   [MembershipRequired(Role.Admin)]
+        [HttpGet]
         public ActionResult Remove(int id)
         {
-            _courseService.RemoveById(id);
-            var courses = _courseService.GetAll();
-            return View(new CoursesResultViewModel
-            {
-                UserViewModel = GetLoggedUser(),
-                Courses = courses
-            });
-        }
+            bool removed = _courseService.RemoveById(id);
 
-       
+            if (removed)
+            {
+                return RedirectToAction("Index");
+            }
+
+            return View();
+        }
     }
 
     public class CoursesResultViewModel : ResultBased

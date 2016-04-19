@@ -12,6 +12,6 @@ namespace LearningWebsite.Services.Abstractions
         IEnumerable<Course> GetAll();
         int Add(CourseModel model);
 
-        Course RemoveById(int id);
+        bool RemoveById(int id);
     }
 }
