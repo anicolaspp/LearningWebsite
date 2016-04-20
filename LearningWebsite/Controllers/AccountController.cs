@@ -107,6 +107,12 @@ namespace LearningWebsite.Controllers
 
             if (selectedUser != null)
             {
+                if (selectedUser.Id == GetLoggedUser().Id)
+                {
+                    // user cannot delete its own account through this mean
+                    return View();
+                }
+
                 _userService.Remove(selectedUser);
             }
 

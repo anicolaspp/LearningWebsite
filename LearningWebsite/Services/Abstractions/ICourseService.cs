@@ -10,7 +10,7 @@ namespace LearningWebsite.Services.Abstractions
 
         Course GetBy(int id);
         IEnumerable<Course> GetAll();
-        int Add(CourseModel model);
+        int Add(CourseModel model, int userId);
 
         bool RemoveById(int id);
         bool IsFavoriteForUser(int userName, Course course);

@@ -40,7 +40,7 @@
                                             <div class="modal-content">
                                                 <div class="modal-header">
                                                     <h4 class="modal-title" id="courseNameLabel">
-                                                        Add Coursen Details
+                                                        Add Course Details
                                                     </h4>
                                                 </div>
                                                 <div class="modal-body">
@@ -124,7 +124,7 @@
                             @foreach (var course in @Model.Courses)
                             {
 
-                                <tr>
+                                <tr onclick="location.href='@(Url.Action("Index", "CourseDetails", new {id = course.Id}))'" style="cursor: pointer">
                                     <td>@course.Name</td>
                                     <td>
                                         @{

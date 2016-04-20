@@ -17,11 +17,8 @@ namespace LearningWebsite.Controllers
             _courseService = courseService;
         }
 
-        // GET: Course
-        public ActionResult Index()
+        private ActionResult ShowCourses(IEnumerable<Course> courses)
         {
-            var courses = _courseService.GetAll();
-
             var models = courses.Select(c => new CourseModel
             {
                 Id = c.Id,
@@ -31,11 +28,19 @@ namespace LearningWebsite.Controllers
                 IsFavorite = _courseService.IsFavoriteForUser(GetLoggedUser().Id, c)
             }).ToList();
 
-            return View(new CoursesResultViewModel
+            return View("Index", new CoursesResultViewModel
             {
                 UserViewModel = GetLoggedUser(),
                 Courses = models
             });
+        }
+
+        // GET: Course
+        public ActionResult Index()
+        {
+            var courses = _courseService.GetAll();
+
+            return ShowCourses(courses);
         }
 
   
@@ -43,7 +48,7 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult Add(CourseModel model)
         {
-            int id = _courseService.Add(model);
+            int id = _courseService.Add(model, GetLoggedUser().Id);
 
             if (id >= 0)
             {
@@ -86,6 +91,13 @@ namespace LearningWebsite.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+
+        public ActionResult GetFavorites()
+        {
+            var favs = _courseService.GetAll().Where(c => _courseService.IsFavoriteForUser(GetLoggedUser().Id, c));
+
+            return ShowCourses(favs);
         }
     }
 

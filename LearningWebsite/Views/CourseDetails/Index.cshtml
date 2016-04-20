@@ -39,7 +39,9 @@
                 </a>
 
                 <a id="modal-ConfCourseRemove" href="#CourseConfirmationRemove" role="button" style="font-size: 18px"
-                   class="btn " data-toggle="modal" aria-hidden="true"><i class="glyphicon glyphicon-trash"></i>Remove Course</a>
+                   class="btn " data-toggle="modal" aria-hidden="true">
+                    <i class="glyphicon glyphicon-trash"></i>Remove Course
+                </a>
             </div>
         </form>
     </div>
@@ -206,7 +208,7 @@
                             <div class="modal-dialog">
                                 <div class="modal-content">
                                     <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel">
+                                        <h4 class="modal-title" id="removeCourseLabel">
                                             Remove
                                             Confirmation!
                                         </h4>
@@ -221,8 +223,8 @@
                                                 data-dismiss="modal">
                                             No
                                         </button>
-                                        <button type="button" class="btn btn-default"
-                                                data-dismiss="modal">
+                                        <button type="button" class="btn btn-default" 
+                                                onclick="location.href = '@(Url.Action("Remove", "Course", new {id = Model.Course.Id}))'">
                                             Yes
                                         </button>
                                     </div>
@@ -448,8 +450,7 @@
                     </h4>
                 </div>
                 <div class="modal-body">
-                    Are you sure you want to remove
-                    it?
+                    Are you sure you want to remove this course?
                 </div>
                 <div class="modal-footer">
 
@@ -457,8 +458,7 @@
                             data-dismiss="modal">
                         No
                     </button>
-                    <button type="button" class="btn btn-default"
-                            data-dismiss="modal">
+                    <button type="button" class="btn btn-default"  onclick="location.href = '@(Url.Action("Remove", "Course", new {id = Model.Course.Id}))'">
                         Yes
                     </button>
                 </div>

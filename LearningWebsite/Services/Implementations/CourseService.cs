@@ -32,7 +32,7 @@ namespace LearningWebsite.Services.Implementations
             return _courseRepository.GetAll();
         }
 
-        public int Add(CourseModel model)
+        public int Add(CourseModel model, int userId)
         {
             if (GetAll().Any(c => c.Name.ToLower() == model.Name.ToLower()))
             {
@@ -42,7 +42,8 @@ namespace LearningWebsite.Services.Implementations
             return _courseRepository.Add(new Course
             {
                 DiscusionBoard = new DiscusionBoard(),
-                Name = model.Name
+                Name = model.Name,
+                PostedBy = _userRepository.GetUserBy(userId)
             });
         }
 
