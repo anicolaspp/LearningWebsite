@@ -40,7 +40,9 @@
             <td>
                 @user.Role
             </td>
+
             <td>
+                
                 @{
                     string x = "#UserConfirmationPromote" + user.Id;
                     string xx = "UserConfirmationPromote" + user.Id;
@@ -50,9 +52,10 @@
 
                 }
 
+                @if (user.Id != Model.UserViewModel.Id)
+                {
 
-
-                <a id="modal-ConfUserPromote" href="@x" role="button" style="font-size: 18px"
+                   <a id="modal-ConfUserPromote" href="@x" role="button" style="font-size: 18px"
                    class="btn " data-toggle="modal" aria-hidden="true">
 
 
@@ -67,7 +70,7 @@
 
                 </a>
 
-                <div class="modal fade" id="@xx" role="dialog"
+                   <div class="modal fade" id="@xx" role="dialog"
                      aria-labelledby="myModalLabel" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
@@ -89,7 +92,7 @@
                                         }
                                     }
 
-                                  @ss
+                                    @ss
                                 </h4>
                             </div>
                             <div class="modal-body">
@@ -111,44 +114,51 @@
                     </div>
 
                 </div>
+                }
             </td>
+            
             <td>
-                <a id="modal-ConfUserRemove" href="@y" role="button" style="font-size: 18px"
-                   class="btn " data-toggle="modal" aria-hidden="true">
-                    <i class="glyphicon glyphicon-trash"></i>
-                </a>
-                <div class="modal fade" id="@yy" role="dialog"
-                     aria-labelledby="myModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h4 class="modal-title" id="myModalLabel">
-                                    Remove
-                                    Confirmation!
-                                </h4>
-                            </div>
-                            <div class="modal-body">
-                                Are you sure you want to remove
-                                it? All data for the user will be lost!
-                            </div>
-                            <div class="modal-footer">
+                @if (user.Id != Model.UserViewModel.Id)
+                {
 
-                                <button type="button" class="btn btn-default"
-                                        data-dismiss="modal">
-                                    No
-                                </button>
-                                <a href="@Url.Action("Remove", "Account", new {id = user.Id})" role="button" class="btn btn-default">
-                                    Yes
-                                </a>
+                    <a id="modal-ConfUserRemove" href="@y" role="button" style="font-size: 18px"
+                       class="btn " data-toggle="modal" aria-hidden="true">
+                        <i class="glyphicon glyphicon-trash"></i>
+                    </a>
+                    <div class="modal fade" id="@yy" role="dialog"
+                         aria-labelledby="myModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Remove
+                                        Confirmation!
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+                                    Are you sure you want to remove
+                                    it? All data for the user will be lost!
+                                </div>
+                                <div class="modal-footer">
+
+                                    <button type="button" class="btn btn-default"
+                                            data-dismiss="modal">
+                                        No
+                                    </button>
+                                    <a href="@Url.Action("Remove", "Account", new {id = user.Id})" role="button" class="btn btn-default">
+                                        Yes
+                                    </a>
+                                </div>
                             </div>
+
                         </div>
 
                     </div>
-
-                </div>
+                }
             </td>
+            
         </tr>
 
-    }
+                                        }
     </tbody>
 </table>
