@@ -8,7 +8,7 @@ namespace LearningWebsite.Models.DbModels
 
         public string Name { get; set; }
 
-        public virtual IList<CourseMaterial> CourseMaterials { get; set; }
+        public virtual IList<CourseMaterial> CourseMaterials { get; set; } = new List<CourseMaterial>();
 
         public int DiscusionBoardId { get; set; }
 

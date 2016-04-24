@@ -58,5 +58,12 @@ namespace LearningWebsite.Services.Implementations
 
             return courseMaterials;
         }
+
+        public int Add(CourseMaterial courseMaterial)
+        {
+            var result = _courseMaterialRepository.Add(courseMaterial);
+
+            return result;
+        }
     }
 }

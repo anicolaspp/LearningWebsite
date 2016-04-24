@@ -18,6 +18,7 @@ namespace LearningWebsite.Models.DbModels
         public int CourseId { get; set; }
 
         public virtual Course Course { get; set; }
+        public string[] Tags { get; set; }
 
         //   public virtual IEnumerable<Tag> Tags { get; set; }
     }

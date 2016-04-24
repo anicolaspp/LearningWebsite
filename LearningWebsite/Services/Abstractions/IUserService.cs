@@ -12,5 +12,7 @@ namespace LearningWebsite.Services.Abstractions
         bool ToMember(User user);
         bool ToAdmin(User user);
         bool Remove(User user);
+        int AddPost(Post post, int userId);
+        bool RemovePostById(int id);
     }
 }

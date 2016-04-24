@@ -73,5 +73,16 @@ namespace LearningWebsite.Services.Implementations
 
             return true;
         }
+
+        public int AddPost(Post post, int userId)
+        {
+            
+            return _userRepository.AddPost(post,userId);
+        }
+
+        public bool RemovePostById(int id)
+        {
+           return _userRepository.RemovePostById(id);
+        }
     }
 }

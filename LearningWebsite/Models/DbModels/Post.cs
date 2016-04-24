@@ -8,7 +8,7 @@ namespace LearningWebsite.Models.DbModels
 
         public virtual DiscusionBoard DiscusionBoard { get; set; }
 
-        public DateTime DateAdded { get; set; }
+        public DateTime DateAdded { get; set; } = DateTime.Now;
 
         public string Content { get; set; }
 

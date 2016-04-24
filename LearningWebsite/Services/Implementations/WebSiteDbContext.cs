@@ -27,6 +27,7 @@ namespace LearningWebsite.Services.Implementations
 
         public DbSet<Post> Posts { get; set; }
 
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Configurations.Add(new UserConfiguration());
@@ -42,6 +43,8 @@ namespace LearningWebsite.Services.Implementations
             modelBuilder.Entity<CourseUserFavorites>()
                 .HasKey(f => new {f.CourseId, f.UserId});
 
+            modelBuilder.Entity<CourseMaterial>()
+                .Ignore(material => material.Tags);
 
             //.HasMany<>(tag => tag.CourseMaterials)
             //.WithMany(material => material.Tags);

@@ -11,5 +11,7 @@ namespace LearningWebsite.Services.Abstractions
         User GetUserBy(int id);
         IEnumerable<User> GetAll();
         bool Update(User user);
+        int AddPost(Post post, int userId);
+        bool RemovePostById(int id);
     }
 }

@@ -7,5 +7,6 @@ namespace LearningWebsite.Services.Abstractions
     {
         CourseMaterial GetBy(int id);
         IEnumerable<CourseMaterial> GetMatchesFor(string searchTerm);
+        int Add(CourseMaterial courseMaterial);
     }
 }

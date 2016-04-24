@@ -8,5 +8,6 @@ namespace LearningWebsite.Services.Abstractions
         ICollection<int> GetRatingsFor(int id);
         CourseMaterial GetBy(int id);
         IEnumerable<CourseMaterial> GetCourseThatMatchName(string name);
+        int Add(CourseMaterial courseMaterial);
     }
 }

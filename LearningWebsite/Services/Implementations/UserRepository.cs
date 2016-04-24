@@ -11,7 +11,7 @@ namespace LearningWebsite.Services.Implementations
     public class UserRepository : IUserRepository
     {
         private readonly ICourseRepository _courseRepository;
-        private WebSiteDbContext context = new WebSiteDbContext();
+        private readonly WebSiteDbContext context = new WebSiteDbContext();
 
         public UserRepository(ICourseRepository courseRepository)
         {
@@ -70,17 +70,16 @@ namespace LearningWebsite.Services.Implementations
 
         public User GetUserBy(int id)
         {
-            using (var dbContext = new WebSiteDbContext())
+
+            var user = context.Users.Find(id);
+
+            if (user != null)
             {
-                var user = dbContext.Users.Find(id);
-
-                if (user != null)
-                {
-                    user.IsValid = true;
-                }
-
-                return user;
+                user.IsValid = true;
             }
+
+            return user;
+
         }
 
         public IEnumerable<User> GetAll()
@@ -92,6 +91,32 @@ namespace LearningWebsite.Services.Implementations
         {
             context.Users.AddOrUpdate(user);
             return context.SaveChanges() > 0;
+        }
+
+        public int AddPost(Post post, int userId)
+        {
+            User user = context.Users.Find(userId);
+            post.PostedBy = user;
+            post.DiscusionBoard = context.Boards.Find(post.DiscusionBoard.Id);
+            Post postAdded = context.Posts.Add(post);
+            context.SaveChanges();
+            return postAdded.Id;
+        }
+
+        public bool RemovePostById(int id)
+        {
+            try
+            {
+                context.Posts.Remove(context.Posts.Find(id));
+                context.SaveChanges();
+
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+            
         }
     }
 }

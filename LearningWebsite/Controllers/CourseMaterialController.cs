@@ -23,6 +23,7 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult Rate(int courseMaterialId, int rating)
         {
+            var courseMaterial = _cmService.GetBy(courseMaterialId);
             return View();
         }
 
@@ -37,6 +38,21 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult Add(CourseMaterialModel model)
         {
+            var cmId = _cmService.Add(new CourseMaterial
+            {
+                Content = model.Content,
+                CourseId = model.courseId,
+                Title = model.Title,
+                PostedById = GetLoggedUser().Id,
+                Rating = model.Rating,
+                Tags = model.Tags.Split(' ')
+            });
+
+            if (cmId >= 0)
+            {
+                return RedirectToAction("Index", "CourseDetails", new {id = model.courseId});
+            }
+
             return View();
         }
 
@@ -60,7 +76,7 @@ namespace LearningWebsite.Controllers
                     Rating = cm.Rating,
                     PostedBy = cm.PostedBy.PersonName,
                     id = cm.Id,
-                    Content = cm.Content
+                    Content = cm.Content,
                 }
             });
         }
@@ -78,5 +94,8 @@ namespace LearningWebsite.Controllers
         public string PostedBy { get; set; }
         public int id { get; set; }
         public string Content { get; set; }
+
+        public int courseId { get; set; }
+        public string Tags { get; set; }
     }
 }
