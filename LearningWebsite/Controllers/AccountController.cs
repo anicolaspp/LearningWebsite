@@ -20,7 +20,7 @@ namespace LearningWebsite.Controllers
             _userService = userService;
         }
 
-       // [MembershipRequired(Role.Admin)]
+        [MembershipRequired(Role.Admin)]
         public ActionResult Index()
         {
             var result = new UserListResult
@@ -33,6 +33,7 @@ namespace LearningWebsite.Controllers
             return View(result);
         }
 
+        [MembershipRequired(Role.Admin)]
         [HttpGet]
         public ActionResult Promote(int id)
         {
@@ -67,6 +68,7 @@ namespace LearningWebsite.Controllers
             return Redirect(Request.UrlReferrer.ToString());
         }
 
+        [MembershipRequired(Role.Member)]
         [HttpPost]
         public ActionResult Logout()
         {
@@ -100,23 +102,34 @@ namespace LearningWebsite.Controllers
             return RedirectToAction("Index", "Home");
         }
 
+        [MembershipRequired(Role.Member)]
+        [HttpPost]
+        public ActionResult Delete()
+        {
+            RemoveUser(GetLoggedUser().Id);
+
+            return Logout();
+        }
+
+        [MembershipRequired(Role.Admin)]
         [HttpGet]
         public ActionResult Remove(int id)
         {
-            var selectedUser = _userService.GetUserBy(id);
+            RemoveUser(id);
+
+            return RedirectToAction("Index");
+        }
+
+        private bool RemoveUser(int userId)
+        {
+            var selectedUser = _userService.GetUserBy(userId);
 
             if (selectedUser != null)
             {
-                if (selectedUser.Id == GetLoggedUser().Id)
-                {
-                    // user cannot delete its own account through this mean
-                    return View();
-                }
-
-                _userService.Remove(selectedUser);
+                return _userService.Remove(selectedUser);
             }
 
-            return RedirectToAction("Index");
+            return false;
         }
     }
 

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.Entity.Core.Mapping;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -21,9 +22,16 @@ namespace LearningWebsite.Controllers
 
         [MembershipRequired(Role.Member)]
         [HttpPost]
-        public ActionResult Rate(int courseMaterialId, int rating)
+        public ActionResult Rate(RateModel model)
         {
-            var courseMaterial = _cmService.GetBy(courseMaterialId);
+            bool result = _cmService.Rate(model.courseMaterialId, model.Rating, GetLoggedUser().Id);
+
+            if (result)
+            {
+                return RedirectToAction("Index", "CourseDetails", new {id = model.courseId});
+            }
+
+
             return View();
         }
 
@@ -31,6 +39,13 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult Tag(TagRequestModel model)
         {
+            var result = _cmService.UpdateTagsFor(model.courseMaterialId, model.Tags);
+
+            if (result)
+            {
+                return RedirectToAction("Index", "CourseDetails", new {id = model.courseId});
+            }
+
             return View();
         }
 
@@ -57,9 +72,16 @@ namespace LearningWebsite.Controllers
         }
 
         [MembershipRequired(Role.Member)]
-        [HttpPost]
-        public ActionResult Remove(int courseMaterialId)
+        [HttpGet]
+        public ActionResult Remove(int courseMaterialId, int courseId)
         {
+            bool result = _cmService.Remove(courseMaterialId);
+
+            if (result)
+            {
+                return RedirectToAction("Index", "CourseDetails", new {id = courseId});
+            }
+
             return View();
         }
 
@@ -77,8 +99,14 @@ namespace LearningWebsite.Controllers
                     PostedBy = cm.PostedBy.PersonName,
                     id = cm.Id,
                     Content = cm.Content,
+                    courseId = cm.Course.Id
                 }
             });
+        }
+
+        public ActionResult GoToCourse(int id)
+        {
+            return RedirectToAction("Index", "CourseDetails", new {id = id});
         }
     }
 
@@ -97,5 +125,12 @@ namespace LearningWebsite.Controllers
 
         public int courseId { get; set; }
         public string Tags { get; set; }
+    }
+
+    public class RateModel
+    {
+        public int courseId { get; set; }
+        public int Rating { get; set; }
+        public int courseMaterialId { get; set; }
     }
 }

@@ -23,7 +23,7 @@ namespace LearningWebsite.Services.Implementations
 
             if (ratings.Any())
             {
-                return Math.Min(1, (int) ratings.Average());
+                return (int) ratings.Average();
             }
             else
             {
@@ -41,6 +41,7 @@ namespace LearningWebsite.Services.Implementations
             }
 
             cm.Rating = GetRating(cm.Id);
+            cm.Tags = _courseMaterialRepository.GetTagsFor(id);
 
             return cm;
         }
@@ -64,6 +65,22 @@ namespace LearningWebsite.Services.Implementations
             var result = _courseMaterialRepository.Add(courseMaterial);
 
             return result;
+        }
+
+        public bool UpdateTagsFor(int courseMaterialId, string tags)
+        {
+            return _courseMaterialRepository.UpdateTagsFor(courseMaterialId,
+                tags.Split(' ').Where(tag => !string.IsNullOrEmpty(tag)));
+        }
+
+        public bool Rate(int courseMaterialId, int rating, int userId)
+        {
+            return _courseMaterialRepository.AddRating(courseMaterialId, rating, userId);
+        }
+
+        public bool Remove(int courseMaterialId)
+        {
+            return _courseMaterialRepository.Remove(courseMaterialId);
         }
     }
 }

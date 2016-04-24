@@ -9,5 +9,10 @@ namespace LearningWebsite.Services.Abstractions
         CourseMaterial GetBy(int id);
         IEnumerable<CourseMaterial> GetCourseThatMatchName(string name);
         int Add(CourseMaterial courseMaterial);
+
+        bool UpdateTagsFor(int cmId, IEnumerable<string> tags);
+        string[] GetTagsFor(int id);
+        bool AddRating(int courseMaterialId, int rating, int userId);
+        bool Remove(int courseMaterialId);
     }
 }

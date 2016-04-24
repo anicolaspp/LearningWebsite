@@ -41,7 +41,7 @@ namespace LearningWebsite.Controllers
                         CourseMaterials = new List<CourseMaterial>(course.CourseMaterials.Select(cm => _cmService.GetBy(cm.Id))),
                         DiscusionBoard = course.DiscusionBoard,
                         Id = course.Id,
-                        IsFavorite = _courseService.IsFavoriteForUser(GetLoggedUser().Id, course)
+                        IsFavorite = _courseService.IsFavoriteForUser(GetLoggedUser().Id, course),
                     }
                 });
             }

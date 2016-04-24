@@ -49,7 +49,7 @@
                         <i class="glyphicon glyphicon-star"></i>@txt
                     </a>
                 }
-                
+
                 @if (@Model.UserViewModel.Role == Role.Admin)
                 {
                     <a id="modal-ConfCourseRemove" href="#CourseConfirmationRemove" role="button" style="font-size: 18px"
@@ -63,275 +63,311 @@
 </div>
 <div class="row">
 <div class="col-md-9">
-    <div class="panel panel-primary">
-        <div class="panel-heading">
-            <h3 class="panel-title" style="text-align: center">
-                Course Materials
-            </h3>
-        </div>
-        <div class="panel-body">
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th>Title</th>
-                    <th>Average Rate</th>
-                    <th>Rate</th>
-                    <th>
-                        @if (@Model.UserViewModel.Role != Role.Guest)
-                        {
-                            <a id="modal-AddCourseMaterial"
-                               href="#AddCourseMaterialPopup" role="button" class="btn "
-                               data-toggle="modal" aria-hidden="true">
-                                <i class="glyphicon glyphicon-plus"></i>
-                            </a>
-                        
-                            <div class="modal fade" id="AddCourseMaterialPopup"
-                                 role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog">
-                                    @using (Html.BeginForm("Add", "CourseMaterial", FormMethod.Post, new {@class = "form-horizontal", @role = "form"}))
-                                    {
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">
-                                                    Add Course
-                                                    Material
-                                                </h4>
-                                            </div>
-                                            <div class="modal-body">
+<div class="panel panel-primary">
+<div class="panel-heading">
+    <h3 class="panel-title" style="text-align: center">
+        Course Materials
+    </h3>
+</div>
+<div class="panel-body">
+<table class="table table-hover">
+<thead>
+<tr>
+    <th>Title</th>
+    <th>Average Rate</th>
+    <th>Rate</th>
+    <th>Tags</th>
+    <th>
+        @if (@Model.UserViewModel.Role != Role.Guest)
+        {
+            <a id="modal-AddCourseMaterial"
+               href="#AddCourseMaterialPopup" role="button" class="btn "
+               data-toggle="modal" aria-hidden="true">
+                <i class="glyphicon glyphicon-plus"></i>
+            </a>
 
-                                                <div class="form-group">
+            <div class="modal fade" id="AddCourseMaterialPopup"
+                 role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    @using (Html.BeginForm("Add", "CourseMaterial", FormMethod.Post, new { @class = "form-horizontal", @role = "form" }))
+                    {
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Add Course
+                                    Material
+                                </h4>
+                            </div>
+                            <div class="modal-body">
 
-                                                    <label for="inputName" class="col-sm-2 control-label">
-                                                        Name
-                                                    </label>
-                                                    <div class="col-sm-6">
-                                                        <input type="text" class="form-control" id="inputName"
-                                                               name="Title">
-                                                    </div>
-                                                </div>
+                                <div class="form-group">
 
-                                                <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">
+                                        Name
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="inputName"
+                                               name="Title">
+                                    </div>
+                                </div>
 
-                                                    <label for="inputContent" class="col-sm-2 control-label">
-                                                        Content
-                                                    </label>
-                                                    <div class="col-sm-6">
-                                                        <textarea id="inputContent" name="Content" rows="5" class="form-control"></textarea>
-                                                    </div>
-                                                </div>
+                                <div class="form-group">
 
-                                                <div class="form-group">
+                                    <label for="inputContent" class="col-sm-2 control-label">
+                                        Content
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <textarea id="inputContent" name="Content" rows="5" class="form-control"></textarea>
+                                    </div>
+                                </div>
 
-                                                    <label for="inputTag" class="col-sm-2 control-label">
-                                                        Tag
-                                                    </label>
-                                                    <div class="col-sm-6">
-                                                        <input id="inputTag" type="text" class="form-control" name="Tags"/>
-                                                    </div>
-                                                    <div class="hidden">
-                                                        @Html.Hidden("courseId", Model.Course.Id);
-                                                    </div>
+                                <div class="form-group">
 
-                                                </div>
+                                    <label for="inputTag" class="col-sm-2 control-label">
+                                        Tag
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input id="inputTag" type="text" class="form-control" name="Tags" />
+                                    </div>
+                                    <div class="hidden">
+                                        @Html.Hidden("courseId", Model.Course.Id);
+                                    </div>
 
-                                            </div>
-                                            <div class="modal-footer">
-
-                                                <button type="button" class="btn btn-default"
-                                                        data-dismiss="modal">
-                                                    Cancel
-                                                </button>
-                                                <button type="submit" class="btn btn-default">
-                                                    Save
-                                                </button>
-                                            </div>
-                                        </div>
-                                    }
                                 </div>
 
                             </div>
-                        }
+                            <div class="modal-footer">
 
-                    </th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                @foreach(var courseMaterial in @Model.Course.CourseMaterials) { 
-                    <tr>
-                    <td>@courseMaterial.Title</td>
-                    <td>
-                        @{
-                            string name = courseMaterial.Rating + ".gif";
-                        }
-                        <img src="@Url.Content($"~/Content/Images/starts_rating/Stars{name}")" />
-                    </td>
-                    <td>
-                        <!-- <button type="button" class="btn active btn-primary disabled"> -->
-                        <!-- Rate --> <!-- </button> -->
+                                <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-default">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
 
-                        @{
+            </div>
+        }
 
-                            string s = "";
-                            if (Model.UserViewModel.Role == Role.Guest)
-                            {
-                                s = " disable";
-                            }
-                            
-                            <a id="modal-Rate" href="#RatingPopup" role="button"
-                               class="btn active btn-primary @s" data-toggle="modal"
+    </th>
+</tr>
+</thead>
+<tbody>
+@foreach (var courseMaterial in @Model.Course.CourseMaterials)
+{
+    <tr >
+        <td onclick="location.href = '@(Url.Action("Details", "CourseMaterial", new {id = courseMaterial.Id}))'" style="cursor: pointer">@courseMaterial.Title</td>
+        <td onclick="location.href = '@(Url.Action("Details", "CourseMaterial", new {id = courseMaterial.Id}))'" style="cursor: pointer">
+            @{
+                string name = courseMaterial.Rating + ".gif";
+                string ratingPopupX = "#ratingPopup"+courseMaterial.Id;
+                string ratingPopupY = "ratingPopup" + courseMaterial.Id;
+                string removePopupX = "#removePopup" + courseMaterial.Id;
+                string removePopupY = "removePopup" + courseMaterial.Id;
 
-                               aria-hidden="true">Rate
-                            </a>
-                        }
-                        <div class="modal fade" id="RatingPopup" role="dialog"
-                             aria-labelledby="myModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                                <div class="modal-content">
-                                    <div class="modal-header">
-                                        <h4 class="modal-title" id="myModalLabel">
-                                            Rating
-                                            Course!
-                                        </h4>
+            }
+            <img src="@Url.Content($"~/Content/Images/starts_rating/Stars{name}")"/>
+        </td>
+        <td>
+            <!-- <button type="button" class="btn active btn-primary disabled"> -->
+            <!-- Rate --> <!-- </button> -->
+
+            @{
+
+                string s = "";
+                if (Model.UserViewModel.Role == Role.Guest)
+                {
+                    s = " disabled";
+                }
+
+                <a id="modal-Rate" href="@ratingPopupX" role="button"
+                   class="btn active btn-primary @s" data-toggle="modal"
+
+                   aria-hidden="true">Rate
+                </a>
+            }
+            <div class="modal fade" id="@ratingPopupY" role="dialog"
+                 aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    @using (Html.BeginForm("Rate", "CourseMaterial", new {@class = "form-horizontal", @role = "form"}))
+                    {
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="myModalLabel">
+                                    Rating
+                                    Course!
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                <div class="form-group">
+
+                                    <label for="inputName" class="col-sm-2 control-label">
+                                        Title
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" readonly="readonly" class="form-control"
+                                               id="inputName" value="@courseMaterial.Title">
                                     </div>
-                                    <div class="modal-body">
-                                        <form class="form-horizontal" role="form">
-                                            <div class="form-group">
+                                </div>
 
-                                                <label for="inputName" class="col-sm-2 control-label">
-                                                    Title
-                                                </label>
-                                                <div class="col-sm-6">
-                                                    <input type="text" readonly="readonly" class="form-control"
-                                                           id="inputName" value="@courseMaterial.Title">
-                                                </div>
-                                            </div>
+                                <div class="form-group">
 
-                                            <div class="form-group">
-
-                                                <label for="inputRate" class="col-sm-2 control-label">
-                                                    Rate
-                                                </label>
-                                                <div class="col-sm-6">
-                                                    <input id="inputRate" type="number" min="1" max="5"
-                                                           value="1" class="form-control"/>
-                                                </div>
-                                            </div>
-                                        </form>
+                                    <label for="inputRate" class="col-sm-2 control-label">
+                                        Rate
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input id="inputRate" type="number" min="1" max="5"
+                                               value="1" class="form-control" name="Rating"/>
                                     </div>
-                                    <div class="modal-footer">
+                                </div>
 
-                                        <button type="button" class="btn btn-default"
-                                                data-dismiss="modal">
+                                <div class="hidden">
+                                    <input type="hidden" value="@courseMaterial.Id" name="courseMaterialId"/>
+                                    <input type="hidden" value="@Model.Course.Id" name="courseId"/>
+                                </div>
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">
+                                    Cancel
+                                </button>
+                                <button type="submit" class="btn btn-default">
+                                    Save
+                                </button>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </td>
+        
+        <td>
+
+            @{
+                string x = "#AddTagsPopup" + courseMaterial.Id;
+                string xx = "AddTagsPopup" + courseMaterial.Id;
+                string readOnly = "";
+
+                if (@Model.UserViewModel.Role != Role.Admin)
+                {
+                    readOnly = " readonly";
+                }
+
+                <a id="modal-AddTags"
+                   href="@x" role="button" class="btn "
+                   data-toggle="modal" aria-hidden="true">
+                    <i class="glyphicon glyphicon-tags"></i>
+                </a>
+                <div class="modal fade" id="@xx"
+                     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+
+                    <div class="modal-dialog">
+                        @using (Html.BeginForm("Tag", "CourseMaterial", FormMethod.Post, new {@class = "form-horizontal", @role = "form"}))
+                        {
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h4 class="modal-title" id="myModalLabel">
+                                        Add Tags
+                                    </h4>
+                                </div>
+                                <div class="modal-body">
+
+                                    <div class="form-group">
+
+                                        <label for="inputTag" class="col-sm-2 control-label">
+                                            Tags
+                                        </label>
+                                        <div class="col-sm-6">
+                                            <input id="inputTag" value="@string.Join(" ", courseMaterial.Tags)" name="Tags" type="text" class="form-control" @readOnly/>
+                                        </div>
+
+                                        <div class="hidden">
+                                            <input type="hidden" value="@courseMaterial.Id" name="courseMaterialId"/>
+                                            <input type="hidden" value="@Model.Course.Id" name="courseId"/>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                <div class="modal-footer">
+                                    @if (Model.UserViewModel.Role == Role.Admin)
+                                    {
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">
                                             Cancel
                                         </button>
-                                        <button type="button" class="btn btn-default"
-                                                data-dismiss="modal" onclick="location.href = '@(Url.Action("Rate", "CourseMaterial", new {courseMaterialId = courseMaterial.Id, rating = courseMaterial.Rating}))'">
+                                        <button type="submit" class="btn btn-default">
                                             Save
                                         </button>
-                                    </div>
-                                </div>
+                                    }
+                                    else
+                                    {
+                                        <button type="button" class="btn btn-default" data-dismiss="modal">
+                                            Close
+                                        </button>
+                                    }
 
+                                </div>
                             </div>
+                        }
+                    </div>
 
+                </div>
+
+            }
+        </td>
+        <td>
+            @if (@Model.UserViewModel.Role == Role.Admin)
+            {
+                <a id="modal-ConfRemCourse"
+                   href="@removePopupX" role="button" class="btn"
+                   data-toggle="modal"><i class="glyphicon glyphicon-trash"></i></a>
+
+                <div class="modal fade" id="@removePopupY"
+                     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title" id="removeCourseLabel">
+                                    Remove
+                                    Confirmation!
+                                </h4>
+                            </div>
+                            <div class="modal-body">
+                                Are you sure you want to remove
+                                it?
+                            </div>
+                            <div class="modal-footer">
+
+                                <button type="button" class="btn btn-default"
+                                        data-dismiss="modal">
+                                    No
+                                </button>
+                                <button type="button" class="btn btn-default" data-dismiss="modal"
+                                        onclick="location.href = '@(Url.Action("Remove", "CourseMaterial", new {courseMaterialId = courseMaterial.Id, courseId = Model.Course.Id}))'">
+                                    Yes
+                                </button>
+                            </div>
                         </div>
-                    </td>
-                    <td>
-                            @if (@Model.UserViewModel.Role != Role.Guest)
-                            {
-                                <a id="modal-ConfRemCourse"
-                                   href="#ConfirmationRemoveCourse" role="button" class="btn"
-                                   data-toggle="modal"><i class="glyphicon glyphicon-trash"></i></a>
+                    </div>
 
-                                <div class="modal fade" id="ConfirmationRemoveCourse"
-                                     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="removeCourseLabel">
-                                                    Remove
-                                                    Confirmation!
-                                                </h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                Are you sure you want to remove
-                                                it?
-                                            </div>
-                                            <div class="modal-footer">
+                </div>
 
-                                                <button type="button" class="btn btn-default"
-                                                        data-dismiss="modal">
-                                                    No
-                                                </button>
-                                                <button type="button" class="btn btn-default" data-dismiss="modal"
-                                                        onclick="location.href = '@(Url.Action("Remove", "CourseMaterial", new {courseMaterialId = courseMaterial.Id}))'">
-                                                    Yes
-                                                </button>
-                                            </div>
-                                        </div>
-                                    </div>
+            }
 
-                                </div>
+        </td>
+    </tr>
+}
+</tbody>
+</table>
+</div>
 
-                            }
-
-                        </td>
-                    <td>
-                            @if (@Model.UserViewModel.Role != Role.Guest)
-                            {
-                                <a id="modal-AddTags"
-                                   href="#AddTagsPopup" role="button" class="btn "
-                                   data-toggle="modal" aria-hidden="true">
-                                    <i class="glyphicon glyphicon-tags"></i>
-                                </a>
-                                <div class="modal fade" id="AddTagsPopup"
-                                     role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                    <div class="modal-dialog">
-                                        <div class="modal-content">
-                                            <div class="modal-header">
-                                                <h4 class="modal-title" id="myModalLabel">
-                                                    Add Tags
-                                                </h4>
-                                            </div>
-                                            <div class="modal-body">
-                                                <form class="form-horizontal" role="form">
-                                                    <div class="form-group">
-
-                                                        <label for="inputTag" class="col-sm-2 control-label">
-                                                            Tags
-                                                        </label>
-                                                        <div class="col-sm-6">
-                                                            <input id="inputTag" name="Tag" type="text" class="form-control"/>
-                                                        </div>
-                                                    </div>
-                                                </form>
-                                            </div>
-                                            <div class="modal-footer">
-
-                                                <button type="button" class="btn btn-default"
-                                                        data-dismiss="modal">
-                                                    Cancel
-                                                </button>
-                                                <button type="button" class="btn btn-default"
-                                                        data-dismiss="modal"  onclick="location.href = '@(Url.Action("Tag", "CourseMaterial", new {CourseMaterialId = courseMaterial.Id, Tag = "Tag Prueba" }))'">
-                                                    Save
-                                                </button>
-                                            </div>
-                                        </div>
-
-                                    </div>
-
-                                </div>
-
-                            }
-                    </td>
-                </tr>
-                }
-                </tbody>
-            </table>
-        </div>
-
-    </div>
+</div>
 
 
 
@@ -358,7 +394,7 @@
                 foreach (var post in @Model.Course.DiscusionBoard.Posts)
                 {
                     string s = "success";
-                    if (pos % 2 == 0)
+                    if (pos%2 == 0)
                     {
                         s = "info";
                     }
@@ -406,7 +442,7 @@
                             </div>
 
                         </div>
-                    </div>                    
+                    </div>
                     pos++;
                 }
             }
@@ -428,27 +464,27 @@
             <div class="modal-body">
                 @using (Html.BeginForm("AddPost", "CourseDetails", FormMethod.Post, new {@class = "form-horizontal", @role = "form"}))
                 {
-                <div class="form-group">
+                    <div class="form-group">
 
-                    <label for="inputName" class="col-sm-2 control-label">
-                        Content
-                    </label>
-                    <div class="col-sm-6">
-                        <textarea rows="5" class="form-control" name="content"></textarea>
+                        <label for="inputName" class="col-sm-2 control-label">
+                            Content
+                        </label>
+                        <div class="col-sm-6">
+                            <textarea rows="5" class="form-control" name="content"></textarea>
+                        </div>
+
+                        <div class="hidden">
+                            @Html.Hidden("courseId", Model.Course.Id);
+                        </div>
+
                     </div>
 
-                    <div class="hidden">
-                        @Html.Hidden("courseId",  Model.Course.Id);
+
+                    <div class="modal-footer">
+
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-default">Save</button>
                     </div>
-
-                </div>
-                
-
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Cancel</button>
-                    <button type="submit" class="btn btn-default">Save</button>
-                </div>
                 }
             </div>
         </div>
@@ -458,34 +494,34 @@
 </div>
 
 
-    <div class="modal fade" id="CourseConfirmationRemove" role="dialog"
-         aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h4 class="modal-title" id="myModalLabel">
-                        Remove
-                        Confirmation!
-                    </h4>
-                </div>
-                <div class="modal-body">
-                    Are you sure you want to remove this course?
-                </div>
-                <div class="modal-footer">
-
-                    <button type="button" class="btn btn-default"
-                            data-dismiss="modal">
-                        No
-                    </button>
-                    <button type="button" class="btn btn-default"  onclick="location.href = '@(Url.Action("Remove", "Course", new {id = Model.Course.Id}))'">
-                        Yes
-                    </button>
-                </div>
+<div class="modal fade" id="CourseConfirmationRemove" role="dialog"
+     aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h4 class="modal-title" id="myModalLabel">
+                    Remove
+                    Confirmation!
+                </h4>
             </div>
+            <div class="modal-body">
+                Are you sure you want to remove this course?
+            </div>
+            <div class="modal-footer">
 
+                <button type="button" class="btn btn-default"
+                        data-dismiss="modal">
+                    No
+                </button>
+                <button type="button" class="btn btn-default" onclick="location.href = '@(Url.Action("Remove", "Course", new {id = Model.Course.Id}))'">
+                    Yes
+                </button>
+            </div>
         </div>
 
     </div>
+
+</div>
 </div>
 
 

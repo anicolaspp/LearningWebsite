@@ -2,8 +2,9 @@
 {
     public class TagRequestModel
     {
-        public int CourseMaterialId { get; set; }
+        public int courseId { get; set; }
+        public int courseMaterialId { get; set; }
 
-        public string Tag { get; set; }
+        public string Tags { get; set; }
     }
 }
