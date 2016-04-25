@@ -9,7 +9,12 @@ namespace LearningWebsite.Services.Implementations.Repositories
 {
     public class TagRepository : ITagRepository
     {
-        private readonly WebSiteDbContext _context = new WebSiteDbContext();
+        private readonly WebSiteDbContext _context;
+
+        public TagRepository(WebSiteDbContext context)
+        {
+            _context = context;
+        }
 
         public IEnumerable<Tag> GetMatchesTo(string nameToMatch)
         {

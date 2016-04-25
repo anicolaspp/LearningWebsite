@@ -10,7 +10,12 @@ namespace LearningWebsite.Services.Implementations.Repositories
 {
     public class CourseMaterialRepository : ICourseMaterialRepository
     {
-        private readonly WebSiteDbContext _context = new WebSiteDbContext();
+        private readonly WebSiteDbContext _context;
+
+        public CourseMaterialRepository(WebSiteDbContext context)
+        {
+            _context = context;
+        }
 
         public ICollection<int> GetRatingsFor(int id)
         {

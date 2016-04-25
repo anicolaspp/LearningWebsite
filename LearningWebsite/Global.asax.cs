@@ -44,6 +44,8 @@ namespace LearningWebsite
             _kernel.Bind<ICourseMaterialService>().To<CourseMaterialService>();
             _kernel.Bind<ICourseService>().To<CourseService>();
             _kernel.Bind<ICourseRepository>().To<CourseRepository>();
+
+            _kernel.Bind<WebSiteDbContext>().ToSelf().InSingletonScope();
         }
 
         public object GetService(Type serviceType)

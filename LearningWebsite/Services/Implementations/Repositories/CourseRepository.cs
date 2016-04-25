@@ -11,53 +11,46 @@ namespace LearningWebsite.Services.Implementations.Repositories
 {
     public class CourseRepository : ICourseRepository
     {
-        private WebSiteDbContext context = new WebSiteDbContext();
+        private readonly WebSiteDbContext _context;
+
+        public CourseRepository(WebSiteDbContext context)
+        {
+            _context = context;
+        }
 
         public Course GetBy(int id)
         {
-     //       using (var context = new WebSiteDbContext())
-            {
-                return context.Courses.Find(id);
-            }
+            return _context.Courses.Find(id);
         }
 
         public IEnumerable<Course> GetAll()
         {
-        //    using (var context = new WebSiteDbContext())
-            {
-                var courses = context.Courses.ToList();
+            var courses = _context.Courses.ToList();
 
-                return courses;
-            }
+            return courses;
         }
 
         public int Add(Course course)
         {
-         //   using (var context = new WebSiteDbContext())
-            {
-                var entity = context.Courses.Add(course);
+            var entity = _context.Courses.Add(course);
 
-                context.SaveChanges();
+            _context.SaveChanges();
 
-                return entity.Id;
-            }
+            return entity.Id;
         }
 
         public Course RemoveById(int id)
         {
             try
             {
-             //   using (var context = new WebSiteDbContext())
-                {
-                    var entity = context.Courses.Remove(context.Courses.Find(id));
-                    entity.CourseMaterials.ForEach(cm => context.CourseMaterials.Remove(cm));
-                    context.Favoriteses.Where(f => f.CourseId == id).ForEach(x => context.Favoriteses.Remove(x));
-                    context.Boards.Remove(context.Boards.Find(entity.DiscusionBoardId));
+                var entity = _context.Courses.Remove(_context.Courses.Find(id));
+                entity.CourseMaterials.ForEach(cm => _context.CourseMaterials.Remove(cm));
+                _context.Favoriteses.Where(f => f.CourseId == id).ForEach(x => _context.Favoriteses.Remove(x));
+                _context.Boards.Remove(_context.Boards.Find(entity.DiscusionBoardId));
 
-                    context.SaveChanges();
+                _context.SaveChanges();
 
-                    return entity;
-                }
+                return entity;
             }
             catch (EntityException)
             {
@@ -69,12 +62,9 @@ namespace LearningWebsite.Services.Implementations.Repositories
         {
             try
             {
-  //              using (var context = new WebSiteDbContext())
-                {
-                    var relationship = context.Favoriteses.Find(courseId, userId);
+                var relationship = _context.Favoriteses.Find(courseId, userId);
 
-                    return relationship != null;
-                }
+                return relationship != null;
             }
             catch (Exception)
             {
@@ -86,8 +76,8 @@ namespace LearningWebsite.Services.Implementations.Repositories
         {
             try
             {
-                context.Favoriteses.Add(new CourseUserFavorites {CourseId = id, UserId = userId});
-                context.SaveChanges();
+                _context.Favoriteses.Add(new CourseUserFavorites {CourseId = id, UserId = userId});
+                _context.SaveChanges();
 
                 return true;
             }
@@ -101,12 +91,12 @@ namespace LearningWebsite.Services.Implementations.Repositories
         {
             try
             {
-                var entity = context.Favoriteses.Find(id, userId);
+                var entity = _context.Favoriteses.Find(id, userId);
 
                 if (entity != null)
                 {
-                    context.Favoriteses.Remove(entity);
-                    context.SaveChanges();
+                    _context.Favoriteses.Remove(entity);
+                    _context.SaveChanges();
                 }
 
                 return true;

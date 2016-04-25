@@ -11,11 +11,12 @@ namespace LearningWebsite.Services.Implementations.Repositories
     public class UserRepository : IUserRepository
     {
         private readonly ICourseRepository _courseRepository;
-        private readonly WebSiteDbContext context = new WebSiteDbContext();
+        private readonly WebSiteDbContext _context;
 
-        public UserRepository(ICourseRepository courseRepository)
+        public UserRepository(ICourseRepository courseRepository, WebSiteDbContext context)
         {
             _courseRepository = courseRepository;
+            _context = context;
         }
 
         public User GetUserBy(string userName)
@@ -48,30 +49,30 @@ namespace LearningWebsite.Services.Implementations.Repositories
 
         public void RemoveWith(int id)
         {
-            var user = context.Users.Find(id);
-            context.Users.Remove(user);
-            context.Posts.RemoveRange(context.Posts.Where(post => post.PostedBy.Id == user.Id));
+            var user = _context.Users.Find(id);
+            _context.Users.Remove(user);
+            _context.Posts.RemoveRange(_context.Posts.Where(post => post.PostedBy.Id == user.Id));
 
-            var cms = context.CourseMaterials.Where(cm => cm.PostedBy.Id == user.Id);
-            context.CourseMaterials.RemoveRange(cms);
-            context.CourseMaterialUserRantings.RemoveRange(
-                context.CourseMaterialUserRantings.Where(x => x.RatedBy.Id == user.Id));
+            var cms = _context.CourseMaterials.Where(cm => cm.PostedBy.Id == user.Id);
+            _context.CourseMaterials.RemoveRange(cms);
+            _context.CourseMaterialUserRantings.RemoveRange(
+                _context.CourseMaterialUserRantings.Where(x => x.RatedBy.Id == user.Id));
 
             // need to remove the courses the user created
-            context
+            _context
                 .Courses
                 .Where(course => course.PostedBy.Id == user.Id)
                 .Select(course => course.Id)
                 .ForEach(i => _courseRepository.RemoveById(i));
 
 
-            context.SaveChanges();
+            _context.SaveChanges();
         }
 
         public User GetUserBy(int id)
         {
 
-            var user = context.Users.Find(id);
+            var user = _context.Users.Find(id);
 
             if (user != null)
             {
@@ -84,22 +85,22 @@ namespace LearningWebsite.Services.Implementations.Repositories
 
         public IEnumerable<User> GetAll()
         {
-            return context.Users.ToList();
+            return _context.Users.ToList();
         }
 
         public bool Update(User user)
         {
-            context.Users.AddOrUpdate(user);
-            return context.SaveChanges() > 0;
+            _context.Users.AddOrUpdate(user);
+            return _context.SaveChanges() > 0;
         }
 
         public int AddPost(Post post, int userId)
         {
-            User user = context.Users.Find(userId);
+            User user = _context.Users.Find(userId);
             post.PostedBy = user;
-            post.DiscusionBoard = context.Boards.Find(post.DiscusionBoard.Id);
-            Post postAdded = context.Posts.Add(post);
-            context.SaveChanges();
+            post.DiscusionBoard = _context.Boards.Find(post.DiscusionBoard.Id);
+            Post postAdded = _context.Posts.Add(post);
+            _context.SaveChanges();
             return postAdded.Id;
         }
 
@@ -107,8 +108,8 @@ namespace LearningWebsite.Services.Implementations.Repositories
         {
             try
             {
-                context.Posts.Remove(context.Posts.Find(id));
-                context.SaveChanges();
+                _context.Posts.Remove(_context.Posts.Find(id));
+                _context.SaveChanges();
 
                 return true;
             }
