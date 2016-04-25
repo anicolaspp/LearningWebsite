@@ -90,7 +90,8 @@
             <div class="modal fade" id="AddCourseMaterialPopup"
                  role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
                 <div class="modal-dialog">
-                    
+                    @using (Html.BeginForm("Add", "CourseMaterial", FormMethod.Post, new {@class = "form-horizontal", @role = "form"}))
+                    {
                         <div class="modal-content">
                             <div class="modal-header">
                                 <h4 class="modal-title" id="myModalLabel">
@@ -99,44 +100,43 @@
                                 </h4>
                             </div>
                             <div class="modal-body">
-@using (Html.BeginForm("Add", "CourseMaterial", FormMethod.Post, new {@class = "form-horizontal", @role = "form"}))
-{
-    <div class="form-group">
 
-        <label for="inputName" class="col-sm-2 control-label">
-            Name
-        </label>
-        <div class="col-sm-6">
-            <input type="text" class="form-control" id="inputName"
-                   name="Title">
-        </div>
-    </div>
+                                <div class="form-group">
 
-    <div class="form-group">
+                                    <label for="inputName" class="col-sm-2 control-label">
+                                        Name
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input type="text" class="form-control" id="inputName"
+                                               name="Title">
+                                    </div>
+                                </div>
 
-        <label for="inputContent" class="col-sm-2 control-label">
-            Content
-        </label>
-        <div class="col-sm-6">
-            <textarea id="inputContent" name="Content" rows="5" class="form-control"></textarea>
-        </div>
-    </div>
+                                <div class="form-group">
 
-    <div class="form-group">
+                                    <label for="inputContent" class="col-sm-2 control-label">
+                                        Content
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <textarea id="inputContent" name="Content" rows="5" class="form-control"></textarea>
+                                    </div>
+                                </div>
 
-        <label for="inputTag" class="col-sm-2 control-label">
-            Tag
-        </label>
-        <div class="col-sm-6">
-            <input id="inputTag" type="text" class="form-control" name="Tags"/>
-        </div>
+                                <div class="form-group">
+
+                                    <label for="inputTag" class="col-sm-2 control-label">
+                                        Tag
+                                    </label>
+                                    <div class="col-sm-6">
+                                        <input id="inputTag" type="text" class="form-control" name="Tags"/>
+                                    </div>
 
 
-    </div>
-    <div class="form-group hidden">
-        @Html.Hidden("courseId", Model.Course.Id);
-    </div>
-}
+                                </div>
+                                <div class="form-group hidden">
+                                    @Html.Hidden("courseId", Model.Course.Id);
+                                </div>
+                                
                             </div>
                             <div class="modal-footer">
 
@@ -149,12 +149,11 @@
                                 </button>
                             </div>
                         </div>
-                    
+                    }
                 </div>
 
             </div>
         }
-
     </th>
 </tr>
 </thead>

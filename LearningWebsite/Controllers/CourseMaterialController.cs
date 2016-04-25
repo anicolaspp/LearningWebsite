@@ -61,7 +61,7 @@ namespace LearningWebsite.Controllers
                 Title = model.Title,
                 PostedById = GetLoggedUser().Id,
                 Rating = model.Rating,
-                Tags = model.Tags.Split(' ')
+                Tags = model.Tags?.Split(' ')??new string[]{}
             });
 
             if (cmId >= 0)

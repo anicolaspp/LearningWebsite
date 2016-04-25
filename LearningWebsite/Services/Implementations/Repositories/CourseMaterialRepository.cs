@@ -62,6 +62,8 @@ namespace LearningWebsite.Services.Implementations.Repositories
 
         public bool UpdateTagsFor(int cmId, IEnumerable<string> tags)
         {
+            _context.ChangeTracker.DetectChanges();
+
             var ts = _context.Tags.Where(t => t.CourseMaterials.Select(cm => cm.Id).Contains(cmId));
          
 
@@ -89,7 +91,7 @@ namespace LearningWebsite.Services.Implementations.Repositories
                 t.CourseMaterials.Add(courseMaterial);
             });
 
-            var tagsToRemove = ts.Where(t => !tags.Contains(t.Name));
+            var tagsToRemove = ts.Where(t => !tags.Contains(t.Name)).ToList();
 
             tagsToRemove.ForEach(t =>
             {

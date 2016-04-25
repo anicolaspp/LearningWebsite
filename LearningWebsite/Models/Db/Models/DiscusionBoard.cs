@@ -11,6 +11,6 @@ namespace LearningWebsite.Models.Db.Models
 
         // public virtual Course Course { get; set; }
 
-        public virtual IList<Post> Posts { get; set; }
+        public virtual IList<Post> Posts { get; set; } = new List<Post>();
     }
 }

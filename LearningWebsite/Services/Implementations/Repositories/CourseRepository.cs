@@ -48,6 +48,11 @@ namespace LearningWebsite.Services.Implementations.Repositories
                 _context.Favoriteses.Where(f => f.CourseId == id).ForEach(x => _context.Favoriteses.Remove(x));
                 _context.Boards.Remove(_context.Boards.Find(entity.DiscusionBoardId));
 
+                _context
+                    .Posts
+                    .Where(p => p.DiscusionBoard.Id == entity.DiscusionBoardId)
+                    .ForEach(p => _context.Posts.Remove(p));
+
                 _context.SaveChanges();
 
                 return entity;

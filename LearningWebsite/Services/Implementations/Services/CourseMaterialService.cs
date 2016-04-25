@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
@@ -69,8 +70,13 @@ namespace LearningWebsite.Services.Implementations.Services
 
         public bool UpdateTagsFor(int courseMaterialId, string tags)
         {
-            return _courseMaterialRepository.UpdateTagsFor(courseMaterialId,
-                tags.Split(' ').Where(tag => !string.IsNullOrEmpty(tag)));
+            var ts = tags?.Split(' ').Where(tag => !string.IsNullOrEmpty(tag)) ?? new string[] { };
+
+
+          //  var ts = tags.Split(' ').Where(tag => !string.IsNullOrEmpty(tag));
+          
+
+            return _courseMaterialRepository.UpdateTagsFor(courseMaterialId, ts);
         }
 
         public bool Rate(int courseMaterialId, int rating, int userId)
