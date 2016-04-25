@@ -29,7 +29,7 @@ namespace LearningWebsite.Controllers
             {
                 UserViewModel = GetLoggedUser(),
                 PageName = PageName,
-                ErrorMessage = message
+                ErrorMessage = message,
             });
         }
 

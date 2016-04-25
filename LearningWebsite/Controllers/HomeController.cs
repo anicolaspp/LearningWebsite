@@ -56,7 +56,9 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult Search(string searchTerm)
         {
-            var cmResult = _cmService.GetMatchesFor(searchTerm);
+            var cmResult = _cmService.GetMatchesFor(searchTerm).ToList();
+            cmResult.Sort((x, y) => -1*x.Rating.CompareTo(y.Rating));
+
             var crResult = _courseService.GetMatcherFor(searchTerm);
 
             return View("Index", new HomePageViewModel

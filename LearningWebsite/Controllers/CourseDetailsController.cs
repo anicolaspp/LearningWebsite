@@ -52,6 +52,11 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult AddPost(PostViewModel post)
         {
+            if (string.IsNullOrEmpty(post.Content))
+            {
+                return GetErrorPage("Please, make sure to fill the Content of the post");
+            }
+
             var couse = _courseService.GetBy(post.courseId);
 
             int result = _userService.AddPost(new Post

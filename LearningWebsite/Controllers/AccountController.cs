@@ -62,10 +62,16 @@ namespace LearningWebsite.Controllers
                 {
                     FormsAuthentication.SetAuthCookie(user.UserName, false);
                     Session["user"] = user;
+
+                    var url = Request.UrlReferrer.ToString().Contains("/Account/Login")
+                        ? "/Home/Index"
+                        : Request.UrlReferrer?.ToString();
+
+                    return Redirect(url);
                 }
             }
 
-            return Redirect(Request.UrlReferrer.ToString());
+            return GetErrorPage("Please, verify user name and password");
         }
 
         [MembershipRequired(Role.Member)]
@@ -96,10 +102,11 @@ namespace LearningWebsite.Controllers
                 if (nUser != null)
                 {
                     Session["user"] = nUser;
+                    return RedirectToAction("Index", "Home");
                 }
             }
 
-            return RedirectToAction("Index", "Home");
+            return GetErrorPage("Verify the user name, you might have an account already!");
         }
 
         [MembershipRequired(Role.Member)]
