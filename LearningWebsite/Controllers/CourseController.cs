@@ -43,7 +43,6 @@ namespace LearningWebsite.Controllers
 
             return ShowCourses(courses);
         }
-
   
         [MembershipRequired(Role.Admin)]
         [HttpPost]

@@ -265,6 +265,7 @@
     <Compile Include="Models\ViewModels\ErrorModel.cs" />
     <Compile Include="Models\ViewModels\TagRequestModel.cs" />
     <Compile Include="Models\ViewModels\HomePageViewModel.cs" />
+    <Compile Include="IoC\NinjectResolver.cs" />
     <Compile Include="Services\Abstractions\ICourseService.cs" />
     <Compile Include="Services\Implementations\Repositories\CourseRepository.cs" />
     <Compile Include="Services\Implementations\Services\CourseService.cs" />

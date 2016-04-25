@@ -71,7 +71,7 @@ namespace LearningWebsite.Controllers
                 }
             }
 
-            return GetErrorPage("Please, verify user name and password");
+            return GetErrorPage("Please, verify your credentials");
         }
 
         [MembershipRequired(Role.Member)]
