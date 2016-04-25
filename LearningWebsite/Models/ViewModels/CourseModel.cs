@@ -1,7 +1,8 @@
 ﻿using System.Collections.Generic;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 
-namespace LearningWebsite.Controllers
+namespace LearningWebsite.Models.ViewModels
 {
     public class CourseModel
     {

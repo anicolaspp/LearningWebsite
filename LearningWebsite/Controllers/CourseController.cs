@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services.Abstractions;
@@ -56,7 +57,7 @@ namespace LearningWebsite.Controllers
             }
 
             // error creating user
-            return View();
+            return GetErrorPage($"An error happened creating user {model.Name}");
         }
 
         [MembershipRequired(Role.Admin)]
@@ -70,7 +71,7 @@ namespace LearningWebsite.Controllers
                 return RedirectToAction("Index");
             }
 
-            return View();
+            return GetErrorPage($"An error happened while removing the course {id}");
         }
 
         [MembershipRequired(Role.Member)]
@@ -99,10 +100,7 @@ namespace LearningWebsite.Controllers
 
             return ShowCourses(favs);
         }
-    }
 
-    public class CoursesResultViewModel : ResultBased
-    {
-        public IEnumerable<CourseModel> Courses { get; set; }
+        public override string PageName => "Course Controller";
     }
 }

@@ -2,11 +2,12 @@ using System;
 using System.Collections.Generic;
 using System.Data.Entity.Core;
 using System.Linq;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Services.Abstractions;
 using WebGrease.Css.Extensions;
 
-namespace LearningWebsite.Services.Implementations
+namespace LearningWebsite.Services.Implementations.Repositories
 {
     public class CourseRepository : ICourseRepository
     {

@@ -1,5 +1,6 @@
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.DbModels.Configurations;
 
@@ -32,22 +33,9 @@ namespace LearningWebsite.Services.Implementations
         {
             modelBuilder.Configurations.Add(new UserConfiguration());
             modelBuilder.Configurations.Add(new CourseMaterialConfiguration());
-
-            modelBuilder.Entity<CourseMaterialUserRanting>()
-                .HasKey(cm => new {cm.UserId, cm.CourseMaterialId});
-
-            modelBuilder.Entity<Tag>()
-                .HasMany(t => t.CourseMaterials)
-                .WithMany();
-
-            modelBuilder.Entity<CourseUserFavorites>()
-                .HasKey(f => new {f.CourseId, f.UserId});
-
-            modelBuilder.Entity<CourseMaterial>()
-                .Ignore(material => material.Tags);
-
-            //.HasMany<>(tag => tag.CourseMaterials)
-            //.WithMany(material => material.Tags);
+            modelBuilder.Configurations.Add(new CourseMaterialUserRantingConfigurtion());
+            modelBuilder.Configurations.Add(new TagConfiguration());
+            modelBuilder.Configurations.Add(new CourseUserFavoritesConfiguration());
         }
     }
 }

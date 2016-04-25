@@ -25,7 +25,7 @@
                     @using (Html.BeginForm("Search", "Home", FormMethod.Post, new {@class = "navbar-form navbar-center", @role = "search"}))
                     {
                         <div class="form-group">
-                            <input type="text" class="form-control" style="width: 500px;" name="searchTerm">
+                            <input type="text" class="form-control" style="width: 500px;" name="searchTerm" required>
                         </div>
 
 
@@ -37,8 +37,7 @@
 
                 </div>
                 
-                @if ((Model.SearchResultCourseMaterials ==  null && Model.SearchResultCourses == null) ||
-                    (!Model.SearchResultCourseMaterials.Any() && !Model.SearchResultCourses.Any()))
+                @if (IsPost && !Model.SearchResultCourseMaterials.Any() && !Model.SearchResultCourses.Any())
                 {
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -58,7 +57,7 @@
 
 
 
-                @if (Model.SearchResultCourseMaterials != null && Model.SearchResultCourseMaterials.Any())
+                @if (Model.SearchResultCourseMaterials.Any())
                 {
                     <div class="panel panel-primary">
                         <div class="panel-heading">
@@ -103,7 +102,7 @@
                         </div>
                     </div>
                 }
-                @if (Model.SearchResultCourses != null && Model.SearchResultCourses.Any())
+                @if (Model.SearchResultCourses.Any())
                 {
                     <div class="panel panel-primary">
                         <div class="panel-heading">

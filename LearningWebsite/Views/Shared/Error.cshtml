@@ -1,9 +1,14 @@
-﻿@model System.Web.Mvc.HandleErrorInfo
+﻿@model LearningWebsite.Models.ViewModels.ErrorModel
 
 @{
     ViewBag.Title = "Error";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1 class="text-danger">Error.</h1>
-<h2 class="text-danger">An error occurred while processing your request.</h2>
+<div class="alert alert-dismissable alert-danger">
+    <h4>
+        ERROR!
+    </h4> 
+   <strong>@Model.PageName</strong>: @Model.ErrorMessage
+</div>
 

@@ -1,23 +1,11 @@
 ﻿using System;
 using System.Web;
 using System.Web.Mvc;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 
 namespace LearningWebsite.Services.Filters
 {
-    public class LoginRequiredAttribute : ActionFilterAttribute
-    {
-        public override void OnActionExecuting(ActionExecutingContext filterContext)
-        {
-            var loggedUser = filterContext.HttpContext.Session["user"] as User;
-
-            if (loggedUser == null)
-            {
-                filterContext.Result = new HttpUnauthorizedResult();
-            }
-        }
-    }
-
     public class MembershipRequiredAttribute : ActionFilterAttribute
     {
         private readonly Role _requiredRole;

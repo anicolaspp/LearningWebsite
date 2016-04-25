@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 
-namespace LearningWebsite.Models.DbModels
+namespace LearningWebsite.Models.Db.Models
 {
     public class DiscusionBoard
     {

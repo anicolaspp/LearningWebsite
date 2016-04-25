@@ -1,10 +1,11 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
-using LearningWebsite.Controllers;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
+using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services.Abstractions;
 
-namespace LearningWebsite.Services.Implementations
+namespace LearningWebsite.Services.Implementations.Services
 {
     public class CourseService : ICourseService
     {

@@ -1,15 +1,12 @@
 using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
-using System.Data.Entity.Migrations;
 using System.Linq;
-using System.Security.Cryptography.X509Certificates;
-using LearningWebsite.Migrations;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Services.Abstractions;
 using WebGrease.Css.Extensions;
 
-namespace LearningWebsite.Services.Implementations
+namespace LearningWebsite.Services.Implementations.Repositories
 {
     public class CourseMaterialRepository : ICourseMaterialRepository
     {

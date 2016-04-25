@@ -9,6 +9,8 @@ using System.Web.Routing;
 using LearningWebsite.Controllers;
 using LearningWebsite.Services.Abstractions;
 using LearningWebsite.Services.Implementations;
+using LearningWebsite.Services.Implementations.Repositories;
+using LearningWebsite.Services.Implementations.Services;
 using Ninject;
 using WebGrease.Configuration;
 
@@ -20,6 +22,7 @@ namespace LearningWebsite
         {
             DependencyResolver.SetResolver(new NinjectResolver());
 
+            
 
             AreaRegistration.RegisterAllAreas();
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);

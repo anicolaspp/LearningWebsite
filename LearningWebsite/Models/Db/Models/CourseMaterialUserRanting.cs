@@ -1,4 +1,4 @@
-﻿namespace LearningWebsite.Models.DbModels
+﻿namespace LearningWebsite.Models.Db.Models
 {
     public class CourseMaterialUserRanting
     {

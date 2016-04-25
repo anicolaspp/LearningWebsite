@@ -1,8 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Web.UI;
+﻿using System.Collections.Generic;
 
-namespace LearningWebsite.Models.DbModels
+namespace LearningWebsite.Models.Db.Models
 {
     public class User
     {

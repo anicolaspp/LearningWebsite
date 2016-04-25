@@ -1,10 +1,11 @@
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Services.Abstractions;
 
-namespace LearningWebsite.Services.Implementations
+namespace LearningWebsite.Services.Implementations.Repositories
 {
     public class TagRepository : ITagRepository
     {

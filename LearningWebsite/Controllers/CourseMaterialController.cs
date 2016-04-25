@@ -4,6 +4,7 @@ using System.Data.Entity.Core.Mapping;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services.Abstractions;
@@ -32,7 +33,7 @@ namespace LearningWebsite.Controllers
             }
 
 
-            return View();
+            return GetErrorPage("An error happened during the rating operation");
         }
 
         [MembershipRequired(Role.Member)]
@@ -46,7 +47,7 @@ namespace LearningWebsite.Controllers
                 return RedirectToAction("Index", "CourseDetails", new {id = model.courseId});
             }
 
-            return View();
+            return GetErrorPage("An error happened while updating the tags");
         }
 
         [MembershipRequired(Role.Member)]
@@ -68,7 +69,7 @@ namespace LearningWebsite.Controllers
                 return RedirectToAction("Index", "CourseDetails", new {id = model.courseId});
             }
 
-            return View();
+            return GetErrorPage("An error happened adding course material");
         }
 
         [MembershipRequired(Role.Member)]
@@ -82,7 +83,7 @@ namespace LearningWebsite.Controllers
                 return RedirectToAction("Index", "CourseDetails", new {id = courseId});
             }
 
-            return View();
+            return GetErrorPage("An error happened removing course material");
         }
 
         public ActionResult Details(int id)
@@ -106,31 +107,9 @@ namespace LearningWebsite.Controllers
 
         public ActionResult GoToCourse(int id)
         {
-            return RedirectToAction("Index", "CourseDetails", new {id = id});
+            return RedirectToAction("Index", "CourseDetails", new {id});
         }
-    }
 
-    public class CourseMaterialDetail : ResultBased
-    {
-        public CourseMaterialModel CourseMaterial { get; set; }
-    }
-
-    public class CourseMaterialModel
-    {
-        public string Title { get; set; }
-        public int Rating { get; set; }
-        public string PostedBy { get; set; }
-        public int id { get; set; }
-        public string Content { get; set; }
-
-        public int courseId { get; set; }
-        public string Tags { get; set; }
-    }
-
-    public class RateModel
-    {
-        public int courseId { get; set; }
-        public int Rating { get; set; }
-        public int courseMaterialId { get; set; }
+        public override string PageName => "Course Material Details";
     }
 }

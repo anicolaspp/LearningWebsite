@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using LearningWebsite.Controllers;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
+using LearningWebsite.Models.ViewModels;
 
 namespace LearningWebsite.Services.Abstractions
 {

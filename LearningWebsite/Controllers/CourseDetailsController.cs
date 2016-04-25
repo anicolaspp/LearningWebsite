@@ -2,6 +2,7 @@
  using System.Collections.Generic;
  using System.Linq;
  using System.Web.Mvc;
+ using LearningWebsite.Models.Db.Models;
  using LearningWebsite.Models.DbModels;
  using LearningWebsite.Models.ViewModels;
  using LearningWebsite.Services.Abstractions;
@@ -28,10 +29,8 @@ namespace LearningWebsite.Controllers
         {
             var course = _courseService.GetBy(id);
 
-
             if (course != null)
             {
-
                 return View(new CourseResultViewModel
                 {
                     UserViewModel = GetLoggedUser(),
@@ -46,8 +45,7 @@ namespace LearningWebsite.Controllers
                 });
             }
 
-            //Not Found
-            return View();
+            return GetErrorPage($"Couldn't find course {id}");
         }
 
         [MembershipRequired(Role.Member)]
@@ -67,7 +65,7 @@ namespace LearningWebsite.Controllers
                 return RedirectToAction("Index", new {id = couse.Id});
             }
 
-            return View();
+            return GetErrorPage($"An error happened adding post {post.Content}");
         }
 
         [MembershipRequired(Role.Admin)]
@@ -90,7 +88,7 @@ namespace LearningWebsite.Controllers
 
             if (course == null)
             {
-                return View();
+                return GetErrorPage("Couldn't find associated course");
             }
                 
 
@@ -101,21 +99,10 @@ namespace LearningWebsite.Controllers
                 return RedirectToAction("Index", new {id = course.Id});
             }
 
-            return View();
+            return GetErrorPage("An error happened while removing the post");
         }
 
 
-    }
-
-    public class CourseResultViewModel : ResultBased
-    {
-        public CourseModel Course { get; set; }
-    }
-
-    public class PostViewModel
-    {
-        public int courseId { get; set; }
-
-        public string Content { get; set; }
+        public override string PageName => "Course Details Controller";
     }
 }

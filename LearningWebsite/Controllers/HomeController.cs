@@ -2,6 +2,7 @@
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services.Abstractions;
@@ -79,5 +80,6 @@ namespace LearningWebsite.Controllers
 
         //    return View();
         //}
+        public override string PageName => "Home Page Controller";
     }
 }

@@ -1,10 +1,10 @@
-using System;
 using System.Collections.Generic;
 using System.Linq;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Services.Abstractions;
 
-namespace LearningWebsite.Services.Implementations
+namespace LearningWebsite.Services.Implementations.Services
 {
     public class CourseMaterialService : ICourseMaterialService
     {

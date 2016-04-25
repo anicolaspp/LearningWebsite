@@ -217,7 +217,17 @@
     <Compile Include="Controllers\CourseController.cs" />
     <Compile Include="Controllers\CourseDetailsController.cs" />
     <Compile Include="Controllers\CourseMaterialController.cs" />
-    <Compile Include="Controllers\CourseModel.cs" />
+    <Compile Include="Models\Db\Configurations\CourseMaterialUserRantingConfigurtion.cs" />
+    <Compile Include="Models\Db\Configurations\CourseUserFavoritesConfiguration.cs" />
+    <Compile Include="Models\Db\Configurations\TagConfiguration.cs" />
+    <Compile Include="Models\ViewModels\UserListResult.cs" />
+    <Compile Include="Models\ViewModels\CourseMaterialDetail.cs" />
+    <Compile Include="Models\ViewModels\CourseMaterialModel.cs" />
+    <Compile Include="Models\ViewModels\CourseModel.cs" />
+    <Compile Include="Models\ViewModels\CourseResultViewModel.cs" />
+    <Compile Include="Models\ViewModels\CoursesResultViewModel.cs" />
+    <Compile Include="Models\ViewModels\PostViewModel.cs" />
+    <Compile Include="Models\ViewModels\RateModel.cs" />
     <Compile Include="Migrations\201603301527574_add_course.cs" />
     <Compile Include="Migrations\201603301527574_add_course.Designer.cs">
       <DependentUpon>201603301527574_add_course.cs</DependentUpon>
@@ -250,14 +260,15 @@
     <Compile Include="Migrations\201604192014250_course_posted_by.Designer.cs">
       <DependentUpon>201604192014250_course_posted_by.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\DbModels\DiscusionBoard.cs" />
-    <Compile Include="Models\DbModels\Post.cs" />
+    <Compile Include="Models\Db\Models\DiscusionBoard.cs" />
+    <Compile Include="Models\Db\Models\Post.cs" />
+    <Compile Include="Models\ViewModels\ErrorModel.cs" />
     <Compile Include="Models\ViewModels\TagRequestModel.cs" />
     <Compile Include="Models\ViewModels\HomePageViewModel.cs" />
     <Compile Include="Services\Abstractions\ICourseService.cs" />
-    <Compile Include="Services\Implementations\CourseRepository.cs" />
-    <Compile Include="Services\Implementations\CourseService.cs" />
-    <Compile Include="Models\DbModels\Course.cs" />
+    <Compile Include="Services\Implementations\Repositories\CourseRepository.cs" />
+    <Compile Include="Services\Implementations\Services\CourseService.cs" />
+    <Compile Include="Models\Db\Models\Course.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Migrations\201603150318431_adding-users.cs" />
     <Compile Include="Migrations\201603150318431_adding-users.Designer.cs">
@@ -328,22 +339,22 @@
       <DependentUpon>201603192255573_posted_by_id.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
-    <Compile Include="Models\DbModels\Configurations\CourseMaterialConfiguration.cs" />
-    <Compile Include="Models\DbModels\CourseMaterial.cs" />
-    <Compile Include="Models\DbModels\CourseMaterialUserRanting.cs" />
-    <Compile Include="Models\DbModels\Tag.cs" />
+    <Compile Include="Models\Db\Configurations\CourseMaterialConfiguration.cs" />
+    <Compile Include="Models\Db\Models\CourseMaterial.cs" />
+    <Compile Include="Models\Db\Models\CourseMaterialUserRanting.cs" />
+    <Compile Include="Models\Db\Models\Tag.cs" />
     <Compile Include="Services\Filters\LoginRequiredFilter.cs" />
-    <Compile Include="Models\DbModels\Configurations\UserConfiguration.cs" />
-    <Compile Include="Services\Implementations\CourseMaterialRepository.cs" />
-    <Compile Include="Services\Implementations\CourseMaterialService.cs" />
+    <Compile Include="Models\Db\Configurations\UserConfiguration.cs" />
+    <Compile Include="Services\Implementations\Repositories\CourseMaterialRepository.cs" />
+    <Compile Include="Services\Implementations\Services\CourseMaterialService.cs" />
     <Compile Include="Services\Abstractions\ICourseMaterialRepository.cs" />
     <Compile Include="Services\Abstractions\ICourseMaterialService.cs" />
     <Compile Include="Services\Abstractions\ITagRepository.cs" />
     <Compile Include="Services\Abstractions\ICourseRepository.cs" />
-    <Compile Include="Services\Implementations\TagRepository.cs" />
-    <Compile Include="Services\Implementations\UserRepository.cs" />
-    <Compile Include="Services\Implementations\UserService.cs" />
-    <Compile Include="Models\DbModels\User.cs" />
+    <Compile Include="Services\Implementations\Repositories\TagRepository.cs" />
+    <Compile Include="Services\Implementations\Repositories\UserRepository.cs" />
+    <Compile Include="Services\Implementations\Services\UserService.cs" />
+    <Compile Include="Models\Db\Models\User.cs" />
     <Compile Include="Services\Abstractions\IUserRepository.cs" />
     <Compile Include="Services\Abstractions\IUserService.cs" />
     <Compile Include="Controllers\UserController.cs" />

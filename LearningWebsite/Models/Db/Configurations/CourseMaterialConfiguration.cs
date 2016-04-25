@@ -1,4 +1,5 @@
 using System.Data.Entity.ModelConfiguration;
+using LearningWebsite.Models.Db.Models;
 
 namespace LearningWebsite.Models.DbModels.Configurations
 {
@@ -13,6 +14,8 @@ namespace LearningWebsite.Models.DbModels.Configurations
                 .IsRequired();
 
             Ignore(cm => cm.Rating);
+            
+            Ignore(material => material.Tags);
         }
     }
 }

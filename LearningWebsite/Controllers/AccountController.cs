@@ -1,9 +1,9 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Web.Security;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services.Abstractions;
@@ -131,10 +131,7 @@ namespace LearningWebsite.Controllers
 
             return false;
         }
-    }
 
-    public class UserListResult : ResultBased
-    {
-        public IEnumerable<User> Users { get; set; }
+        public override string PageName => "Account Controller";
     }
 }
