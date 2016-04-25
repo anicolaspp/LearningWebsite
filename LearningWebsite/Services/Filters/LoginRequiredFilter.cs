@@ -19,11 +19,7 @@ namespace LearningWebsite.Services.Filters
         {
             var loggedUser = filterContext.HttpContext.Session["user"] as User;
 
-            if (loggedUser == null)
-            {
-                filterContext.Result = new HttpUnauthorizedResult();
-            }
-            else if (loggedUser.Role < _requiredRole)
+            if (loggedUser == null || loggedUser.Role < _requiredRole)
             {
                 filterContext.Result = new HttpUnauthorizedResult();
             }
