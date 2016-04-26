@@ -11,6 +11,8 @@ namespace LearningWebsite.Services.Abstractions
         IEnumerable<Course> GetMatcherFor(string searchTerm);
 
         Course GetBy(int id);
+
+        Course GetBy(string name);
         IEnumerable<Course> GetAll();
         int Add(CourseModel model, int userId);
 
@@ -18,5 +20,6 @@ namespace LearningWebsite.Services.Abstractions
         bool IsFavoriteForUser(int userName, Course course);
         bool RemoveFromFavorites(Course course, int userId);
         bool AddToFavorites(Course course, int userId);
+        
     }
 }

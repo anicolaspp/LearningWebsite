@@ -48,6 +48,13 @@ namespace LearningWebsite.Controllers
         [HttpPost]
         public ActionResult Add(CourseModel model)
         {
+            var course = _courseService.GetBy(model.Name);
+
+            if (course != null)
+            {
+                return GetErrorPage($"The course {model.Name} already exists on the system. Please, use another course name.");
+            }
+
             int id = _courseService.Add(model, GetLoggedUser().Id);
 
             if (id >= 0)

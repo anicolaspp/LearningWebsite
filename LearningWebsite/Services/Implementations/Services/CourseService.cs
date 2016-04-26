@@ -28,6 +28,11 @@ namespace LearningWebsite.Services.Implementations.Services
             return _courseRepository.GetBy(id);
         }
 
+        public Course GetBy(string name)
+        {
+            return _courseRepository.GetBy(name);
+        }
+
         public IEnumerable<Course> GetAll()
         {
             return _courseRepository.GetAll();

@@ -111,5 +111,10 @@ namespace LearningWebsite.Services.Implementations.Repositories
                 return false;
             }
         }
+
+        public Course GetBy(string name)
+        {
+            return _context.Courses.FirstOrDefault(c => c.Name == name);
+        }
     }
 }

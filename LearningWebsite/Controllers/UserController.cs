@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using LearningWebsite.Models;
+using LearningWebsite.Models.Db.Models;
 using LearningWebsite.Models.DbModels;
 using LearningWebsite.Models.ViewModels;
 using LearningWebsite.Services;
@@ -22,7 +23,7 @@ namespace LearningWebsite.Controllers
             _userService = userService;
         }
 
-       // [MembershipRequired(Role.Admin)]
+        [MembershipRequired(Role.Admin)]
         public ActionResult Index(UserViewModel userView)
         {
             
