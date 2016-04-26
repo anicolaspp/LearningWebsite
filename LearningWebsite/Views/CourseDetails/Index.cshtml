@@ -381,6 +381,8 @@
                 int pos = 1;
                 foreach (var post in @Model.Course.DiscusionBoard.Posts)
                 {
+                    string deletePopupX = "#ConfirmationRemove" + post.Id;
+                    string deletePopupY = "ConfirmationRemove" + post.Id;
                     string s = "success";
                     if (pos%2 == 0)
                     {
@@ -389,7 +391,7 @@
                     <div class="alert alert-dismissable alert-@s">
                         @if (Model.UserViewModel.Role == Role.Admin)
                         {
-                            <a id="modal-947255" href="#ConfirmationRemove" role="button"
+                            <a id="modal-947255" href="@deletePopupX" role="button"
                                class="btn close" data-toggle="modal" aria-hidden="true">
                                 x
                             </a>
@@ -400,7 +402,7 @@
                         <h4>@post.PostedBy.UserName</h4>
                         @post.Content
 
-                        <div class="modal fade" id="ConfirmationRemove" role="dialog"
+                        <div class="modal fade" id="@deletePopupY" role="dialog"
                              aria-labelledby="myModalLabel" aria-hidden="true">
                             <div class="modal-dialog">
                                 <div class="modal-content">
