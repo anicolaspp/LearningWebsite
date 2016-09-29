@@ -26,8 +26,8 @@ namespace LearningWebsite.Controllers
         [MembershipRequired(Role.Admin)]
         public ActionResult Index(UserViewModel userView)
         {
-            
-          return View(userView);
+
+            return View(userView);
         }
     }
 }

@@ -1,0 +1,21 @@
+1. In order to run the website locally, we need Visual C# 6 included in Microsoft Visual Studio 2015. You could download VS2015 
+	from https://www.visualstudio.com/en-us/downloads/download-visual-studio-vs.aspx
+
+2. We need at least a MSSQL instance running locally. By default, VS2015 comes with MSSQL Express (the one used at the time of the development). 
+3. Open the Visual Studio Solution file by double clicking on the "LearningWebsite.sln" file. 
+4. Make sure to point Entity Framework configuration to the right DataBase
+	4.1. Open the folder LearningWebsite on the root.
+	4.2. Open the "Web.config" file.
+	4.3. Find the connectionString XML seccion.
+	4.4. The connection string Data Source should point to the local instance, change this to point to you SQL instance if required.
+5. Build the solution in Visual Studio and the run it. The web application should run and open by itself a web browser instance. 
+
+Deployments:
+
+The website has been deployed on Microsoft Azure cloud and can be found at http://learningwebsite2.azurewebsites.net.
+
+In order to deploy it to Azure or any other cloud provider, you need to set up your own cloud credentials. 
+
+The code can also be found at https://github.com/anicolaspp/LearningWebsite. Note that the code hosted on Github could have changes not included
+in your local copy since possible futher development has been done on the public version. Your local copy contains a git repository that can be easily
+syncronized with the public version on Github. Read more at https://guides.github.com/activities/hello-world/
